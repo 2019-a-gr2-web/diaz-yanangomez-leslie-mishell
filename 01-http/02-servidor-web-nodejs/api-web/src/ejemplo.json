@@ -1,0 +1,19 @@
+{
+"llave": "valor",
+"key": "value",
+"nombre": "Leslie"
+"edad": 21,
+"sueldo": 10.21,
+"casado": false,
+"hijos": null,
+"mascotas": [
+  "princesa",
+  1,
+  1.0,
+  false,
+  null,
+  {
+    "nombre": "k-trina"
+  }
+]
+}
