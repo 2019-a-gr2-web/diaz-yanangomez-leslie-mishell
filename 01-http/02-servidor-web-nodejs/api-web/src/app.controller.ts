@@ -34,7 +34,7 @@ export class AppController {
     @Get('/consulta')
     getConsulta(@Query() queryParams) {
       if (queryParams.nombre) {
-          return 'Hola' + queryParams.nombre;
+          return `Hola ${queryParams.nombre}`;
       } else {
        return 'Hola Extraño';
       }
@@ -58,13 +58,13 @@ export class AppController {
       if (parametrosCuerpo.nombre && parametrosCuerpo.cantidad) {
           const cantidad = Number(parametrosCuerpo.cantidad);
           if (cantidad > 1) {
-              response.send('Premio,Fanesca' );
+              response.set('Premio', 'Fanesca');
           }
-          return 'Registro Creado';
+          return response.send({mensaje: 'Registro Creado'});
       } else {
           return response.status(400).send({
               mensaje : 'ERROR, no envia nombre o cantidad',
-              error : 404,
+              error : 404
           });
         }
       // console.log(parametrosCuerpo);
@@ -73,8 +73,8 @@ export class AppController {
     @Get('/semilla')
     getSemilla(@Request() request) {
       console.log(request.cookies);
-      const cookiee = request.cookies;
-      if (cookiee.micookie) {
+      const cookies = request.cookies;
+      if (cookies.micookie) {
           return  'OK';
       } else {
           return ':(';
