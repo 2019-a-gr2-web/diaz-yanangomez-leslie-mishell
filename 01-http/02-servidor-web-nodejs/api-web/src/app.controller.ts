@@ -1,5 +1,6 @@
-import {Controller, Delete, Get, HttpCode, Post, Put, Headers} from '@nestjs/common';
+import {Controller, Delete, Get, HttpCode, Post, Put, Headers, Query, Param, Body, Response, Request} from '@nestjs/common';
 import { AppService } from './app.service';
+import {} from 'cookie-parser';
 
 @Controller ('/api') // Recibe como parametro un segmento inicial --> //localhost:3000/segmentoInicial
 export class AppController {
@@ -24,12 +25,60 @@ export class AppController {
         console.log('Headers: ', headers); // Imprimir las cabeceras
         const numeroRandomico = Math.round(Math.random() * 10);
         const numeroCabecera = Number(headers.numero);
-        if (numeroCabecera == numeroRandomico) {
+        if (numeroCabecera === numeroRandomico) {
             return 'OK';
         } else {
             return '>:(';
         }
-        return 'OK';
+    }
+    @Get('/consulta')
+    getConsulta(@Query() queryParams) {
+      if (queryParams.nombre) {
+          return 'Hola' + queryParams.nombre;
+      } else {
+       return 'Hola Extraño';
+      }
+    }
+    @Get('/ciudad/:idCiudad')
+    // Nosotros definimos el nombre de la variable que el cliente va a enviar, se puede tener mas de un paramatro
+    // de busqueda
+    // separados con slash /:canton/:ciudad
+    getCiudad(@Param() parametrosRuta) { // Son requeridos, si no se manda, no existe la ruta.
+      switch (parametrosRuta.idCiudad.toLowerCase()) {
+          case 'quito':
+              return 'Que fueff';
+          case 'guayaquil':
+              return  'Que mah ñañoshh';
+          default:
+              return 'Buenas Tardes';
+      }
+    }
+    @Post('/registroComida')
+    postRegistroComida(@Body() parametrosCuerpo, @Response() response) { // Utilizado solamente para cierto tipo de parametros de cuerpo
+      if (parametrosCuerpo.nombre && parametrosCuerpo.cantidad) {
+          const cantidad = Number(parametrosCuerpo.cantidad);
+          if (cantidad > 1) {
+              response.send('Premio,Fanesca' );
+          }
+          return 'Registro Creado';
+      } else {
+          return response.status(400).send({
+              mensaje : 'ERROR, no envia nombre o cantidad',
+              error : 404,
+          });
+        }
+      // console.log(parametrosCuerpo);
+      // console.log(request.body);
+    }
+    @Get('/semilla')
+    getSemilla(@Request() request) {
+      console.log(request.cookies);
+      const cookiee = request.cookies;
+      if (cookiee.micookie) {
+          return  'OK';
+      } else {
+          return ':(';
+      }
     }
   // http:localhost:3000
   @Post('/hola-mundo') // Metodo HTTP
