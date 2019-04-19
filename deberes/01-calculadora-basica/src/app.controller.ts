@@ -30,7 +30,7 @@ export class AppController {
       response.set('resultadoresta', resta);
       return response.send({resultadoResta: resta });
     } else {
-      return response.send ({error: 'No existen parametros para restar :/'});
+      return response.status(401).send ({error: 'No existen parametros para restar :/'});
     }
   }
   @Put('/multiplica')
@@ -59,14 +59,24 @@ export class AppController {
       numero1 = Number(cuerpo.numero1);
       numero2 = Number(cuerpo.numero2);
     } else {
-      return response.send('No existen parametros para dividir :(');
+      return response.status(403).send('No existen parametros para dividir :(');
     }
     if (numero2 !== 0) {
       const division = numero1 / numero2;
-      response.set('resultadodivision', division);
+      // response.set('resultadodivision', division);
       return response.send(`El resultado de la division es ${division}`);
     } else {
-      return response.send('No existe division para cero :/');
+      return response.status(403).send('No existe division para cero :/');
     }
+    /*
+    const n1 = Number(consulta.numero1);
+    const n2 = Number(cabecera.numero2);
+    if (n1 && n2 && n2 !== 0) {
+      const div = n1 / n2;
+      return response.send(`El resultado de la division es ${div}`);
+    } else {
+      return response.status(403).send('No existen parametros para dividir o el divisor es cero :/');
+    }
+    */
   }
 }
