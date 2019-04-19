@@ -17,10 +17,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/deberes/01-calculadora-basica/.gitignore">
+        <entry file="file://$PROJECT_DIR$/deberes/01-calculadora-basica/src/app.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+            <state relative-caret-position="141">
+              <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -49,8 +49,8 @@
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/ejemplo.json" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts" />
-        <option value="$PROJECT_DIR$/deberes/01-calculadora-basica/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/deberes/01-calculadora-basica/.gitignore" />
+        <option value="$PROJECT_DIR$/deberes/01-calculadora-basica/src/app.controller.ts" />
       </list>
     </option>
   </component>
@@ -64,7 +64,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -83,10 +82,18 @@
               <item name="deberes" type="462c0819:PsiDirectoryNode" />
               <item name="01-calculadora-basica" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="diaz-yanangomez-leslie-mishell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diaz-yanangomez-leslie-mishell" type="462c0819:PsiDirectoryNode" />
+              <item name="deberes" type="462c0819:PsiDirectoryNode" />
+              <item name="01-calculadora-basica" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -136,16 +143,16 @@
       <workItem from="1555528755094" duration="8011000" />
       <workItem from="1555720677610" duration="888000" />
       <workItem from="1555704025484" duration="4357000" />
-      <workItem from="1555708719780" duration="42000" />
+      <workItem from="1555708719780" duration="114000" />
+      <workItem from="1555709207925" duration="946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27778000" />
+    <option name="totallyTimeSpent" value="28796000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1272" y="-8" width="1616" height="916" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.39473686" visible="true" weight="0.22940432" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -218,18 +225,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deberes/01-calculadora-basica/src/app.controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#1752#1907#0" />
-            <element signature="e#1917#1924#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -241,6 +236,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deberes/01-calculadora-basica/src/app.controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
         </state>
       </provider>
     </entry>
