@@ -1,6 +1,8 @@
 import {Controller, Delete, Get, HttpCode, Post, Put, Headers, Query, Param, Body, Response, Request} from '@nestjs/common';
 import { AppService } from './app.service';
-import {} from 'cookie-parser';
+import * as cookieParser from 'cookie-parser';
+import * as Joi from '@hapi/joi';
+// const Joi = require('@hapi/joi');
 
 @Controller ('/api') // Recibe como parametro un segmento inicial --> //localhost:3000/segmentoInicial
 export class AppController {
@@ -70,15 +72,43 @@ export class AppController {
       // console.log(parametrosCuerpo);
       // console.log(request.body);
     }
+    // COOKIES
     @Get('/semilla')
-    getSemilla(@Request() request) {
-      console.log(request.cookies);
+    getSemilla(@Request() request, @Response() response) {
+      // console.log(request.cookies);
       const cookies = request.cookies;
-      if (cookies.micookie) {
-          return  'OK';
+      const esquemaValidacionNumero = Joi.object().keys({
+          numero: Joi.number().integer().required()
+      });
+      // const objetoValidacion = {
+         // numero: cookies.numero
+      // };
+      // Joi.validate(objetoValidacion, esquemaValidacionNumero);
+      const resultado = Joi.validate({
+          numero: cookies.numero
+      }, esquemaValidacionNumero);
+      if (resultado.error) {
+          console.log('Resultado', resultado);
       } else {
-          return ':(';
+          console.log('Numero valido');
       }
+      /* if (cookies.micookie) { // primero objeto a validar, despues el esquema
+          const horaFechaServidor = new Date();
+          const minutos = horaFechaServidor.getMinutes();
+          horaFechaServidor.setMinutes(minutos + 1);
+          response.cookie('fechaServidor', new Date().getTime(), {expires: horaFechaServidor, signed: true}); // nombre, valor --> cookie
+          // return  response.send('OK');
+      } else {
+          // return response.send(':(');
+      } */
+      const cookieSegura = request.signedCookies.fechaServidor;
+      if (!cookieSegura) {
+            console.log('Cookie Segura');
+            return  response.send('OK');
+        } else {
+            console.log('No es valida esa cookie');
+            return  response.send(':(');
+        }
     }
   // http:localhost:3000
   @Post('/hola-mundo') // Metodo HTTP
