@@ -7,7 +7,10 @@ import * as Joi from '@hapi/joi';
 @Controller ('/api') // Recibe como parametro un segmento inicial --> //localhost:3000/segmentoInicial
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
+@Get('/inicio')
+getInicio(@Response() res) {
+      return res.render('inicio.ejs');
+}
   @Get('/hello-world') // Metodo HTTP (segmentoinicial)
   getHello(): string {
     return 'Hello World';
@@ -173,3 +176,76 @@ objeto['propiedadTres'] = 'valor3';
 // Eliminar una propiedad
 delete objeto.propiedadTres
 */
+// Variables ? const, let, var
+// tipos de variables: string, number, boolean
+ function holaMundo() {
+     console.log('Hola Mundo');
+ }
+ const resHM = holaMundo(); // cuando tenemos una funcion void en javascript, nos devuelve undefined
+ console.log('Resp HM', resHM);
+ function suma(a: number, b: number): number { // tipado de la funcion, ambos son numbers
+     return a+b;
+ }
+ const resSuma = suma(4, 5);  // Respuesta 3
+console.log('Resp suma:', resSuma);
+
+// Condicionales
+// Truty --> true
+// Falsy --> false
+if (true) {
+    // Un string vacio "" es falsy, un string con mas de un caracter es truty
+    // El 0 (no string) en JS es falsy, numeros positivos y negativos son truty
+    // Undefined es falsy, null es falsy
+    // Un objeto JSON vacio es Truty
+    console.log('Verdadero "" ');
+} else {
+    console.log('Falso "" ');
+}
+// Operadores de arreglos JS
+let arreglo = [ function fun() {return 0; }, 1, 'A', true, null, {}, []]; // todas la variables en JS son de tipo any
+const arregloNumeros = [1, 2, 3, 4, 5];
+// 1) Imprima en consola todos los elementos
+// ForEach
+const arregloNumerosForEach = [1, 2, 3, 4, 5];
+const rForEach = arregloNumerosForEach.forEach(function (valorActual, indice, arreglo) { // Las funciones JS que no tiene nombre se llaman funciones anonimas
+    console.log(`Valor: ${valorActual}`);
+    // console.log(`Indice: ${indice}`);
+    // console.log(`Arreglo: ${arreglo}`);
+});
+console.log(`Respuesta FE: ${rForEach}`);
+const r2ForEach = arregloNumerosForEach.forEach(n => console.log(`Valor: ${n}`)); // Las funciones JS que no tiene nombre se llaman funciones anonimas
+// 2) Sumen 2 a los pares y 1 a los impares
+const arregloNumerosMap = [1, 2, 3, 4, 5]; // Transformar al arreglo se lo conoce como Map
+const rMap = arregloNumerosMap.map((valorActual) => {
+    const esPar = valorActual % 2 === 0;
+    if (esPar) {
+        return valorActual + 2;
+    } else {
+        return valorActual + 1;
+    }
+
+}); // Se devuelve el new valor del elemento
+console.log(`Respuesta MAP: ${rMap}`); // Devuelve el nuevo arreglo
+// 3) Encuentre si hay #4
+const arregloNumerosFind = [1, 2, 3, 4, 5];
+const rFind = arregloNumerosFind.find( // Condicion para devolver el elemento
+    (valorActual) => {
+        return valorActual === 4;
+    }
+);
+console.log(`Respuesta FIND: ${rFind}`); // Devuelve el elemento buscado, si existiense
+// 4) Filtrar los numero menores a 5
+const arregloNumerosFilter = [1, 2, 3, 4, 5];
+const rFilter = arregloNumerosFilter.filter( // Condicion true, agrega al arreglo, false, se omite del arreglo
+    (valorActual) => {
+        return valorActual < 5;
+    }
+);
+console.log(`Respuesta FILTER: ${rFilter}`); // Devuelve un arreglo con los elementos buscados
+// 5) Todos los valores positivos
+// 6) Algun valor es menor que 2
+// 7) Sumar todos los valores
+// 8) Restar todos los valores de 100
+// 1.1) Sumar 10 a todos
+// 1.2 ) Filtrar los mayores a 15
+// 1.3) Hay algun numero mayor a 30: true/false
