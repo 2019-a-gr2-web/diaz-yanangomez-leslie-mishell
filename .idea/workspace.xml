@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="98" column="92" selection-start-line="98" selection-start-column="65" selection-end-line="98" selection-end-column="92" />
+            <state relative-caret-position="120">
+              <caret line="27" column="62" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="62" />
               <folding>
                 <element signature="e#0#124#0" expanded="true" />
               </folding>
@@ -31,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deberes/01-calculadora-basica/src/app.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+            <state relative-caret-position="143">
+              <caret line="25" column="12" lean-forward="true" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
               <folding>
                 <element signature="e#0#117#0" expanded="true" />
               </folding>
@@ -70,9 +70,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="32" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-9" />
+    <option name="y" value="41" />
     <option name="width" value="1280" />
     <option name="height" value="489" />
   </component>
@@ -192,12 +192,14 @@
       <workItem from="1556030559966" duration="1260000" />
       <workItem from="1556042770038" duration="9994000" />
       <workItem from="1556053742358" duration="224000" />
-      <workItem from="1556071219115" duration="5909000" />
+      <workItem from="1556071219115" duration="6465000" />
+      <workItem from="1556079362636" duration="165000" />
+      <workItem from="1556129918230" duration="1464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46195000" />
+    <option name="totallyTimeSpent" value="48380000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -209,10 +211,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="32" width="1280" height="489" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.38701922" visible="true" weight="0.15716097" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.38701922" visible="true" weight="0.15861514" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.6129808" side_tool="true" weight="0.15716097" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -224,7 +226,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49868765" weight="0.32779098" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32847896" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49737534" visible="true" weight="0.4206128" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49737534" visible="true" weight="0.23867069" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5013123" side_tool="true" weight="0.5463183" />
       <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49868765" weight="0.30664653" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -302,8 +304,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="98" column="92" selection-start-line="98" selection-start-column="65" selection-end-line="98" selection-end-column="92" />
+        <state relative-caret-position="120">
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="62" />
           <folding>
             <element signature="e#0#124#0" expanded="true" />
           </folding>
@@ -312,8 +314,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/deberes/01-calculadora-basica/src/app.controller.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        <state relative-caret-position="143">
+          <caret line="25" column="12" lean-forward="true" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
           <folding>
             <element signature="e#0#117#0" expanded="true" />
           </folding>
