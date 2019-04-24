@@ -1,10 +1,33 @@
-import {Body, Controller, Delete, Get, Headers, HttpCode, Post, Put, Query, Response} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Headers, HttpCode, Post, Put, Query, Response, Request} from '@nestjs/common';
 import { AppService } from './app.service';
-
+import * as Joi from '@hapi/joi';
 @Controller('/calculadora')
 export class AppController {
   constructor(private readonly appService: AppService) {}
+// deber part 1
+  @Get('/setearNombre')
+  @HttpCode(200)
+  getUsuario(@Query() queryParams, @Request() request, @Response() response) {
+    const cookies = request.cookies;
+    const esquemaValidacionUserName = Joi.object().keys({
+      username: Joi.string().alphanum().min(3).max(12).required()
+    });
+    const alloweduname = Joi.validate({
+      username: queryParams.username
+    }, esquemaValidacionUserName);
+    if (alloweduname.error) {
+      response.status(400).send({ error: 'El username debe ser alfanumerico de min 6 y max 12 caracteres'});
+    } else {
+      const user = queryParams.username;
+      if (!cookies[user]) {
+        response.cookie(user, 2); // nombre, valor --> cookie
+        response.send({ nombreUsuario: user, resultado: 2});
+    } else {
+        return response.send({ mensaje: 'Tu cookie ya ha sido creada :)'});
+      }
+    }
 
+}
   @Get()
   getHello(): string {
     return this.appService.getHello();
