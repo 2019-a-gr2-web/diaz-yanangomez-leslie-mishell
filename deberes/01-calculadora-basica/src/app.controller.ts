@@ -4,8 +4,8 @@ import * as Joi from '@hapi/joi';
 @Controller('/calculadora')
 export class AppController {
   constructor(private readonly appService: AppService) {}
-// deber part 1
-  @Get('/setearNombre')
+// Deber parte 1
+  @Get('/newUsuario')
   @HttpCode(200)
   getUsuario(@Query() queryParams, @Request() request, @Response() response) {
     const cookies = request.cookies;
@@ -16,14 +16,18 @@ export class AppController {
       username: queryParams.username
     }, esquemaValidacionUserName);
     if (alloweduname.error) {
-      response.status(400).send({ error: 'El username debe ser alfanumerico de min 6 y max 12 caracteres'});
+      response.status(400).send({ error: 'El nombre de usuario debe ser alfanumerico de min 6 y max 12 caracteres'});
     } else {
       const user = queryParams.username;
       if (!cookies[user]) {
-        response.cookie(user, 2); // nombre, valor --> cookie
-        response.send({ nombreUsuario: user, resultado: 2});
+          const valuec = Math.round(Math.random() * 10);
+        response.cookie(user, valuec); // nombre, valor --> cookie
+        response.send({ nombreUsuario: user, resultado: valuec});
     } else {
-        return response.send({ mensaje: 'Tu cookie ya ha sido creada :)'});
+        return response.send({
+            mensaje: 'Tu cookie ya ha sido creada :)',
+            nombreUsuario: user,
+            resultado: cookies[user] });
       }
     }
 
