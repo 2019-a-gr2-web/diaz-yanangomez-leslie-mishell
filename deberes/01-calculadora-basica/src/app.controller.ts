@@ -38,37 +38,107 @@ export class AppController {
   }
   @Get('/suma')
   @HttpCode(200)
-  getSuma(@Headers() cabecera): string {
-    if (cabecera.numero1 && cabecera.numero2) {
-      const numero1 = Number(cabecera.numero1);
-      const numero2 = Number(cabecera.numero2);
-      return `La suma es ${numero1 + numero2}`;
+  getSuma(@Headers() cabecera, @Response() res, @Request() req) {
+    const cookies = req.signedCookies;
+    const usuarioActual = cabecera.usuario;
+    let resultado;
+    if (!cookies[usuarioActual]) {
+      res.cookie(usuarioActual, 100, {signed: true});
+      resultado = 100;
     } else {
-      return 'No  existen parametros para sumar :(';
+      resultado = cookies[usuarioActual];
+    }
+    // Begin Suma
+    if (cabecera.numero1 && cabecera.numero2) {
+    const comprobar =  this.comprobarNumber(cabecera.numero1, cabecera.numero2);
+    if (!comprobar) {
+      res.status(400).send({ error: 'Ingrese solo dos números enteros'});
+    } else {
+      const suma = Number(cabecera.numero1) + Number(cabecera.numero2);
+      resultado = resultado - suma;
+      res.cookie(usuarioActual, resultado, {signed: true});
+      if ( resultado > 0) {
+        res.send({ respuesta: `La suma es ${suma}`});
+      } else {
+        res.send({ nombreUsuario: usuarioActual, respuesta: resultado, mensaje: 'Se acabaron tus puntos'});
+      }
+    }
+    } else {
+     res.status(400).send({ error: 'No  existen parametros para sumar :('});
+    }
+    // End Suma
+  }
+  // Validacion de numeros
+  comprobarNumber(a, b): boolean {
+    const esquemaValidacionNumero = Joi.object().keys({ numero: Joi.number().integer().required()});
+    const allowedNumber1 = Joi.validate({numero: a}, esquemaValidacionNumero);
+    const allowedNumber2 = Joi.validate({numero: b}, esquemaValidacionNumero);
+    if (allowedNumber1.error || allowedNumber2.error) {
+      return false;
+    } else {
+      return true;
     }
   }
   @Post('/resta')
   @HttpCode(201)
-  postResta(@Body() parametrosCuerpo, @Response() response) {
-    if (parametrosCuerpo.numero1 && parametrosCuerpo.numero2) {
-      const numero1 = Number(parametrosCuerpo.numero1);
-      const numero2 = Number(parametrosCuerpo.numero2);
-      const resta = numero1 - numero2;
-      response.set('resultadoresta', resta);
-      return response.send({resultadoResta: resta });
+  postResta(@Body() parametrosCuerpo, @Response() res, @Request() req) {
+    const cookies = req.signedCookies;
+    const usuarioActual = parametrosCuerpo.usuario;
+    let resultado;
+    if (!cookies[usuarioActual]) {
+      res.cookie(usuarioActual, 100, {signed: true});
+      resultado = 100;
     } else {
-      return response.status(401).send ({error: 'No existen parametros para restar :/'});
+      resultado = cookies[usuarioActual];
+    }
+    // Begin Resta
+    if (parametrosCuerpo.numero1 && parametrosCuerpo.numero2) {
+      const comprobar =  this.comprobarNumber(parametrosCuerpo.numero1, parametrosCuerpo.numero2);
+      if (!comprobar) {
+        res.status(401).send({ error: 'Ingrese solo dos números enteros'});
+      } else {
+        const resta = Number(parametrosCuerpo.numero1) - Number(parametrosCuerpo.numero2);
+        resultado = resultado - resta;
+        res.cookie(usuarioActual, resultado, {signed: true});
+        if ( resultado > 0) {
+          res.send({ respuesta: `La resta es ${resta}`});
+        } else {
+          res.send({ nombreUsuario: usuarioActual, respuesta: resultado, mensaje: 'Se acabaron tus puntos'});
+        }
+      }
+    } else {
+      res.status(401).send({ error: 'No  existen parametros para restar :('});
     }
   }
   @Put('/multiplica')
   @HttpCode(202)
-  putMultiplica(@Query() consulta) {
-    if (consulta.numero1 && consulta.numero2) {
-      const numero1 = Number(consulta.numero1);
-      const numero2 = Number(consulta.numero2);
-      return `La multiplicación es ${numero1 * numero2}`;
+  putMultiplica(@Query() consulta, @Request() req, @Response() res) {
+    const cookies = req.signedCookies;
+    const usuarioActual = consulta.usuario;
+    let resultado;
+    if (!cookies[usuarioActual]) {
+      res.cookie(usuarioActual, 100, {signed: true});
+      resultado = 100;
     } else {
-      return 'No escribiste parametros para multiplicar :(';
+      resultado = cookies[usuarioActual];
+    }
+    // Begin Multiplicacion
+    if (consulta.numero1 && consulta.numero2) {
+      const comprobar =  this.comprobarNumber(consulta.numero1, consulta.numero2);
+      if (!comprobar) {
+        res.status(401).send({ error: 'Ingrese solo dos números enteros'});
+      } else {
+        const mult = Number(consulta.numero1) * Number(consulta.numero2);
+        resultado = resultado - mult;
+        res.cookie(usuarioActual, resultado, {signed: true});
+        if ( resultado > 0) {
+          res.send({ respuesta: `La multiplicacion es ${mult}`});
+        } else {
+          res.send({ nombreUsuario: usuarioActual, respuesta: resultado, mensaje: 'Se acabaron tus puntos'});
+        }
+      }
+    } else {
+      res.status(400).send({ error: 'No  existen parametros para sumar :('});
     }
   }
   @Delete('/division')
