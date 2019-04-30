@@ -20,18 +20,18 @@ export class AppController {
     } else {
       const user = queryParams.username;
       if (!cookies[user]) {
-          const valuec = Math.round(Math.random() * 10);
+        const valuec = Math.round(Math.random() * 10);
         response.cookie(user, valuec); // nombre, valor --> cookie
         response.send({ nombreUsuario: user, resultado: valuec});
-    } else {
+      } else {
         return response.send({
-            mensaje: 'Tu cookie ya ha sido creada :)',
-            nombreUsuario: user,
-            resultado: cookies[user] });
+          mensaje: 'Tu cookie ya ha sido creada :)',
+          nombreUsuario: user,
+          resultado: cookies[user] });
       }
     }
 
-}
+  }
   @Get()
   getHello(): string {
     return this.appService.getHello();
