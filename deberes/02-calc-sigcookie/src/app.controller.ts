@@ -138,42 +138,62 @@ export class AppController {
         }
       }
     } else {
-      res.status(402).send({ error: 'No  existen parametros para sumar :('});
+      res.status(402).send({ error: 'No  existen parametros para multiplicar :('});
     }
   }
   @Delete('/division')
   @HttpCode(203)
-  deleteDivision(@Query() consulta, @Body() cuerpo, @Response() response, @Headers() cabecera) {
+  deleteDivision(@Query() consulta, @Body() cuerpo, @Response() res, @Headers() cabecera, @Request() req) {
+    const cookies = req.signedCookies;
+    let usuarioActual;
+    if (consulta.usuario) {
+      usuarioActual = consulta.usuario;
+    } else if (cuerpo.usuario) {
+      usuarioActual = cuerpo.usuario;
+    } else if (cabecera.usuario) {
+      usuarioActual = cabecera.usuario;
+    }
+    let resultado;
+    if (!cookies[usuarioActual]) {
+      res.cookie(usuarioActual, 100, {signed: true});
+      resultado = 100;
+    } else {
+      resultado = cookies[usuarioActual];
+    }
+    // Begin Division
+    let comprobar;
     let numero1;
     let numero2;
     if (consulta.numero1 && consulta.numero2) {
-      numero1 = Number(consulta.numero1);
-      numero2 = Number(consulta.numero2);
+      comprobar =  this.comprobarNumber(consulta.numero1, consulta.numero2);
+      numero1 = consulta.numero1;
+      numero2 = consulta.numero2;
     } else if (cabecera.numero1 && cabecera.numero2) {
-      numero1 = Number(cabecera.numero1);
-      numero2 = Number(cabecera.numero2);
+      comprobar =  this.comprobarNumber(cabecera.numero1, cabecera.numero2);
+      numero1 = cabecera.numero1;
+      numero2 = cabecera.numero2;
     } else if (cuerpo.numero1 && cuerpo.numero2) {
-      numero1 = Number(cuerpo.numero1);
-      numero2 = Number(cuerpo.numero2);
+      comprobar =  this.comprobarNumber(cuerpo.numero1, cuerpo.numero2);
+      numero1 = cuerpo.numero1;
+      numero2 = cuerpo.numero2;
     } else {
-      return response.status(403).send('No existen parametros para dividir :(');
+      res.status(403).send({ error: 'No  existen parametros para dividir :('});
     }
-    if (numero2 !== 0) {
-      const division = numero1 / numero2;
-      // response.set('resultadodivision', division);
-      return response.send(`El resultado de la division es ${division}`);
+    if (!comprobar) {
+        res.status(403).send({ error: 'Ingrese solo dos números enteros'});
     } else {
-      return response.status(403).send('No existe division para cero :/');
-    }
-    /*
-    const n1 = Number(consulta.numero1);
-    const n2 = Number(cabecera.numero2);
-    if (n1 && n2 && n2 !== 0) {
-      const div = n1 / n2;
-      return response.send(`El resultado de la division es ${div}`);
-    } else {
-      return response.status(403).send('No existen parametros para dividir o el divisor es cero :/');
-    }
-    */
+      if (Number(numero2) !== 0) {
+        const div = Number(numero1) / Number(numero2);
+        resultado = resultado - div;
+        res.cookie(usuarioActual, resultado, {signed: true});
+        if ( resultado > 0) {
+          res.send({ respuesta: `La división es ${div}`});
+        } else {
+          res.send({ nombreUsuario: usuarioActual, respuesta: resultado, mensaje: 'Se acabaron tus puntos'});
+        }
+      } else {
+        res.status(403).send({ error: 'No existe division para cero :/ '});
+      }
+      }
   }
 }
