@@ -178,7 +178,7 @@ delete objeto.propiedadTres
 */
 // Variables ? const, let, var
 // tipos de variables: string, number, boolean
- function holaMundo() {
+function holaMundo() {
      console.log('Hola Mundo');
  }
  const resHM = holaMundo(); // cuando tenemos una funcion void en javascript, nos devuelve undefined
@@ -202,7 +202,15 @@ if (true) {
     console.log('Falso "" ');
 }
 // Operadores de arreglos JS
-let arreglo = [ function fun() {return 0; }, 1, 'A', true, null, {}, []]; // todas la variables en JS son de tipo any
+let arreglo = [
+    function() {return 0; },
+    1,
+    'A',
+    true,
+    null,
+    {},
+    []];
+// todas la variables en JS son de tipo any
 const arregloNumeros = [1, 2, 3, 4, 5];
 // 1) Imprima en consola todos los elementos
 // ForEach
@@ -215,7 +223,7 @@ const rForEach = arregloNumerosForEach.forEach(function (valorActual, indice, ar
 console.log(`Respuesta FE: ${rForEach}`);
 const r2ForEach = arregloNumerosForEach.forEach(n => console.log(`Valor: ${n}`)); // Las funciones JS que no tiene nombre se llaman funciones anonimas
 // 2) Sumen 2 a los pares y 1 a los impares
-const arregloNumerosMap = [1, 2, 3, 4, 5]; // Transformar al arreglo se lo conoce como Map
+const arregloNumerosMap = [1, 2, 3, 4, 5]; // Transformar o modificar al arreglo se lo conoce como Map
 const rMap = arregloNumerosMap.map((valorActual) => {
     const esPar = valorActual % 2 === 0;
     if (esPar) {
@@ -235,17 +243,69 @@ const rFind = arregloNumerosFind.find( // Condicion para devolver el elemento
 );
 console.log(`Respuesta FIND: ${rFind}`); // Devuelve el elemento buscado, si existiense
 // 4) Filtrar los numero menores a 5
-const arregloNumerosFilter = [1, 2, 3, 4, 5];
+const arregloNumerosFilter = [1, 2, 3, 4, 5]; // Filtrar elementos del arreglo, solo nos va a devolver un arreglo con aquellos elementos que cumplan una condicion
 const rFilter = arregloNumerosFilter.filter( // Condicion true, agrega al arreglo, false, se omite del arreglo
     (valorActual) => {
         return valorActual < 5;
     }
 );
 console.log(`Respuesta FILTER: ${rFilter}`); // Devuelve un arreglo con los elementos buscados
-// 5) Todos los valores positivos
-// 6) Algun valor es menor que 2
+// 5) Todos los valores son positivos? Si o No
+const arregloNumerosEvery = [1, 2, 3, 4, 5];
+const rEvery = arregloNumerosEvery.every( // Si todos cumplen, devuelvo true, si no false like a operador logico AND
+    (valorActual) => {
+        return valorActual > 0; // Condicion a evaluar
+    }
+);
+console.log(`Respuesta EVERY: ${rEvery}`); // Devuelve, en este caso, true
+// 6) Algun valor es menor que X=2
+const arregloNumerosSome = [1, 2, 3, 4, 5];
+const rSome = arregloNumerosSome.every( // Si todos no cumplen, devuelvo false, si alguno cumple devuelvo true like a operador logico OR
+    (valorActual) => {
+        return valorActual < 2; // Condicion a evaluar
+    }
+);
+console.log(`Respuesta SOME: ${rSome}`); // Devuelve TRUE/FALSE
 // 7) Sumar todos los valores
+const arregloNumerosReduce = [1, 2, 3, 4, 5];
+const acumuladoValor = 0; // Valor donde empieza el calculo
+const rReduce = arregloNumerosReduce.reduce( // Dos parametros funcion, valor donde va a empezar el calculo
+    (acumulado, valorActual) => {
+        return acumulado + valorActual;
+    }, acumuladoValor // df
+);
+console.log(`Respuesta REDUCE: ${rReduce}`); // Devuelve el acumulado
+// 7.1 A los menores a 4 sumar 10% y +5, si es mayor igual, 15% +3
+const arregloNumerosReduce2 = [1, 2, 3, 4, 5, 6];
+const acumuladoValor2 = 0; // Valor donde empieza el calculo
+const rReduce2 = arregloNumerosReduce2.reduce( // Dos parametros funcion, valor donde va a empezar el calculo
+    (acumulado, valorActual) => {
+        if (valorActual >= 4) {
+            return acumulado + valorActual * 1.15 + 3;
+        } else {
+            return acumulado + valorActual * 1.10 + 5;
+        }
+    }, acumuladoValor2 // df
+);
+console.log(`Respuesta REDUCE2: ${rReduce2}`); // Devuelve el acumulado
 // 8) Restar todos los valores de 100
+const arregloNumerosReduce3 = [1, 2, 3, 4, 5, 6];
+const acumuladoValor3 = 100; // Valor donde empieza el calculo
+const rReduce3 = arregloNumerosReduce3.reduce( // Dos parametros funcion, valor donde va a empezar el calculo
+    (acumulado, valorActual) => {
+        return acumulado - valorActual;
+    }, acumuladoValor3 // df
+);
+console.log(`Respuesta REDUCE3: ${rReduce3}`); // Devuelve el acumulado 79
 // 1.1) Sumar 10 a todos
 // 1.2 ) Filtrar los mayores a 15
 // 1.3) Hay algun numero mayor a 30: true/false
+const arregloEjercicio = [1, 2, 3, 4, 5, 6];
+const respuesta = arregloEjercicio.map((valorActual) => {
+    return valorActual + 10;
+}).filter((valorActual) => {
+    return valorActual > 15;
+}).some((valorActual) => {
+    return valorActual > 30;
+});
+console.log(`Respuesta: ${respuesta}`);
