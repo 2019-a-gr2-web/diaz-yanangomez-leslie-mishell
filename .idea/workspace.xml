@@ -16,14 +16,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="311" selection-start-line="311" selection-end-line="311" />
+            <state relative-caret-position="24">
+              <caret line="288" column="2" lean-forward="true" selection-start-line="288" selection-start-column="2" selection-end-line="288" selection-end-column="2" />
               <folding>
                 <element signature="e#0#124#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
@@ -54,12 +63,12 @@
         <option value="$PROJECT_DIR$/deberes/01-calculadora-basica/src/main.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/view/inicio.ejs" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts" />
-        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs" />
         <option value="$PROJECT_DIR$/deberes/02-calc-sigcookie/src/main.ts" />
         <option value="$PROJECT_DIR$/deberes/01-calculadora-basica/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/deberes/02-calc-sigcookie/.gitignore" />
         <option value="$PROJECT_DIR$/deberes/02-calc-sigcookie/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts" />
+        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs" />
       </list>
     </option>
   </component>
@@ -105,7 +114,7 @@
               <item name="01-http" type="462c0819:PsiDirectoryNode" />
               <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
               <item name="api-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -174,12 +183,12 @@
       <workItem from="1556507334007" duration="5763000" />
       <workItem from="1556594639638" duration="3656000" />
       <workItem from="1556632341314" duration="3215000" />
-      <workItem from="1556648346575" duration="5743000" />
+      <workItem from="1556648346575" duration="6734000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73002000" />
+    <option name="totallyTimeSpent" value="73993000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -206,7 +215,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49868765" weight="0.32779098" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32847896" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49758455" weight="0.5533981" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49758455" visible="true" weight="0.16262136" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5024155" side_tool="true" weight="0.71903324" />
       <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49868765" weight="0.30513597" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -259,13 +268,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="43">
           <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -326,11 +328,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="311" selection-start-line="311" selection-end-line="311" />
+        <state relative-caret-position="24">
+          <caret line="288" column="2" lean-forward="true" selection-start-line="288" selection-start-column="2" selection-end-line="288" selection-end-column="2" />
           <folding>
             <element signature="e#0#124#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>

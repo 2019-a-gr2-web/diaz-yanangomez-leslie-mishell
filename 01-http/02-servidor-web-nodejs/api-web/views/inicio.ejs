@@ -1,3 +1,14 @@
-<%  const nombre = 'Leslie'; // codigo JS todo lo que esta escrito entre \\<%\\ %>
+<%  const nombre = 'Leslie'; // codigo JS todo lo que esta escrito entre  %>
 <%= nombre // visualizar la variable en pantalla %>
 <% const arreglo = [1,2,3,4,5]; %>
+<%=arreglo%>
+<% const objeto = { nombre: 'Leslie'}; %>
+<%=objeto.nombre%>
+<% arreglo.forEach( (valorActual)=> {%>
+<p>Numero: <%=valorActual%></p>
+<%})%>
+<ol> // lista ordenada
+    <% arreglo.forEach( (valorActual)=> {%>
+    <li><p>Numero: <%=valorActual%></p></li> //elemento de la lista
+    <%})%>
+</ol>
