@@ -7,9 +7,13 @@ import * as Joi from '@hapi/joi';
 @Controller ('/api') // Recibe como parametro un segmento inicial --> //localhost:3000/segmentoInicial
 export class AppController {
   constructor(private readonly appService: AppService) {}
-@Get('/inicio')
+@Get('/inicio') // EndPoint
 getInicio(@Response() res) {
-      return res.render('inicio.ejs');
+      return res.render('inicio.ejs', { estaVivo: true });
+}
+@Get('/peliculas')
+getPeliculas (@Response() res){
+      return res.render('peliculas/inicio.ejs'); // inidca el directorio donde se encuentra el archivo ejs, en este caso views/peliculas/arcchivo
 }
   @Get('/hello-world') // Metodo HTTP (segmentoinicial)
   getHello(): string {
@@ -260,7 +264,7 @@ const rEvery = arregloNumerosEvery.every( // Si todos cumplen, devuelvo true, si
 console.log(`Respuesta EVERY: ${rEvery}`); // Devuelve, en este caso, true
 // 6) Algun valor es menor que X=2
 const arregloNumerosSome = [1, 2, 3, 4, 5];
-const rSome = arregloNumerosSome.every( // Si todos no cumplen, devuelvo false, si alguno cumple devuelvo true like a operador logico OR
+const rSome = arregloNumerosSome.some( // Si todos no cumplen, devuelvo false, si alguno cumple devuelvo true like a operador logico OR
     (valorActual) => {
         return valorActual < 2; // Condicion a evaluar
     }

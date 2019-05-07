@@ -7,8 +7,13 @@
 <% arreglo.forEach( (valorActual)=> {%>
 <p>Numero: <%=valorActual%></p>
 <%})%>
-<ol> // lista ordenada
+<ol>
     <% arreglo.forEach( (valorActual)=> {%>
-    <li><p>Numero: <%=valorActual%></p></li> //elemento de la lista
+    <li><p>Numero: <%=valorActual%></p></li>
     <%})%>
 </ol>
+<% if (estaVivo) { %>
+    <h1> Esta Vivo !!</h1>
+<%} else { %>
+<h1>Por el bien del universo, estas muerto ... </h1>
+<% } %>
