@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/imagenes/grumosa.ico"/>
+    <title>Estilos</title>
+    <style>
+    /* dentro de css los comentarios van dentro de : */
+        /* selector { propiedad: valor; }*/
+        /* selector: busqueda que va a hacer el navegador dentro del documento buscamen todos los selector: h1 */
+    /* selector --> Etiqueta */
+    h1 {
+            color: aquamarine;
+            background: cadetblue;
+        }
+
+    h2, div, p {
+            color: coral;
+            background: burlywood;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        /* selector --> ID de etiqueta, el numeral hace referencia al id*/
+        #adios{
+            color: brown;
+            background: blueviolet;
+        }
+        /*selector --> Clase, el punto referencia a una clase*/
+        /*.verde {
+            color: darkcyan;
+            background: cornflowerblue;
+        }*/
+        /* Jerarquia de etiquetas*/
+        /* etiqueta << clase << etiqueta.clase << id
+        siempre es mas importante la union de selectores sobre una clase*/
+        /* Todas las etiquetas tiene style=" " Este tiene mas poder sobre las de arriba */
+     p {
+        color: burlywood;
+        background: coral;
+    }
+    p { /* para el mismo selector, si hay varios estilos para el mismo el que se aplica es ultimo definido de todo el documento */
+        color: burlywood;
+        background: chocolate;
+    }
+        /* al final de un docuemento css, se ponen los estilos que defino yo (programador)*/
+        /*Orden de jerarquia por selector y por definicion
+        Clase << Ultima Clase definida*/
+
+
+    .verde {
+            color: chartreuse;
+    }
+    .azul{
+        color: cornflowerblue;
+    }
+    .morado{
+        color: blueviolet;
+    }
+        /* cuando sea parrafo y tenga la clase x
+         */
+        p.verde{
+            color: darkred;
+        }
+        p.verde.azul{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<h1 >Hola</h1>
+<h1 id="adios" class="verde">Adios</h1> <!-- Todas las etiquetas pueden tener un identificador unico para la etiqueta-->
+<h1 class="verde" style="color: chocolate; background: saddlebrown;">Bienvenidos</h1> <!-- La clase si se puede repetir, se coloca desde el body -->
+
+<p>Barcelona</p>
+<div>Emelec</div>
+<h2>Liga</h2>
+<p class="morado azul">El reino cuantico es la solucion a todos los problemas dl universo</p> <!-- no importa el orden en el que se escriban las ckases, la que se va a poner es la ultima clase definida-->
+<p class="verde">Verde Uno</p>
+<div class="verde">Verde Dos</div>
+<p class="verde azul">Verde Uno</p>
+</body>
+</html>

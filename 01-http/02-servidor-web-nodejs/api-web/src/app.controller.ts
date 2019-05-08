@@ -15,6 +15,10 @@ getInicio(@Response() res) {
 getPeliculas (@Response() res){
       return res.render('peliculas/inicio.ejs'); // inidca el directorio donde se encuentra el archivo ejs, en este caso views/peliculas/arcchivo
 }
+@Get('/estilos')
+getEstilos(@Response() res) {
+      return res.render('peliculas/estilos.ejs');
+}
   @Get('/hello-world') // Metodo HTTP (segmentoinicial)
   getHello(): string {
     return 'Hello World';
