@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="/imagenes/grumosa.ico"/>
     <title>Estilos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
     /* dentro de css los comentarios van dentro de : */
         /* selector { propiedad: valor; }*/
@@ -67,13 +68,118 @@
         p.verde.azul{
             color: black;
         }
+        .modelo-cajas{
+            margin: 100px;
+            border-color: aquamarine;
+            border-style:solid;
+            border-width: 10px;
+            border-right-width: 10px;
+            border-right-width: 0px;
+            padding: 10px;
+        }
+        .separador{
+            margin-top: 200px;
+            margin-bottom: 200px;
+        }
+        tr {
+            border-bottom-color: chocolate;
+            border-bottom-style:solid;
+            border-bottom-width: 1px;
+            border-bottom: chocolate solid 1px;
+        }
+        table {
+            width: 100%;
+        }
     </style>
+
 </head>
 <body>
-<h1 >Hola</h1>
+ <!-- <div class="separador"></div> No usar br para saltos de lineas -->
+<div class="container">
+    <div class="row">
+        <!-- EMMET .div ó .col-sm-5*3 y presionar Tab (dentro de las etiquetas de antes >(quiero-un) h1 -->
+        <div class="col-sm-2">
+            <h1>Logo</h1>
+        </div>
+        <div class="col-sm-7">
+            <h1>Menu</h1>
+        </div>
+        <div class="col-sm-3">
+            <h1>Login</h1>
+        </div>
+<!--        <div class="col-sm-6">-->
+<!--            <h1>Small 6</h1>-->
+<!--        </div>-->
+<!--        <div class="col-sm-6">-->
+<!--            <h1>Small 6 2 </h1>-->
+<!--        </div>-->
+<!--        <div class="col-md-6">-->
+<!--            <h1>Medium 6</h1>-->
+<!--        </div>-->
+<!--        <div class="col-md-6">-->
+<!--            <h1>Medium 6 2</h1>-->
+<!--        </div>-->
+<!--        <div class="col-lg-6">-->
+<!--            <h1>Large 6</h1>-->
+<!--        </div>-->
+<!--        <div class="col-lg-6">-->
+<!--            <h1>Large 6 2</h1>-->
+<!--        </div>-->
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <h1>Genero de Peliculas</h1>
+            <table>
+                <tr>
+                    <td>i</td>
+                    <td>Accion</td>
+                    <td>824</td>
+                </tr>
+                <tr>
+                    <td>i</td>
+                    <td>Animacion</td>
+                    <td>356</td>
+                </tr>
+                <tr>
+                    <td>i</td>
+                    <td>Anime</td>
+                    <td>6</td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="col-sm-9">
+            <h1>Peliculas Online</h1>
+            <p>Pelisplus.co es un sitio ideal para ver películas y series online. Nuestro sistema se preocupa por tener lo último del cine en calidad full HD.
+
+                Para ver una película o serie de televisión puedes usar el buscador en la parte superior o seguir uno de los enlaces de genero o año de estreno en la parte izquierda del sitio, luego el enlace te llevará al reproductor donde solo tienes que dar click en el boton de play. Te invitamos a compartir este genial sitio con tus amigos y familiares.</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Columna 1</h1>
+                </div>
+                <div class="col-sm-6">
+                    <h1>Columna 2</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+        <!-- col- sm/md/lg - # 1 - 12 small medium large, partes van hasta 12-->
+<!--        <div class="col-sm-12">-->
+<!--            <h1>Columna 12</h1>-->
+<!--        </div>-->
+<!--        <div class="col-sm-6">-->
+<!--            <h1>Columna 6</h1>-->
+<!--        </div>-->
+<!--        <div class="col-sm-6">-->
+<!--            <h1>Columna 6</h1>-->
+<!--        </div>-->
+    <div class="separador"></div>
+</div>
+
+<h1 class="modelo-cajas" >Hola</h1>
 <h1 id="adios" class="verde">Adios</h1> <!-- Todas las etiquetas pueden tener un identificador unico para la etiqueta-->
 <h1 class="verde" style="color: chocolate; background: saddlebrown;">Bienvenidos</h1> <!-- La clase si se puede repetir, se coloca desde el body -->
-
 <p>Barcelona</p>
 <div>Emelec</div>
 <h2>Liga</h2>
@@ -82,4 +188,5 @@
 <div class="verde">Verde Dos</div>
 <p class="verde azul">Verde Uno</p>
 </body>
+<div class="separador"></div>
 </html>
