@@ -6,6 +6,7 @@ import * as Joi from '@hapi/joi';
 
 @Controller ('/api') // Recibe como parametro un segmento inicial --> //localhost:3000/segmentoInicial
 export class AppController {
+    arregloUsuarios = [];
   constructor(private readonly appService: AppService) {}
 @Get('/inicio') // EndPoint
 getInicio(@Response() res) {
