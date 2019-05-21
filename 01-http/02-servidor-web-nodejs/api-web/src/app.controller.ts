@@ -3,7 +3,6 @@ import { AppService } from './app.service';
 import * as cookieParser from 'cookie-parser';
 import * as Joi from '@hapi/joi';
 // const Joi = require('@hapi/joi');
-
 @Controller ('/api') // Recibe como parametro un segmento inicial --> //localhost:3000/segmentoInicial
 export class AppController {
     arregloUsuarios = [];

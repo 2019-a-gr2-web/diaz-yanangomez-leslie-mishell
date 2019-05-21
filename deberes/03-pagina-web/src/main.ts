@@ -12,7 +12,7 @@ async function bootstrap() {
   app.setViewEngine('ejs');
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.use(express.static('publico'));
-  app.use(favicon(path.join(__dirname, '..', 'publico', 'imagenes', 'grumosa.ico')));
+  app.use(favicon(path.join(__dirname, '..', 'publico', 'imagenes', 'trago.ico')));
   await app.listen(3000);
 }
 bootstrap();
