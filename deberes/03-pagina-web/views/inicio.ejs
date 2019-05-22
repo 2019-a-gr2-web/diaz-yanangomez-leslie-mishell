@@ -82,20 +82,19 @@
             padding-top: 2px
         }
         h3{
-            text-align: center;
             color: white;
             font-family: 'Raleway', sans-serif;
         }
         .lineaw {
-            border-bottom: white 1px;
-            border-bottom-style: solid;
+            border-bottom: white 1px solid;
+
         }
         h2, h6{
             font-family: 'Arial',sans-serif;
             color: #771E0D;
         }
         tr#titulo {
-            border-right: #771E0D 4px ;
+            border-right: #771E0D 8px ;
             border-right-style: solid;
 
         }
@@ -129,6 +128,26 @@
         th:hover,li:hover{
             color: rgba(243,151,0,1.00);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.80);
+        }
+        table.outline{
+            border-collapse: collapse;
+            border-style: hidden;
+        }
+        td.tablaline{
+            border: 1px solid white;
+        }
+        td.tablaline:hover{
+            background-color: #0D2240;
+        }
+        .piepag{
+            font-size: 13px;
+            margin: 0px;
+            font-weight: 200;
+        }
+        #oferta{
+            font-size: 25px ;
+            border-bottom: rosybrown 1px solid;
+            color: white;
         }
     </style>
 </head>
@@ -247,11 +266,10 @@
         </div>
     </div>
 </div>
-<div class="container-fluid footer">
-    <div style="padding-top: 20px"></div>
+<div class="container-fluid footer" style="padding-top: 20px; padding-bottom: 20px">
     <div class="row">
-        <div class="col-lg-12">
-            <h3>OFERTA DE CURSOS Y PROGRAMAS DE FORMACIÓN</h3>
+        <div class="col-lg-12" >
+            <p id="oferta">OFERTA DE CURSOS Y PROGRAMAS DE FORMACIÓN</p>
         </div>
     </div>
     <div class="row">
@@ -371,10 +389,42 @@
 
     </div>
     <div class="row">
-        <table class="blanco">
-<!--            Falta parte de abajo-->
-        </table>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <table class="blanco outline" style="border-bottom: white 1px solid; width: 100%; text-align: center">
+                <tr>
+                    <td class="tablaline">Mapa del sitio</td>
+                    <td class="tablaline">Webinarios</td>
+                    <td class="tablaline">Noticias</td>
+                    <td class="tablaline">Postulación Instructores</td>
+                    <td class="tablaline">Preguntas Frecuentes</td>
+                    <td class="tablaline">Rendición de Cuentas</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-2"></div>
+        <br>
+        <br><br>
+        <div class="row" >
+            <div class="col-lg-12">
+                <div style="padding-bottom: 20px"></div>
+            </div>
+
+        </div>
     </div>
+</div>
+<div class="container-fluid" style="background-color: #C1272D; color: white">
+    <div class="row" style="padding-top: 20px; padding-bottom: 20px">
+        <div class="col-lg-6" >
+            <p class="piepag">Matriz: Av. Toledo N23-55 y Madrid; Quito-Ecuador</p>
+            <p class="piepag">(02) 2525-766</p>
+            <p class="piepag">Código Postal: 170525</p>
+        </div>
+        <div class="col-lg-6" style="display: flex; justify-content: right">
+            <p class="piepag">Copyright © 2019 CEC-EPN · All Rights Reserved</p>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>
