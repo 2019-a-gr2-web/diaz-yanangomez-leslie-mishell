@@ -17,7 +17,7 @@
         .row.m{
             margin-bottom: 20px;
         }
-        h6.indicadores{
+        .indicadores{
             padding-bottom: 2px;
             font-family: 'Raleway', sans-serif;
             color: white;
@@ -25,16 +25,17 @@
             font-size: 14px;
 
         }
-        h6.indicadores.lin{
+        .indicadores.lin{
             background-color: #c3251d;
         }
-        h6.indicadores.edup{
+        .indicadores.edup{
             background-color: #00ACC8;
         }
-        h6.indicadores.eduv{
+        .indicadores.eduv{
             background-color: #0D2240;
         }
         .opciones {
+            text-decoration:none;
             text-align: center;
             color: black;
         }
@@ -43,6 +44,8 @@
         }
         .opciones:hover{
             color:  #c3251d;
+            text-decoration:none;
+            text-align: center;
         }
         p.opciones.ini{
             color:  #c3251d;
@@ -81,26 +84,21 @@
             padding-bottom: 4px;
             padding-top: 2px
         }
-        h3{
-            color: white;
-            font-family: 'Raleway', sans-serif;
-        }
+
         .lineaw {
             border-bottom: white 1px solid;
-
         }
-        h2, h6{
+        #info{
             font-family: 'Arial',sans-serif;
             color: #771E0D;
         }
-        tr#titulo {
+        #titulo {
             border-right: #771E0D 8px ;
             border-right-style: solid;
-
         }
-
-        h2.title{
+        #ptitle{
             font-size: 40px;
+            color: #771E0D;
         }
         table {
             width: 100%;
@@ -129,14 +127,14 @@
             color: rgba(243,151,0,1.00);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.80);
         }
-        table.outline{
+        .outline{
             border-collapse: collapse;
             border-style: hidden;
         }
-        td.tablaline{
+        .tablaline{
             border: 1px solid white;
         }
-        td.tablaline:hover{
+        .tablaline:hover{
             background-color: #0D2240;
         }
         .piepag{
@@ -148,6 +146,24 @@
             font-size: 25px ;
             border-bottom: rosybrown 1px solid;
             color: white;
+        }
+        #opcion{
+            padding-bottom: 200px;
+            padding-top: 200px;
+            padding-left: 105px
+        }
+        #inscrip{
+            background-color: #A02842;
+            color: white;
+            border-width: 0px 0px 0px 0px;
+            float: right;
+            padding: 10px 32px;
+        }
+        #menuserver{
+            text-align:center;
+            display: flex;
+            justify-content: center ;
+            padding-bottom: 20px
         }
     </style>
 </head>
@@ -169,34 +185,34 @@
 </div>
     <div class="row m">
         <div class="col-sm-3">
-            <img src="/../imagenes/epn.png" alt="Escuela Politecnica Nacional">
+            <a href="https://www.epn.edu.ec"><img src="/../imagenes/epn.png" alt="Escuela Politecnica Nacional"></a>
         </div>
         <div class="col-sm-6"></div>
         <div class="col-sm-3">
-            <img src="/../imagenes/cec.png" alt="Centro de Educacion Continua">
+            <a href="https://www.cec-epn.edu.ec"><img src="/../imagenes/cec.png" alt="Centro de Educacion Continua"></a>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="menuserver">
         <div class="col-sm-1">
-            <p class="opciones ini">Inicio</p>
+            <a href="#" class="opciones ini">Inicio</a>
         </div>
         <div class="col-sm-2">
-            <p class="opciones">¿Quienes Somos?</p>
-        </div>
-        <div class="col-sm-1">
-            <p class="opciones">Servicios</p>
-        </div>
-        <div class="col-sm-2">
-            <p class="opciones">Calendario Académico</p>
-        </div>
-        <div class="col-sm-2">
-            <p class="opciones">Aulas Virtuales</p>
+            <a href="#" class="opciones">¿Quienes Somos?</a>
         </div>
         <div class="col-sm-1">
-            <p class="opciones">Contáctenos</p>
+            <a href="#" class="opciones">Servicios</a>
         </div>
         <div class="col-sm-2">
-            <p class="opciones">Portal en Linea</p>
+            <a href="#" class="opciones">Calendario Académico</a>
+        </div>
+        <div class="col-sm-2">
+            <a href="#" class="opciones">Aulas Virtuales</a>
+        </div>
+        <div class="col-sm-1">
+            <a href="#" class="opciones">Contáctenos</a>
+        </div>
+        <div class="col-sm-2">
+            <a href="#" class="opciones">Portal en Linea</a>
         </div>
     </div>
 </div>
@@ -205,24 +221,23 @@
         <div class="col-sm-1"></div>
         <div class="col-md-3 bus alinea" >
                 <input class="bus" type="text" placeholder="¿Qué curso estas buscando?">
-                <a href="https://www.google.com"><i class="fa fa-search bus" ></i></a>
+                <a href="#"><i class="fa fa-search bus" ></i></a>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-5" style="padding-bottom: 200px; padding-top: 200px; padding-left: 105px">
+        <div class="col-sm-5" id="opcion">
             <table>
                 <tr id="titulo" class="lineaw">
                     <td>
-                    <h2 class="title">Cierre de Ventas y <b>Negociacion Exitosa</b></h2>
+                    <h2 id="ptitle">Cierre de Ventas y <b>Negociacion Exitosa</b></h2>
                     </td>
-
                 </tr>
                 <tr class="lineaw">
-                    <td><h6>Inicio 27 de mayo</h6></td>
+                    <td><p id="info">Inicio 27 de mayo</p></td>
                 </tr>
                 <tr>
                     <td>
-                        <button style="background-color: #A02842; color: white; border-width: 0px 0px 0px 0px; float: right;  padding: 10px 32px;">Inscríbete aquí</button>
+                        <button id="inscrip">Inscríbete aquí</button>
                     </td>
                 </tr>
             </table>
