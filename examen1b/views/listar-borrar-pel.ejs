@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        table,tr,td{
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+<p>Nombre de Usuario</p>
+<a href="/../api/salir"><button>Salir</button></a>
+<form action="/../api/buscarPelicula" method="post">
+    <label for="nombrePelicula">Buscar: </label>
+    <input type="text" id="nombrePelicula" name="nombrePelicula" placeholder="Escriba el nombre de la pelicula">
+    <button><i class="fa fa-search"></i></button>
+</form>
+<a href="/../api/nuevaPelicula/<%=idActor%>"><button>Nuevo Registro</button></a>
+<a href="/../api/gestionActores"><button>Volver</button></a>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Año de Lanzamiento</th>
+        <th>Rating</th>
+        <th>Actores Principales</th>
+        <th>Sinopsis</th>
+        <th>Acciones</th>
+    </tr>
+    <% arregloPeliculas1.forEach((pelicula)=> { %>
+    <tr>
+        <td><%=pelicula.nombre%></td>
+        <td><%=pelicula.anioLanzamiento%></td>
+        <td><%=pelicula.rating%></td>
+        <td><%=pelicula.actoresPrincipales%></td>
+        <td><%=pelicula.sinopsis%></td>
+        <td>
+            <form action="/../api/eliminarPelicula" method="POST">
+                <label for="idPelicula"></label>
+                <input type="number" id="idPelicula" name="idPelicula" hidden value="<%=pelicula.idPelicula%>">
+                <label for="idActor"></label>
+                <input type="number" id="idActor" name="idActor" hidden value="<%=pelicula.idActor%>">
+                <button>Eliminar</button>
+            </form>
+        </td>
+        <%})%>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nueva Pelicula</title>
+</head>
+<body>
+<h1>Registrar Nueva Pelicula</h1>
+<form action="nuevaPelicula" method="post">
+    <label for="idActor"></label>
+    <input type="text" id="idActor" name="idActor" value="<%=idActor%>" hidden>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+    <label for="anioLanzamiento">Año de Lanzamiento: </label>
+    <input type="number" id="anioLanzamiento" name="anioLanzamiento" min="1900" max="2019" required>
+    <label for="rating">Rating (sobre 10): </label>
+    <input type="number" id="rating" name="rating" min="0" step="0.1" max="10" required>
+    <label for="actoresPrincipales">Actores Principales: </label>
+    <input type="text" id="actoresPrincipales" name="actoresPrincipales" required>
+    <label for="sinopsis">Sinopsis: </label>
+    <textarea name="sinopsis" id="sinopsis" cols="30" rows="6" required></textarea>
+    <button>Crear</button>
+    <a href="/../api/gestionPeliculas/<%=idActor%>"><button type="button">Cancelar</button></a>
+</form>
+</body>
+</html>

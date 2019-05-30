@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table,tr,td{
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+<a href="crear"><button>Crear</button></a>
+<table>
+    <tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Numero de Peliculas</th>
+        <th>Retirado</th>
+        <th>Acciones</th>
+    </tr>
+    <% arregloActores1.forEach((actor)=> { %>
+    <tr>
+        <td><%=actor.nombres%></td>
+        <td><%=actor.apellidos%></td>
+        <td><%=actor.fechaNacimiento%></td>
+        <td><%=actor.numeroPeliculas%></td>
+        <% if (actor.retirado) {%>
+        <td>Si</td>
+        <%} else {%>
+        <td>No</td>
+        <% } %>
+        <td>
+            <form action="#" method="POST">
+                <label for="idActor"></label>
+                <input type="number" id="idActor" name="idActor" hidden value="<%=actor.idActor%>">
+                <button>Eliminar</button>
+            </form>
+            <a href="gestionPeliculas/<%=actor.idActor%>"><button type="button">Gestionar Peliculas</button></a>
+        </td>
+        <%})%>
+    </tr>
+</table>
+</body>
+</html>
