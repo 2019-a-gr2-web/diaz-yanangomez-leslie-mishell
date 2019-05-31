@@ -67,6 +67,7 @@ export class AppController {
   }
   @Get('/nuevaPelicula/:userid/:idActor') // EndPoint
   getNP(@Res() res, @Param() par, @Req() req) {
+    this.cookieSegura(res, req.signedCookies[par.userid], par.userid);
     return res.render('crear-pelicula.ejs', {idActor: par.idActor, username1: req.signedCookies[par.userid], userid: par.userid});
   }
   @Post('/nuevoActor')
@@ -79,32 +80,41 @@ export class AppController {
   }
   @Get('/nuevoActor/:userid') // EndPoint
   getNA(@Res() res, @Req() req, @Param() par) {
+    this.cookieSegura(res, req.signedCookies[par.userid], par.userid);
     return res.render('crear-actor.ejs', { username1: req.signedCookies[par.userid], userid: par.userid});
   }
   @Get('/index/:userid') // EndPoint
   getIndex(@Res() res, @Req() req, @Param() par) {
     // this.appService.comprobarCookieBuena(req, res);
-      return res.render('gestionarp.ejs', {username1: req.signedCookies[par.userid], userid: par.userid});
+    this.cookieSegura(res, req.signedCookies[par.userid], par.userid);
+    return res.render('gestionarp.ejs', {username1: req.signedCookies[par.userid], userid: par.userid});
   }
   @Get('/salir/:userid') // EndPoint
   getSalir(@Res() res, @Param() par) {
     this.appService.eliminarUsuario(par.userid);
-    return res.redirect('/../api/login');
+    return res.clearCookie(par.userid).redirect('/../api/login');
   }
   @Get('/gestionActores/:userid') // EndPoint
   getGA(@Res() res, @Req () req, @Param() par) {
     // this.appService.comprobarCookieBuena(req,req.cookie[],res);
+    this.cookieSegura(res, req.signedCookies[par.userid], par.userid);
     const arregloActores = this.appService.bdActores;
     return res.render('listar-borrar-act.ejs', {arregloActores1: arregloActores, username1: req.signedCookies[par.userid], userid: par.userid});
   }
   @Get('/gestionPeliculas/:userid/:idActor') // EndPoint
   getGP(@Res() res, @Param() par, @Req() req) {
+    this.cookieSegura(res, req.signedCookies[par.userid], par.userid);
     const arregloPeliculas = this.appService.peliculasdDe(par.idActor);
     return res.render('listar-borrar-pel.ejs', {
       arregloPeliculas1: arregloPeliculas,
       idActor: par.idActor,
       username1: req.signedCookies[par.userid],
       userid: par.userid });
+  }
+  cookieSegura(@Res() res, cookiename: string, userid: number) {
+    if (!cookiename) {
+      return res.redirect('/../api/salir/' + userid);
+    }
   }
 
 }
