@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Nuevo Actor</title>
+</head>
+<body>
+<p><%=username1%></p>
+<a href="/../api/salir/<%=userid%>"><button>Salir</button></a>
+<h1>Registrar Nuevo Actor</h1>
+<form action="/../api/nuevoActor" method="post">
+    <label for="userid"></label>
+    <input type="number" id="userid" name="userid" value="<%=userid%>" hidden>
+    <label for="nombres">Nombres:</label>
+    <input type="text" id="nombres" name="nombres" required>
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" name="apellidos" required>
+    <label for="fechaNacimiento">Fecha de Nacimiento: </label>
+    <input type="date" id="fechaNacimiento" name="fechaNacimiento" min="1900" required>
+    <label for="numeroPeliculas">Numero de Peliculas: </label>
+    <input type="number" id="numeroPeliculas" name="numeroPeliculas" min="0" required>
+        <legend>¿Actor Retirado?</legend>
+        <label>
+            <input type="radio" name="retirado" value="true"> Si</label>
+        <label>
+            <input type="radio" name="retirado" value="false"> No
+        </label>
+    <button>Crear</button>
+    <a href="/../api/gestionActores/<%=userid%>"><button type="button">Cancelar</button></a>
+</form>
+</body>
+<script language="JavaScript">
+    window.onload = function(){
+        const fecha = new Date(); //Fecha actual
+        let mes = fecha.getMonth()+1; //obteniendo mes
+        let dia = fecha.getDate(); //obteniendo dia
+        const anio = fecha.getFullYear(); //obteniendo año
+        if(dia<10)
+            dia='0'+dia; //agrega cero si el menor de 10
+        if(mes<10)
+            mes='0'+mes //agrega cero si el menor de 10
+        document.getElementById('fechaNacimiento').max=anio+"-"+mes+"-"+dia;
+    }
+</script>
+</html>

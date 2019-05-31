@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
     <style>
         table,tr,td{
@@ -14,15 +15,24 @@
     </style>
 </head>
 <body>
-<p>Nombre de Usuario</p>
-<a href="/../api/salir"><button>Salir</button></a>
+<p><%=username1%></p>
+<a href="/../api/salir/<%=userid%>"><button>Salir</button></a>
+<a href="/../api/nuevaPelicula/<%=userid%>/<%=idActor%>"><button>Nuevo Registro</button></a>
+<a href="/../api/gestionActores/<%=userid%>"><button>Volver</button></a>
 <form action="/../api/buscarPelicula" method="post">
+
     <label for="nombrePelicula">Buscar: </label>
     <input type="text" id="nombrePelicula" name="nombrePelicula" placeholder="Escriba el nombre de la pelicula">
+    <label for="idActor"></label>
+    <input type="number" id="idActor" name="idActor" value="<%=idActor%>" hidden>
+    <label for="userid"></label>
+    <input type="number" id="userid" name="userid" value="<%=userid%>" hidden>
     <button><i class="fa fa-search"></i></button>
 </form>
-<a href="/../api/nuevaPelicula/<%=idActor%>"><button>Nuevo Registro</button></a>
-<a href="/../api/gestionActores"><button>Volver</button></a>
+<% if (arregloPeliculas1.length===0) { %>
+    <h3>No existen peliculas para mostrar</h3>
+<% } else { %>
+
 <table>
     <tr>
         <th>Nombre</th>
@@ -45,11 +55,14 @@
                 <input type="number" id="idPelicula" name="idPelicula" hidden value="<%=pelicula.idPelicula%>">
                 <label for="idActor"></label>
                 <input type="number" id="idActor" name="idActor" hidden value="<%=pelicula.idActor%>">
+                <label for="userid"></label>
+                <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
                 <button>Eliminar</button>
             </form>
         </td>
         <%})%>
     </tr>
 </table>
+<%}%>
 </body>
 </html>
