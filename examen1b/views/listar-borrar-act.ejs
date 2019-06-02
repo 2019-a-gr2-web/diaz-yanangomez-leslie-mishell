@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        .barrasup {
+            text-align: center;
+            line-height: 50px;
+            height: 50px;
+        }
+        .texto{
+            border: #428bca 1px solid;
+            border-radius: 5px;
+            width: 100%;
+        }
+        #form {
+            border: #428bca 1px solid;
+            border-radius: 5px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 20px 20px 20px 20px;
+        }
+        button {
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        #barrainf {
+            margin-top: 10px;
+        }
+        tr,td,th {
+            border: #428bca 1px solid;
+            padding: 10px 5px;
+            text-align: center;
+        }
+        table{
+            width: 100%;
+        }
+        .opc{
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-md-2 barrasup"><p><%=username1%></p></div>
+        <div class="col-md-2 barrasup"><a href="/../api/salir/<%=userid%>"><button class="btn btn-primary">Salir</button></a>
+        </div>
+    </div>
+    <div class="container" id="form">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Gestión de Actores</h1>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-md-6">
+
+            <form action="/../api/buscarActor" method="post">
+                <div class="row justify-content-end">
+                    <div class="col-sm-2"><label for="nombreActor">Buscar: </label></div>
+                    <div class="col-sm-6"> <input style="height: 100%" class="texto" type="text" id="nombreActor" name="nombreActor" placeholder="Escriba el nombre del actor"></div>
+                    <div class="col-sm-2"><button class="btn btn-success"><i class="fa fa-search"></i></button></div>
+            </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!--                <div class="col-sm-6"><label for="userid"></label></div>-->
+                        <input type="number" id="userid" name="userid" value="<%=userid%>" hidden>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-6">
+            <div class="row justify-content-end opc">
+                <div class="col-sm-4"><a href="/../api/nuevoActor/<%=userid%>"><button class="btn btn-primary">Nuevo Registro</button></a>
+                </div>
+            </div>
+            <div class="row justify-content-end opc">
+                <div class="col-sm-4"> <a href="/../api/index/<%=userid%>"><button class="btn btn-secondary">Volver</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<% if (arregloActores1.length===0) { %>
+    <h3>No existen actores para mostrar</h3>
+<% } else { %>
+<div class="table-responsive">
+<table>
+    <tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Numero de Peliculas</th>
+        <th>Retirado</th>
+        <th>Acciones</th>
+    </tr>
+    <% arregloActores1.forEach((actor)=> { %>
+    <tr>
+        <td><%=actor.nombres%></td>
+        <td><%=actor.apellidos%></td>
+        <td><%=actor.fechaNacimiento%></td>
+        <td><%=actor.numeroPeliculas%></td>
+        <% if (actor.retirado) {%>
+        <td>Si</td>
+        <%} else {%>
+        <td>No</td>
+        <% } %>
+        <td>
+            <form action="/../api/eliminarActor" method="POST">
+<!--                <label for="idActor"></label>-->
+                <input type="number" id="idActor" name="idActor" hidden value="<%=actor.idActor%>">
+<!--                <label for="userid"></label>-->
+                <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
+                <button class="btn btn-danger">Eliminar</button>
+            </form>
+            <br>
+            <a href="/../api/gestionPeliculas/<%=userid%>/<%=actor.idActor%>"><button type="button" class="btn btn-primary ">Gestionar Peliculas</button></a>
+        </td>
+        <%})%>
+    </tr>
+</table>
+</div>
+<%}%>
+</div>
+</div>
+</body>
+</html>

@@ -35,7 +35,7 @@ export class TragoService {
         const indice = this.bddTragos.findIndex((trago) => {
             return trago.id === id
         });
-        this.bddTragos.splice(id,1 ); // borrar un elemento de un array, se pode desde que indice comienza a borrar y cuantos va a borrar
+        this.bddTragos.splice(indice,1 ); // borrar un elemento de un array, se pode desde que indice comienza a borrar y cuantos va a borrar
         return this.bddTragos;
     }
     actualizar(tragoActualizado: Trago, id: number): Trago[] {

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Formulario de Creación</h1>
+<p>Crea un nuevo trago.</p>
+<form action="crear" method="post">
+<!--    en accion va toda la url donde nos vamos a comunicar-->
+<!--    Nos ayuda a hacer un request HTTP, en este caso POST-->
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" type="text" name="nombre">
+    <br>
+    <label for="tipo">Tipo de Trago:</label>
+    <select name="tipo" id="tipo">
+        <option value="Ron">Ron</option>
+        <option value="Vodka">Vodka</option>
+        <option value="Tequila">Tequila</option>
+        <option value="Whiskey" selected>Whiskey</option>
+        <option value="Puntas">Punta</option>
+        <option value="Cerveza">Cerveza</option>
+    </select>
+    <br>
+    <label for="gradosAlcohol">Grados de Alcohol: </label>
+    <input type="number" name="gradosAlcohol" id="gradosAlcohol" value="0" min="0" max="100" step="0.1">
+    <br>
+    <label for="fechaCaducidad">Fecha de Caducidad:</label>
+    <input type="date"  nombre="fechaCaducidad" id="fechaCaducidad">
+    <br>
+    <label for="precio">Precio: </label>
+    <input type="number" name="precio" id="precio" value="0" min="0" step="0.01">
+    <br>
+<!--    name = q es un buscador de google-->
+    <a href="listar"><button type="button">Cancelar</button></a>
+    <button>Enviar Información</button>
+<!--    por defecto es tipo submit-->
+    <br>
+<!--    //No hace nada, sirve para cuando no queramos mandar datos pero si hacer otra cosa //no envia la peticion-->
+    <button type="button">Button</button>
+<!--    Limpiar Datos-->
+    <button type="reset">Reset</button>
+<!--    Envia la peticion-->
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
