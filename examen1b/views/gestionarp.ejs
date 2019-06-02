@@ -7,10 +7,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Gestionar</title>
+    <style>
+        .barrasup {
+            text-align: center;
+            line-height: 50px;
+            height: 50px;
+        }
+        #form {
+            border: #428bca 1px solid;
+            border-radius: 5px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 20px 20px 20px 20px;
+        }
+    </style>
 </head>
 <body>
-<p><%=username1%></p>
-<a href="/../api/salir/<%=userid%>"><button>Salir</button></a>
-<a href="/../api/gestionActores/<%=userid%>"><button type="button">Gestionar Actores</button></a>
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-md-2 barrasup"><p><%=username1%></p></div>
+        <div class="col-md-2 barrasup"><a href="/../api/salir/<%=userid%>"><button class="btn btn-primary">Salir</button></a></div>
+    </div>
+<div class="container" id="form">
+    <div class="row justify-content-center">
+        <a href="/../api/gestionActores/<%=userid%>"><button type="button" class="btn btn-success">Gestionar Actores</button></a>
+    </div>
+    </div>
+
+
+</div>
 </body>
 </html>

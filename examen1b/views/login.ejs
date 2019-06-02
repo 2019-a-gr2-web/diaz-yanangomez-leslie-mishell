@@ -8,56 +8,48 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Examen 1B</title>
     <style>
-        body {
-            background-color: #e8d8ff;
-        }
-        .botonp{
-            border-color: #b38bff;
-            background-color: white;
-        }
-        .container{
-            background-color: white;
-            border: 1px #b38bff solid;
-            padding: 10px 10px 10px 10px;
-            margin-top: 40px;
-            position: absolute;
-            border-radius: 7px ;
-        }
-        input{
-            box-sizing: border-box;
+        .texto{
+            border: #428bca 1px solid;
+            border-radius: 5px;
             width: 100%;
-            border: 1px #b38bff solid;
-            border-radius: 5px 5px 5px 5px;
+        }
+        #barrainf {
+            margin-top: 10px;
+        }
+        #form {
+            border: #428bca 1px solid;
+            border-radius: 5px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 20px 20px 20px 20px;
+        }
+        button {
+            width: 100%;
         }
         h1 {
             text-align: center;
+            padding-bottom: 20px;
         }
     </style>
 </head>
 <body>
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <div class="container">
-            <form action="login" method="post">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h1>Iniciar Sesión</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6"><label for="username">Nombre de Usuario: </label></div>
-                    <div class="col-sm-6"><input type="text" name="username" id="username" required></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn botonp btn-lg btn-block">Ingresar</button>
-                    </div>
-                </div>
-            </form>
+<div id="form" class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Iniciar Sesión</h1>
         </div>
     </div>
-    <div class="col-md-4"></div>
+    <form action="login" method="post">
+        <div class="row">
+            <div class="col-md-4"><label for="username">Nombre de Usuario: </label></div>
+            <div class="col-md-8"><input class="texto" type="text" name="username" id="username" required></div>
+        </div>
+        <div id="barrainf" class="row justify-content-center">
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-lg btn-block btn-primary">Ingresar</button>
+                    </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>

@@ -6,32 +6,109 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .barrasup {
+            text-align: center;
+            line-height: 50px;
+            height: 50px;
+        }
+        .texto{
+            border: #428bca 1px solid;
+            border-radius: 5px;
+            width: 100%;
+        }
+        #form {
+            border: #428bca 1px solid;
+            border-radius: 5px;
+            padding-top: 20px;
+            margin: 20px 20px 20px 20px;
+        }
+        button {
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+    </style>
     <title>Nuevo Actor</title>
 </head>
 <body>
-<p><%=username1%></p>
-<a href="/../api/salir/<%=userid%>"><button>Salir</button></a>
-<h1>Registrar Nuevo Actor</h1>
-<form action="/../api/nuevoActor" method="post">
-    <label for="userid"></label>
-    <input type="number" id="userid" name="userid" value="<%=userid%>" hidden>
-    <label for="nombres">Nombres:</label>
-    <input type="text" id="nombres" name="nombres" required>
-    <label for="apellidos">Apellidos:</label>
-    <input type="text" id="apellidos" name="apellidos" required>
-    <label for="fechaNacimiento">Fecha de Nacimiento: </label>
-    <input type="date" id="fechaNacimiento" name="fechaNacimiento" min="1900" required>
-    <label for="numeroPeliculas">Numero de Peliculas: </label>
-    <input type="number" id="numeroPeliculas" name="numeroPeliculas" min="0" required>
-        <legend>¿Actor Retirado?</legend>
-        <label>
-            <input type="radio" name="retirado" value="true"> Si</label>
-        <label>
-            <input type="radio" name="retirado" value="false"> No
-        </label>
-    <button>Crear</button>
-    <a href="/../api/gestionActores/<%=userid%>"><button type="button">Cancelar</button></a>
+<div class="container">
+<div class="row justify-content-end">
+    <div class="col-md-2 barrasup"><p><%=username1%></p></div>
+    <div class="col-md-2 barrasup"><a href="/../api/salir/<%=userid%>"><button class="btn btn-primary">Salir</button></a></div>
+</div>
+    <div class="container" id="form">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Registrar Nuevo Actor</h1>
+            </div>
+        </div>
+        <form action="/../api/nuevoActor" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <label for="nombres">Nombres:</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="texto" id="nombres" name="nombres" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="apellidos">Apellidos:</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="texto" id="apellidos" name="apellidos" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="fechaNacimiento">Fecha de Nacimiento: </label>
+        </div>
+        <div class="col-md-8">
+            <input class="texto" type="date" id="fechaNacimiento" name="fechaNacimiento" min="1900" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="numeroPeliculas">Numero de Peliculas: </label>
+        </div>
+        <div class="col-md-8 ">
+            <input type="number" class="texto" id="numeroPeliculas" name="numeroPeliculas" min="0" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p>¿Actor Retirado?</p>
+        </div>
+        <div class="col-md-2">
+            <label>
+                <input type="radio" name="retirado" value="true"> Si</label>
+        </div>
+        <div class="col-md-2">
+            <label>
+                <input type="radio" name="retirado" value="false" checked> No
+            </label>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2">
+            <button class="btn btn-success">Crear</button>
+        </div>
+        <div class="col-md-2">
+            <a href="/../api/gestionActores/<%=userid%>"><button class="btn btn-primary" type="button">Cancelar</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="userid"></label>
+            <input type="number" id="userid" name="userid" value="<%=userid%>" hidden>
+        </div>
+    </div>
 </form>
+</div>
+</div>
 </body>
 <script language="JavaScript">
     window.onload = function(){
