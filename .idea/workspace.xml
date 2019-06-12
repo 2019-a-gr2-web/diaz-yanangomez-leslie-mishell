@@ -15,12 +15,58 @@
     <favorites_list name="diaz-yanangomez-leslie-mishell" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/examen1b/views/login.ejs">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/tragos.entity.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="24">
-              <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="164">
+              <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+                <element signature="e#226#406#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/interfaces/trago.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="6" column="19" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="6" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -70,8 +116,6 @@
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/grumosa/interfaces/trago.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/grumosa/grumosa.service.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/grumosa/trago.service.ts" />
-        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.module.ts" />
-        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.module.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/interfaces/trago.ts" />
         <option value="$PROJECT_DIR$/deberes/03-pagina-web/views/inicio.ejs" />
@@ -83,7 +127,6 @@
         <option value="$PROJECT_DIR$/deberes/03-pagina-web/src/main.ts" />
         <option value="$PROJECT_DIR$/examen1b/src/main.ts" />
         <option value="$PROJECT_DIR$/examen1b/interfaces/pelicula.ts" />
-        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.service.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts" />
         <option value="$PROJECT_DIR$/examen1b/src/app.module.ts" />
         <option value="$PROJECT_DIR$/examen1b/interfaces/actor.ts" />
@@ -96,6 +139,10 @@
         <option value="$PROJECT_DIR$/examen1b/views/listar-borrar-act.ejs" />
         <option value="$PROJECT_DIR$/examen1b/views/listar-borrar-pel.ejs" />
         <option value="$PROJECT_DIR$/examen1b/views/login.ejs" />
+        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.module.ts" />
+        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.module.ts" />
+        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/tragos.entity.ts" />
+        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.service.ts" />
       </list>
     </option>
   </component>
@@ -111,7 +158,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -122,24 +168,53 @@
             <path>
               <item name="diaz-yanangomez-leslie-mishell" type="b2602c69:ProjectViewProjectNode" />
               <item name="diaz-yanangomez-leslie-mishell" type="462c0819:PsiDirectoryNode" />
-              <item name="examen1b" type="462c0819:PsiDirectoryNode" />
+              <item name="01-http" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="diaz-yanangomez-leslie-mishell" type="b2602c69:ProjectViewProjectNode" />
               <item name="diaz-yanangomez-leslie-mishell" type="462c0819:PsiDirectoryNode" />
-              <item name="examen1b" type="462c0819:PsiDirectoryNode" />
+              <item name="01-http" type="462c0819:PsiDirectoryNode" />
+              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diaz-yanangomez-leslie-mishell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diaz-yanangomez-leslie-mishell" type="462c0819:PsiDirectoryNode" />
+              <item name="01-http" type="462c0819:PsiDirectoryNode" />
+              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="api-web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diaz-yanangomez-leslie-mishell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diaz-yanangomez-leslie-mishell" type="462c0819:PsiDirectoryNode" />
+              <item name="01-http" type="462c0819:PsiDirectoryNode" />
+              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="api-web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="diaz-yanangomez-leslie-mishell" type="b2602c69:ProjectViewProjectNode" />
               <item name="diaz-yanangomez-leslie-mishell" type="462c0819:PsiDirectoryNode" />
-              <item name="examen1b" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="01-http" type="462c0819:PsiDirectoryNode" />
+              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="api-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="trago" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diaz-yanangomez-leslie-mishell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diaz-yanangomez-leslie-mishell" type="462c0819:PsiDirectoryNode" />
+              <item name="01-http" type="462c0819:PsiDirectoryNode" />
+              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="api-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="trago" type="462c0819:PsiDirectoryNode" />
+              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -155,12 +230,12 @@
     <property name="ts.external.directory.path" value="L:\Familia\Documents\2019A-SEPTIMOSEMESTRE\AplicacionesWeb\diaz-yanangomez-leslie-mishell\examen1b\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="L:\Familia\Documents\2019A-SEPTIMOSEMESTRE\AplicacionesWeb\diaz-yanangomez-leslie-mishell\examen1b\views" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="L:\Familia\Documents\2019A-SEPTIMOSEMESTRE\AplicacionesWeb\diaz-yanangomez-leslie-mishell\examen1b\views" />
       <recent name="L:\Familia\Documents\2019A-SEPTIMOSEMESTRE\AplicacionesWeb\diaz-yanangomez-leslie-mishell\01-http" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="L:\Familia\Documents\2019A-SEPTIMOSEMESTRE\AplicacionesWeb\diaz-yanangomez-leslie-mishell\examen1b\views" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -231,12 +306,17 @@
       <workItem from="1559185181694" duration="15705000" />
       <workItem from="1559230739750" duration="8457000" />
       <workItem from="1559258823647" duration="20080000" />
-      <workItem from="1559443897016" duration="13461000" />
+      <workItem from="1559443897016" duration="13673000" />
+      <workItem from="1559458086504" duration="34000" />
+      <workItem from="1559609956689" duration="276000" />
+      <workItem from="1559686248698" duration="53000" />
+      <workItem from="1559779744858" duration="1586000" />
+      <workItem from="1560367216708" duration="4512000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215000000" />
+    <option name="totallyTimeSpent" value="221673000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -249,10 +329,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="41" width="1285" height="599" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.36734694" visible="true" weight="0.20609462" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.36507937" visible="true" weight="0.20609462" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" sideWeight="0.63265306" side_tool="true" weight="0.20609462" />
+      <window_info id="Favorites" order="2" sideWeight="0.63492066" side_tool="true" weight="0.20609462" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.90702945" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -262,7 +343,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49868765" weight="0.32779098" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32847896" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49758455" visible="true" weight="0.61904764" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49758455" weight="0.8344671" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5024155" side_tool="true" weight="0.71903324" />
       <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49868765" weight="0.30339807" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -376,16 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -434,13 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/interfaces/trago.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="19" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/tragos/lista-tragos.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -472,13 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examen1b/src/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -486,13 +543,6 @@
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="40" lean-forward="true" selection-start-column="40" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -641,8 +691,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/examen1b/views/login.ejs">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/interfaces/trago.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/tragos.entity.ts">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
-          <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/trago/trago.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#226#406#0" />
+          </folding>
         </state>
       </provider>
     </entry>
