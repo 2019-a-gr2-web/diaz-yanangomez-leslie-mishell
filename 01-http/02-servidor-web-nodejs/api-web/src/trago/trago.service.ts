@@ -18,17 +18,26 @@ export class TragoService {
         };
         this.crear(traguito);
         const objetoEntidad = this._tragosRepository.create(traguito);
-        this._tragosRepository.save(traguito).then(bien => { // try
+        console.log('Linea 1');
+        this._tragosRepository.save(objetoEntidad).then(bien => { // try
+            console.log('Linea 2');
             console.log('Bien', bien);
         }).catch(error => { // catch
+            console.log('Linea 3');
             console.log('Error', error);
         });
+        console.log('Linea 4');
     }
-    crear(nuevoTrago: Trago): Trago {
-        nuevoTrago.id = this.recNum;
-        this.recNum++;
-        this.bddTragos.push(nuevoTrago);
-        return nuevoTrago;
+    crear(nuevoTrago: Trago): Promise<Trago> { // Cuando no se sabe el tipo de promesa se puede poner entre <> Any
+        const objetoEntidad = this._tragosRepository.create(nuevoTrago); // Crea una nueva instancia de la entidad, no en la base de datos
+        return this._tragosRepository.save(objetoEntidad);
+        // nuevoTrago.id = this.recNum;
+        // this.recNum++;
+        // this.bddTragos.push(nuevoTrago);
+        // return nuevoTrago;
+    }
+    buscar(parametrosBusqueda?): Promise<TragosEntity[]> {
+        return this._tragosRepository.find(parametrosBusqueda);
     }
     buscarPorId(id: number): Trago {
        return this.bddTragos.find((trago) => {
