@@ -1,4 +1,6 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany} from 'typeorm';
+import {DistribuidorEntity} from "../distribuidor/distribuidor.entity";
+import {FiestaEntity} from "../fiesta/fiesta.entity";
 
 @Entity('bd_trago')
 export class TragosEntity {
@@ -33,4 +35,9 @@ export class TragosEntity {
         name: 'precio',
     })
     precio: number;
+  @ManyToOne(type => DistribuidorEntity,
+        distribuidor => distribuidor.tragos)
+    distribuidorId: DistribuidorEntity; // Referencia a la clave de la otra entidad
+    @OneToMany( type => FiestaEntity, fiesta => fiesta)
+    fiestas: FiestaEntity[];
 }

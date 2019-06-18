@@ -1,8 +1,8 @@
 import {Module} from '@nestjs/common';
+import {TragosEntity} from './tragos.entity';
 import {TragoService} from './trago.service';
 import {TragoController} from './trago.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import {TragosEntity} from './tragos.entity';
 @Module( {
     imports: [
         TypeOrmModule.forFeature( // Recibe un arreglo de entidades y el nombre de la conexion
@@ -17,3 +17,4 @@ import {TragosEntity} from './tragos.entity';
 export class TragoModule {
 
 }
+
