@@ -53,7 +53,7 @@
     </select>
     <br>
     <label for="gradosAlcohol">Grados de Alcohol: </label>
-    <input type="number" name="gradosAlcohol" id="gradosAlcohol" value="<%=trago.gradosAlcohol%>" disabled>
+    <input type="number" name="gradosAlcohol" id="gradosAlcohol" value="<%=Number(trago.gradosAlcohol)%>" disabled>
     <br>
     <label for="fechaCaducidad">Fecha de Caducidad:</label>
     <input type="date"  name="fechaCaducidad" id="fechaCaducidad" value="<%=new Date(trago.fechaCaducidad)%>" readonly>

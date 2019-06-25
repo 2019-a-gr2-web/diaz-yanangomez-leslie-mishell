@@ -1,4 +1,18 @@
-import {Controller, Delete, Get, HttpCode, Post, Put, Headers, Query, Param, Body, Response, Request} from '@nestjs/common';
+import {
+    Controller,
+    Delete,
+    Get,
+    HttpCode,
+    Post,
+    Put,
+    Headers,
+    Query,
+    Param,
+    Body,
+    Response,
+    Request,
+    Session, Res
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import * as cookieParser from 'cookie-parser';
 import * as Joi from '@hapi/joi';
@@ -120,6 +134,41 @@ getEstilos(@Response() res) {
             console.log('No es valida esa cookie');
             return  response.send(':(');
         }
+    }
+    @Get('session')
+    getSession(@Query('nombre') nombre, @Session() session) {
+      console.log(session);
+      return 'OK';
+      session.autenticado = true; // Si existe, el usuario esta autenticado. Sirve para login.
+      session.nombreUsuario = nombre;
+    }
+    @Get('/login')
+    getLogin(@Res() res) {
+      return res.render('login.ejs');
+    }
+    @Get('/protegido')
+    getProtegido(@Res() res, @Session() session) {
+      if (session.username) {
+          return res.render('protegido.ejs', {username: session.username});
+      } else {
+          return res.redirect('login');
+      }
+    }
+    @Get('logout')
+    getLogOut(@Res() res, @Session() ses){
+      ses.username = undefined;
+      ses.destroy();
+      res.redirect('login');
+    }
+    @Post('/login')
+    postLogin(@Res() res, @Body() user, @Session() ses) {
+      if (user.username === 'leslie' && user.password === '12345678') {
+          ses.username = user.username;
+          res.redirect('/api/protegido');
+      } else {
+          res.status(400);
+          res.send({ mensaje: 'Error Login', error: 400});
+      }
     }
   // http:localhost:3000
   @Post('/hola-mundo') // Metodo HTTP
