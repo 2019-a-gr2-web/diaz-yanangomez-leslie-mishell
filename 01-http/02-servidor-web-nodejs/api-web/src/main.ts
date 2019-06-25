@@ -5,6 +5,8 @@ import * as cookieParser from 'cookie-parser';
 import {NestExpressApplication} from '@nestjs/platform-express';
 import {join} from 'path';
 import * as express from 'express';
+import * as session from 'express-session'; // Typescript
+const FileStore = require('session-file-store')(session); // Nodejs
 import * as path from 'path';
 import * as favicon from 'serve-favicon';
 async function bootstrap() {
@@ -16,6 +18,18 @@ async function bootstrap() {
   app.use(express.static('publico'));
   // app.use(favicon(path.join(__dirname, '..', 'publico', 'imagenes', 'trago.ico')));
   // app.set('views engine', 'ejs');
+  app.use(
+      session({
+        name: 'server-session-id',
+        secret: 'Boyfriend-in-Wonderland',
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+          secure: false
+        },
+        store: new FileStore()
+      })
+  );
   await app.listen(3000);
 
 }
