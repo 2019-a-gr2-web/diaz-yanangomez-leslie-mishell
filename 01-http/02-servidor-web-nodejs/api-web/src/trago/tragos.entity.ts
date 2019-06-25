@@ -26,6 +26,7 @@ export class TragosEntity {
   @Column({
         type: 'date',
         name: 'fecha_caducidad',
+        default: '2019-06-19', // Campo con la fecha actual
     })
     fechaCaducidad: Date;
   @Column({
@@ -33,6 +34,7 @@ export class TragosEntity {
         precision: 10,
         scale: 2,
         name: 'precio',
+        nullable: true,
     })
     precio: number;
   @ManyToOne(type => DistribuidorEntity,

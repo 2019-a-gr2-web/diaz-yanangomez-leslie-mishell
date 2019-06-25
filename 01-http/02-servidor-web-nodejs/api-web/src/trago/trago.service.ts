@@ -2,7 +2,7 @@ import {Injectable} from '@nestjs/common';
 import {Trago} from './interfaces/trago';
 import {InjectRepository} from '@nestjs/typeorm';
 import {TragosEntity} from './tragos.entity';
-import {Repository} from 'typeorm';
+import {DeleteResult, Repository, UpdateResult} from 'typeorm';
 
 @Injectable()
 export class TragoService {
@@ -36,31 +36,21 @@ export class TragoService {
         // this.bddTragos.push(nuevoTrago);
         // return nuevoTrago;
     }
+    eliminarPorId(idt: number): Promise<DeleteResult> {
+       return this._tragosRepository.delete({id: idt});
+    }
     buscar(parametrosBusqueda?): Promise<TragosEntity[]> {
         return this._tragosRepository.find(parametrosBusqueda);
     }
-    buscarPorId(id: number): Trago {
-       return this.bddTragos.find((trago) => {
-           return trago.id === id;
-       });
+    buscarPorId(idt: number): Promise<TragosEntity[]> {
+       return this._tragosRepository.find({id: idt});
     }
     buscarPorNombre(nombre: string): Trago {
         return this.bddTragos.find((trago) => {
             return trago.nombre.toUpperCase().includes(nombre.toUpperCase());
         });
     }
-    eliminarPorId(id: number): Trago[] {
-        const indice = this.bddTragos.findIndex((trago) => {
-            return trago.id === id
-        });
-        this.bddTragos.splice(indice,1 ); // borrar un elemento de un array, se pode desde que indice comienza a borrar y cuantos va a borrar
-        return this.bddTragos;
-    }
-    actualizar(tragoActualizado: Trago, id: number): Trago[] {
-        const indice = this.bddTragos.findIndex((trago) => {
-            return trago.id === id
-        });
-        tragoActualizado.id = this.bddTragos[indice].id;
-        return this.bddTragos;
+    actualizar(trago: Trago): Promise<UpdateResult> {
+        return this._tragosRepository.update(trago.id, { nombre: trago.nombre, precio: trago.precio});
     }
 }
