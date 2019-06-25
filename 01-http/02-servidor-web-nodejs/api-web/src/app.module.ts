@@ -20,7 +20,8 @@ import {DistribuidorModule} from './distribuidor/distribuidor.module';
       database: 'test',
       entities: [TragosEntity, DistribuidorEntity, FiestaEntity],
       synchronize: true,
-      insecureAuth: true
+      insecureAuth: true,
+      dropSchema: false,
     }),
   ],
   controllers: [AppController],

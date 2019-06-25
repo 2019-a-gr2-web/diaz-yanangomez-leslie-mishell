@@ -8,6 +8,12 @@
     <title>Document</title>
 </head>
 <body>
+<% const username = 'Leslie';%>
+<%- include('../componentes/menu/menu', {nombre: username}) %>
+<% const existeMensaje = mensaje%>
+<% if (existeMensaje) { %>
+<p style="color: red;">¡Error en Formulario! <%=mensaje%></p>
+<% } %>
 <h1>Formulario de Creación</h1>
 <p>Crea un nuevo trago.</p>
 <form action="crear" method="post">
@@ -30,7 +36,7 @@
     <input type="number" name="gradosAlcohol" id="gradosAlcohol" value="0" min="0" max="100" step="0.1">
     <br>
     <label for="fechaCaducidad">Fecha de Caducidad:</label>
-    <input type="date"  nombre="fechaCaducidad" id="fechaCaducidad">
+    <input type="date"  name="fechaCaducidad" id="fechaCaducidad">
     <br>
     <label for="precio">Precio: </label>
     <input type="number" name="precio" id="precio" value="0" min="0" step="0.01">
@@ -47,5 +53,6 @@
 <!--    Envia la peticion-->
     <button type="submit">Submit</button>
 </form>
+<%- include('../componentes/footer/footer') %>
 </body>
 </html>

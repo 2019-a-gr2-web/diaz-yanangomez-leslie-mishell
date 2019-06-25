@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<% const username = 'Leslie';%>
+<%- include('../componentes/menu/menu', {nombre: username}) %>
+<h1>Formulario de Actualización</h1>
+<% arregloTragos1.forEach((trago)=> { %>
+<form action="../actualizar" method="post">
+<!--    en accion va toda la url donde nos vamos a comunicar-->
+<!--    Nos ayuda a hacer un request HTTP, en este caso POST-->
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" type="text" name="nombre" value="<%=trago.nombre%>">
+    <br>
+    <label for="tipo">Tipo de Trago:</label>
+    <select name="tipo" id="tipo" disabled>
+        <%if (trago.tipo === "Ron") {%>
+        <option value="Ron" selected>Ron</option>
+            <%} else {%>
+         <option value="Ron">Ron</option>
+            <% } %>
+            <%if (trago.tipo === "Vodka") {%>
+                <option value="Vodka" selected>Vodka</option>
+            <%} else {%>
+                <option value="Vodka">Vodka</option>
+            <% } %>
+            <%if (trago.tipo === "Tequila") {%>
+                <option value="Tequila" selected>Tequila</option>
+            <%} else {%>
+                <option value="Tequila">Tequila</option>
+            <% } %>
+            <%if (trago.tipo === "Whiskey") {%>
+                <option value="Whiskey" selected>Whiskey</option>
+            <%} else {%>
+                <option value="Whiskey">Whiskey</option>
+            <% } %>
+            <%if (trago.tipo === "Puntas") {%>
+                <option value="Puntas" selected>Punta</option>
+            <%} else {%>
+                <option value="Puntas">Punta</option>
+            <% } %>
+            <%if (trago.tipo === "Cerveza") {%>
+                <option value="Cerveza" selected>Cerveza</option>
+            <%} else {%>
+                <option value="Cerveza selected">Cerveza</option>
+            <% } %>
+    </select>
+    <br>
+    <label for="gradosAlcohol">Grados de Alcohol: </label>
+    <input type="number" name="gradosAlcohol" id="gradosAlcohol" value="<%=trago.gradosAlcohol%>" disabled>
+    <br>
+    <label for="fechaCaducidad">Fecha de Caducidad:</label>
+    <input type="date"  name="fechaCaducidad" id="fechaCaducidad" value="<%=new Date(trago.fechaCaducidad)%>" readonly>
+    <br>
+    <label for="precio">Precio: </label>
+    <input type="number" name="precio" id="precio" value="<%=trago.precio%>" min="0" step="0.01">
+    <br>
+    <input type="number" name="id" id="id" value="<%=trago.id%>" hidden>
+<!--    name = q es un buscador de google-->
+    <a href="../listar"><button type="button">Cancelar</button></a>
+    <button>Enviar Información</button>
+</form>
+<% }) %>
+<%- include('../componentes/footer/footer') %>
+</body>
+</html>

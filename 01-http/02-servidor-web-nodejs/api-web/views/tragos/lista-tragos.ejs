@@ -13,6 +13,7 @@
     </style>
 </head>
 <body>
+<%- include('../componentes/menu/menu') %>
 <a href="crear"><button>Crear</button></a>
 <table>
     <tr>
@@ -31,7 +32,7 @@
         <td><%=trago.precio%></td>
         <td><%=trago.tipo%></td>
         <td>
-            <button>Editar</button>
+            <a href="actualizar/<%=trago.id%>"><button type="button">Editar</button></a>
             <form action="eliminar" method="POST">
                 <label for="id"></label>
                 <input type="number" id="id" name="id" hidden value="<%=trago.id%>">
@@ -41,5 +42,6 @@
         <%})%>
     </tr>
 </table>
+<%- include('../componentes/footer/footer') %>
 </body>
 </html>
