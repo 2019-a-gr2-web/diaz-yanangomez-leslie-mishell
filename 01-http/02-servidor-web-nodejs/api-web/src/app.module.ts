@@ -8,8 +8,10 @@ import {DistribuidorEntity} from './distribuidor/distribuidor.entity';
 import {FiestaEntity} from './fiesta/fiesta.entity';
 import {FiestaModule} from './fiesta/fiesta.module';
 import {DistribuidorModule} from './distribuidor/distribuidor.module';
+import {ChatModule} from "./chat/chat.module";
 @Module({
-  imports: [TragoModule, FiestaModule, DistribuidorModule,  // Ya nada toca poner esto
+  imports: [
+      /*TragoModule, FiestaModule, DistribuidorModule,  // Ya nada toca poner esto
     TypeOrmModule.forRoot({
       name: 'default', // Nombre por defecto de la cadena de conexion, ya esta puesta, si existe otra cadena, es necesario poner los nombres
       type: 'mysql',
@@ -22,7 +24,7 @@ import {DistribuidorModule} from './distribuidor/distribuidor.module';
       synchronize: true,
       insecureAuth: true,
       dropSchema: false,
-    }),
+    }), */ ChatModule
   ],
   controllers: [AppController],
   providers: [AppService],
