@@ -1,14 +1,16 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-// const cookieParser = require('cookie-parser');
 import * as cookieParser from 'cookie-parser';
 import {NestExpressApplication} from '@nestjs/platform-express';
 import {join} from 'path';
 import * as express from 'express';
 import * as session from 'express-session'; // Typescript
+// import * as FileStore from 'session-file-store';
 const FileStore = require('session-file-store')(session); // Nodejs
 import * as path from 'path';
 import * as favicon from 'serve-favicon';
+import * as FileStore from 'session-file-store';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule) as NestExpressApplication; // casteo
   app.use(cookieParser('Boyfriend in Wonderland'));
@@ -25,10 +27,10 @@ async function bootstrap() {
         resave: false,
         saveUninitialized: true,
         cookie: {
-          secure: false
+          secure: false,
         },
-        store: new FileStore()
-      })
+        store: new FileStore(),
+      }),
   );
   await app.listen(3000);
 

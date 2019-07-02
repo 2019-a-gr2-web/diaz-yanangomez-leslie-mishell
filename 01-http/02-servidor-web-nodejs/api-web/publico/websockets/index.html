@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSockets</title>
+</head>
+<body>
+<script src="socket.io.js"> </script>
+<!--Busca dentro de la carpeta-->
+<script>
+    //Conexion de IP y puerto del ws
+    const url = 'http://localhost:3001/websockets';
+    const socket = io(url);
+    console.log('Ya mismito nos conectamos :D');
+    socket.on(
+        'connect', // Nombre del evento
+        () => { //Funcion que va arealizar con dicho evento
+            console.log('Estamos conectados !!');
+        }
+    );
+    socket.on(
+        'disconnect', // Nombre del evento
+        () => { //Funcion que va arealizar con dicho evento
+            console.log(':( Se desconectó');
+        }
+    );
+    function peticionHolaMundo() {
+        socket.emit('holaMundo',
+            { nombre: 'Leslie'},
+            (respuesta) => {
+                console.log(respuesta); // Respuesta para el cliente
+        }
+        ); // segundo parametro datos, si es que si quisiera
+    }
+    socket.on('saludaron', (data) => {
+        console.log('Nos saludaron', data);
+    })
+</script>
+</body>
+</html>
