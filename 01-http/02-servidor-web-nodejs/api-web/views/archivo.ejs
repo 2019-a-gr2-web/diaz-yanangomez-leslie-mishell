@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Subir Archivos :D</title>
+</head>
+<body>
+<style>
+    .boton{
+        border: solid 1px gray;
+    }
+    .boton-seleccionado {
+        color: #0D2240;
+        background-color: #00ACC8;
+    }
+    .boton-sin-seleccion {
+        color: white;
+        background-color: black;
+    }
+</style>
+<img src="/api/descargarArchivo/<%=idTrago1%>" id ="muestra" width="300px" height="300px" alt="">
+<a href="/api/descargarArchivo/<%=idTrago1%>" target="_blank">Descargar Archivo</a>
+<form action="/api/subirArchivo/<%=idTrago1%>" method="post" enctype="multipart/form-data">
+    <label for="archivo" id="texto-archivo" class="boton boton-sin-seleccion">Elegir Archivo: </label>
+    <input type="file" name="imagen" id="archivo" accept=".pdf,.docx, .jpg" onchange="validarArchivo()" multiple hidden>
+    <button onclick="validarArchivo()">Subir Archivo</button>
+</form>
+<script>
+
+    function validarArchivo() {
+        const archivo = document.getElementById('archivo');
+        //Inicio Vista Previa
+        const file = archivo.files[0];
+        const reader = new FileReader();
+        reader.onload = (eventoLecturaArchivo) => {
+            const url = eventoLecturaArchivo.target.result;
+            console.log(url);
+            const imagenMuestra = document.getElementById('muestra');
+            imagenMuestra.src = url;
+        };
+        reader.readAsDataURL(file);
+        //Fin Vista Previa
+        console.log(archivo.files);
+        const label = document.getElementById('texto-archivo');
+        if(archivo.files.length > 0) {
+            label.className = 'boton boton-seleccionado';
+            label.innerText = 'Los archivos han sido seleccionados';
+        } else {
+            alert('Seleccione al menos un archivo >:(');
+            label.className = 'boton boton-sin-seleccion';
+            label.innerText = 'Elegir Archivos';
+        }
+    }
+</script>
+</body>
+</html>

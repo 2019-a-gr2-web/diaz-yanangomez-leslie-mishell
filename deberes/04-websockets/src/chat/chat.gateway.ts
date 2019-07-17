@@ -5,11 +5,11 @@ import {Client} from 'socket.io';
 export class ChatGateway {
 @WebSocketServer() server;
 @SubscribeMessage('holaMundo')
-smHolaMundo(cliente: Client | any, data: any) {
+async smHolaMundo(cliente: Client | any, data: any) {
     console.log(data);
     console.log('Nos hacen la peticion');
     console.log(this.server);
-    cliente.broadcast.emit('saludaron', data);
+    cliente.broadcast.emit('saludaron', data); // Emitir respuestas a clientes
     return 'Hola ' + data.nombre;
 }
 constructor() {

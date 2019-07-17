@@ -11,36 +11,45 @@ import {
     Body,
     Response,
     Request,
-    Session, Res
+    Session, Res, UseInterceptors, Render, UploadedFile
 } from '@nestjs/common';
-import { AppService } from './app.service';
+import {AppService} from './app.service';
 import * as cookieParser from 'cookie-parser';
 import * as Joi from '@hapi/joi';
+import {FileInterceptor} from "@nestjs/platform-express";
+
 // const Joi = require('@hapi/joi');
-@Controller ('/api') // Recibe como parametro un segmento inicial --> //localhost:3000/segmentoInicial
+@Controller('/api') // Recibe como parametro un segmento inicial --> //localhost:3000/segmentoInicial
 export class AppController {
     arregloUsuarios = [];
-  constructor(private readonly appService: AppService) {}
-@Get('/inicio') // EndPoint
-getInicio(@Response() res) {
-      return res.render('inicio.ejs', { estaVivo: true });
-}
-@Get('/peliculas')
-getPeliculas (@Response() res){
-      return res.render('peliculas/inicio.ejs'); // inidca el directorio donde se encuentra el archivo ejs, en este caso views/peliculas/arcchivo
-}
-@Get('/estilos')
-getEstilos(@Response() res) {
-      return res.render('peliculas/estilos.ejs');
-}
-  @Get('/hello-world') // Metodo HTTP (segmentoinicial)
-  getHello(): string {
-    return 'Hello World';
-  }
-  // otro get
+
+    constructor(private readonly appService: AppService) {
+    }
+
+    @Get('/inicio') // EndPoint
+    getInicio(@Response() res) {
+        return res.render('inicio.ejs', {estaVivo: true});
+    }
+
+    @Get('/peliculas')
+    getPeliculas(@Response() res) {
+        return res.render('peliculas/inicio.ejs'); // inidca el directorio donde se encuentra el archivo ejs, en este caso views/peliculas/arcchivo
+    }
+
+    @Get('/estilos')
+    getEstilos(@Response() res) {
+        return res.render('peliculas/estilos.ejs');
+    }
+
+    @Get('/hello-world') // Metodo HTTP (segmentoinicial)
+    getHello(): string {
+        return 'Hello World';
+    }
+
+    // otro get
     @Get('/adivina') // Metodo HTTP (segmentoinicial)
     getAdivina(@Headers() headers): string {
-      // const Math.round(Math.random()*10)
+        // const Math.round(Math.random()*10)
         // Nunca usar var --> en ves de eso utilizamos let --> De preferencia utilizamos const
         /* const nombre = 'Leslie'; // String
         const edad = 21; // Number
@@ -58,133 +67,167 @@ getEstilos(@Response() res) {
             return '>:(';
         }
     }
+
     @Get('/consulta')
     getConsulta(@Query() queryParams) {
-      if (queryParams.nombre) {
-          return `Hola ${queryParams.nombre}`;
-      } else {
-       return 'Hola Extraño';
-      }
+        if (queryParams.nombre) {
+            return `Hola ${queryParams.nombre}`;
+        } else {
+            return 'Hola Extraño';
+        }
     }
+
     @Get('/ciudad/:idCiudad')
     // Nosotros definimos el nombre de la variable que el cliente va a enviar, se puede tener mas de un paramatro
     // de busqueda
     // separados con slash /:canton/:ciudad
     getCiudad(@Param() parametrosRuta) { // Son requeridos, si no se manda, no existe la ruta.
-      switch (parametrosRuta.idCiudad.toLowerCase()) {
-          case 'quito':
-              return 'Que fueff';
-          case 'guayaquil':
-              return  'Que mah ñañoshh';
-          default:
-              return 'Buenas Tardes';
-      }
+        switch (parametrosRuta.idCiudad.toLowerCase()) {
+            case 'quito':
+                return 'Que fueff';
+            case 'guayaquil':
+                return 'Que mah ñañoshh';
+            default:
+                return 'Buenas Tardes';
+        }
     }
+
     @Post('/registroComida')
     postRegistroComida(@Body() parametrosCuerpo, @Response() response) { // Utilizado solamente para cierto tipo de parametros de cuerpo
-      if (parametrosCuerpo.nombre && parametrosCuerpo.cantidad) {
-          const cantidad = Number(parametrosCuerpo.cantidad);
-          if (cantidad > 1) {
-              response.set('Premio', 'Fanesca');
-          }
-          return response.send({mensaje: 'Registro Creado'});
-      } else {
-          return response.status(400).send({
-              mensaje : 'ERROR, no envia nombre o cantidad',
-              error : 404
-          });
+        if (parametrosCuerpo.nombre && parametrosCuerpo.cantidad) {
+            const cantidad = Number(parametrosCuerpo.cantidad);
+            if (cantidad > 1) {
+                response.set('Premio', 'Fanesca');
+            }
+            return response.send({mensaje: 'Registro Creado'});
+        } else {
+            return response.status(400).send({
+                mensaje: 'ERROR, no envia nombre o cantidad',
+                error: 404
+            });
         }
-      // console.log(parametrosCuerpo);
-      // console.log(request.body);
+        // console.log(parametrosCuerpo);
+        // console.log(request.body);
     }
+
     // COOKIES
     @Get('/semilla')
     getSemilla(@Request() request, @Response() response) {
-      // console.log(request.cookies);
-      const cookies = request.cookies;
-      const esquemaValidacionNumero = Joi.object().keys({
-          numero: Joi.number().integer().required()
-      });
-      // const objetoValidacion = {
-         // numero: cookies.numero
-      // };
-      // Joi.validate(objetoValidacion, esquemaValidacionNumero);
-      const resultado = Joi.validate({
-          numero: cookies.numero
-      }, esquemaValidacionNumero);
-      if (resultado.error) {
-          console.log('Resultado', resultado);
-      } else {
-          console.log('Numero valido');
-      }
-      /* if (cookies.micookie) { // primero objeto a validar, despues el esquema
-          const horaFechaServidor = new Date();
-          const minutos = horaFechaServidor.getMinutes();
-          horaFechaServidor.setMinutes(minutos + 1);
-          response.cookie('fechaServidor', new Date().getTime(), {expires: horaFechaServidor, signed: true}); // nombre, valor --> cookie
-          // return  response.send('OK');
-      } else {
-          // return response.send(':(');
-      } */
-      const cookieSegura = request.signedCookies.fechaServidor;
-      if (!cookieSegura) {
+        // console.log(request.cookies);
+        const cookies = request.cookies;
+        const esquemaValidacionNumero = Joi.object().keys({
+            numero: Joi.number().integer().required()
+        });
+        // const objetoValidacion = {
+        // numero: cookies.numero
+        // };
+        // Joi.validate(objetoValidacion, esquemaValidacionNumero);
+        const resultado = Joi.validate({
+            numero: cookies.numero
+        }, esquemaValidacionNumero);
+        if (resultado.error) {
+            console.log('Resultado', resultado);
+        } else {
+            console.log('Numero valido');
+        }
+        /* if (cookies.micookie) { // primero objeto a validar, despues el esquema
+            const horaFechaServidor = new Date();
+            const minutos = horaFechaServidor.getMinutes();
+            horaFechaServidor.setMinutes(minutos + 1);
+            response.cookie('fechaServidor', new Date().getTime(), {expires: horaFechaServidor, signed: true}); // nombre, valor --> cookie
+            // return  response.send('OK');
+        } else {
+            // return response.send(':(');
+        } */
+        const cookieSegura = request.signedCookies.fechaServidor;
+        if (!cookieSegura) {
             console.log('Cookie Segura');
-            return  response.send('OK');
+            return response.send('OK');
         } else {
             console.log('No es valida esa cookie');
-            return  response.send(':(');
+            return response.send(':(');
         }
     }
+
     @Get('session')
     getSession(@Query('nombre') nombre, @Session() session) {
-      console.log(session);
-      return 'OK';
-      session.autenticado = true; // Si existe, el usuario esta autenticado. Sirve para login.
-      session.nombreUsuario = nombre;
+        console.log(session);
+        return 'OK';
+        session.autenticado = true; // Si existe, el usuario esta autenticado. Sirve para login.
+        session.nombreUsuario = nombre;
     }
+
     @Get('/login')
     getLogin(@Res() res) {
-      return res.render('login.ejs');
+        return res.render('login.ejs');
     }
+
     @Get('/protegido')
     getProtegido(@Res() res, @Session() session) {
-      if (session.username) {
-          return res.render('protegido.ejs', {username: session.username});
-      } else {
-          return res.redirect('login');
-      }
+        if (session.username) {
+            return res.render('protegido.ejs', {username: session.username});
+        } else {
+            return res.redirect('login');
+        }
     }
+
     @Get('logout')
-    getLogOut(@Res() res, @Session() ses){
-      ses.username = undefined;
-      ses.destroy();
-      res.redirect('login');
+    getLogOut(@Res() res, @Session() ses) {
+        ses.username = undefined;
+        ses.destroy();
+        res.redirect('login');
     }
+
     @Post('/login')
     postLogin(@Res() res, @Body() user, @Session() ses) {
-      if (user.username === 'leslie' && user.password === '12345678') {
-          ses.username = user.username;
-          res.redirect('/api/protegido');
-      } else {
-          res.status(400);
-          res.send({ mensaje: 'Error Login', error: 400});
-      }
+        if (user.username === 'leslie' && user.password === '12345678') {
+            ses.username = user.username;
+            res.redirect('/api/protegido');
+        } else {
+            res.status(400);
+            res.send({mensaje: 'Error Login', error: 400});
+        }
     }
-  // http:localhost:3000
-  @Post('/hola-mundo') // Metodo HTTP
- // @HttpCode (200) // Codido HTTP a enviar
-  postHello() {
-    return 'Hola Mundo';
-  }
-  @Put('/anyeong-sesang')
+
+    // http:localhost:3000
+    @Post('/hola-mundo') // Metodo HTTP
+    // @HttpCode (200) // Codido HTTP a enviar
+    postHello() {
+        return 'Hola Mundo';
+    }
+
+    @Put('/anyeong-sesang')
     putHello() {
-      return 'Anyeong Sesang';
-  }
-  @Delete('/bonjour-lemmon')
+        return 'Anyeong Sesang';
+    }
+
+    @Delete('/bonjour-lemmon')
     deleteHello() {
-      return 'Bonjour Lemmon';
-  }
+        return 'Bonjour Lemmon';
+    }
+
+    @Get('subirArchivo/:idTrago')
+    @Render('archivo.ejs')
+    getSubirArchivo(@Param('idTrago') idTrago) {
+        return {idTrago1: idTrago};
+    }
+
+    @Post('subirArchivo/:idTrago')
+    @UseInterceptors(FileInterceptor('imagen', {dest: __dirname + '/../archivos'}))
+    postSubirArchivo(@Param('idTrago') idTrago, @UploadedFile() archivo) {
+        console.log(archivo);
+        return {mensaje: 'OK'};
+    }
+
+    @Get('descargarArchivo/:idTrago')
+    descargarArchivo(@Res() res, @Param('idTrago') idTrago) {
+        const originalname = 'Jellyfish.jpg';
+        const path =
+            'L:\\Familia\\Documents\\2019A-SEPTIMOSEMESTRE\\AplicacionesWeb\\diaz-yanangomez-leslie-mishell\\01-http\\02-servidor-web-nodejs\\api-web\\archivos\\0805c8766ca0aa360e6278317a5ee593';
+        res.download(path, originalname);
+    }
 }
+
 /*
 Segmentos de accion:
 1) GET 'hello-world'
@@ -236,14 +279,17 @@ delete objeto.propiedadTres
 // Variables ? const, let, var
 // tipos de variables: string, number, boolean
 function holaMundo() {
-     console.log('Hola Mundo');
- }
- const resHM = holaMundo(); // cuando tenemos una funcion void en javascript, nos devuelve undefined
- console.log('Resp HM', resHM);
- function suma(a: number, b: number): number { // tipado de la funcion, ambos son numbers
-     return a+b;
- }
- const resSuma = suma(4, 5);  // Respuesta 3
+    console.log('Hola Mundo');
+}
+
+const resHM = holaMundo(); // cuando tenemos una funcion void en javascript, nos devuelve undefined
+console.log('Resp HM', resHM);
+
+function suma(a: number, b: number): number { // tipado de la funcion, ambos son numbers
+    return a + b;
+}
+
+const resSuma = suma(4, 5);  // Respuesta 3
 console.log('Resp suma:', resSuma);
 
 // Condicionales
@@ -260,7 +306,9 @@ if (true) {
 }
 // Operadores de arreglos JS
 let arreglo = [
-    function() {return 0; },
+    function () {
+        return 0;
+    },
     1,
     'A',
     true,
