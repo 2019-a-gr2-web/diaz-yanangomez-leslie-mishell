@@ -4,45 +4,68 @@
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>WebSockets</title>
+    <title>Juego WebSockets</title>
 
 </head>
 <body>
 <div class="row">
     <div class="col-sm-12">
-        <h1 id="titulo">Chat EPN</h1>
+        <h1 id="titulo">Asocia palabras</h1>
 </div>
 </div>
 <!--<p class="par" onmouseenter="clicParrafo()">Segundo</p>-->
-
+<div id="jugadores"></div>
 <div id="contenedor-chat"></div>
-    <label for="chat-texto">Texto</label>
+<div id="respuesta">
+    <p id="espera" hidden><strong>Esperando respuesta de otro jugador ...</strong></p>
+    <label for="chat-texto" id="labelt">Ingresa la palabra: </label>
     <input type="text" id="chat-texto">
-    <button onclick="chattxt()">Enviar</button>
+    <button id="boton" onclick="chattxt()">Enviar</button>
+</div>
+
 
 <!--Script-->
 <script>
-    const titulo = document.getElementById('titulo');
+    /*const titulo = document.getElementById('titulo');
     titulo.style.backgroundColor = 'white';
     titulo.onclick = () => {
         console.log('Diste clic al titulo');
-    };
+    };*/
 
+    function validarPalabra(letra, palabra) {
+        const letraval = palabra.slice(0,1);
+        if (letraval === letra){
+            return 'La palabra debe comenzar con ' + palabra.slice(-1);
+        }else {
+            return 'Perdiste :(';
+        }
+    }
     function chattxt() {
+        const boton = document.getElementById('boton');
+        const input = document.getElementById('chat-texto');
+        const label = document.getElementById('labelt');
+        const parrafor = document.getElementById('espera');
+        boton.hidden = true;
+        input.hidden = true;
+        label.hidden = true;
+        parrafor.hidden = false;
         const valor = document.getElementById('chat-texto');
         const texto = valor.value;
-        console.log(texto);
-
+        //console.log(texto);
+        valor.value = ""; //Limpiar Campo
+        const texto1 = validarPalabra(letraactual,texto);
+        console.log(texto1);
         const idContenedor = 'contenedor-chat';
         const etiquetaHTMLChat = 'p';
         const parrafo = document.createElement(etiquetaHTMLChat);
+        const letra = texto.slice(-1); /// En la ventana del jugador
         const contenidoHTML = `
         <div class="alert alert-primary text-right" role="alert">
-            ${texto}
+            Letra en juego:  <strong>${letra}</strong>
         </div>`;
         parrafo.innerHTML = contenidoHTML;
         anadirEtiqueta(idContenedor,parrafo);
-        peticionHolaMundo(texto);
+        peticionHolaMundo(letra);
     };
 
     function anadirEtiqueta(idEtiqueta, elementoHTML) {
@@ -60,6 +83,7 @@
     //Conexion de IP y puerto del ws
     const url = 'http://localhost:3001/websockets';
     const socket = io(url);
+    let letraactual = '';
     console.log('Ya mismito nos conectamos :D');
     socket.on(
         'connect', // Nombre del evento
@@ -83,11 +107,20 @@
     }
     socket.on('saludaron', (data) => {
         console.log('Nos saludaron', data);
-        //const idContenedor = document.getElementById('contenedor-chat');
+        letraactual = data.nombre;
+        const boton = document.getElementById('boton');
+        const input = document.getElementById('chat-texto');
+        const label = document.getElementById('labelt');
+        const parrafor = document.getElementById('espera');
+        boton.hidden = false;
+        input.hidden = false;
+        label.hidden = false;
+        parrafor.hidden = true;
         const parrafo = document.createElement('p');
+        const letra = data.nombre;
         const HTMLParrafo = `
         <div class="alert alert-secondary" role="alert">
-               ${data.nombre}
+              La palabra debe comenzar con <strong>${letra}</strong>
         </div>`;
         parrafo.innerHTML = HTMLParrafo;
         anadirEtiqueta('contenedor-chat',parrafo);
