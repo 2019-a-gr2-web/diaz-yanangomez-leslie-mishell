@@ -1,9 +1,7 @@
-import {IsDate, IsEmpty, IsNotEmpty, IsNumber, IsOptional, IsString} from "class-validator";
-
+import {IsDate, IsEmpty, IsNotEmpty, IsNumber, IsOptional, IsString} from 'class-validator';
 export class TragosCreateDto {
     @IsEmpty()
     id: number;
-
     @IsNotEmpty() // No esta vacio y es un string
     @IsString()
     nombre: string;
