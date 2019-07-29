@@ -33,6 +33,9 @@ export class AutoService {
     buscarPorChasis(parametro: number): Promise<AutoEntity[]> {
         return this._autoRepository.find({chasis: parametro});
     }
+    buscarPorId(autoid: number): Promise<AutoEntity> {
+        return this._autoRepository.findOne({autoId: autoid});
+    }
     buscarPorColor(parametro: string): Promise<AutoEntity[]> {
         return this._autoRepository.find({
             where: [

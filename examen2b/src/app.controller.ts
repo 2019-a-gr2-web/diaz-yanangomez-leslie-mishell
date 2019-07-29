@@ -6,6 +6,7 @@ import {PedidoService} from "../entities/pedido.service";
 import {Auto} from "../interfaces/auto";
 import {AutoCreateDto} from "../dto/auto.create.dto";
 import {validate} from "class-validator";
+import {AutoUpdateDto} from "../dto/auto.update.dto";
 
 @Controller('/api')
 export class AppController {
@@ -166,6 +167,45 @@ export class AppController {
         } else {
             return res.redirect('/api/login');
         }
+    }
+    @Get('/modificarHijo/:userid/:conductorId/:autoId') // EndPoint
+    async getMP(@Res() res, @Param() par, @Req() req, @Session() ses, @Query() query) {
+        if (ses.username && (Number(ses.userid) === Number(par.userid))) {
+            const auto = await this.autoService.buscarPorId(par.autoId);
+            return res.render('modificar-pelicula.ejs', {
+                conductorId: par.conductorId,
+                username1: ses.username,
+                userid: par.userid,
+                mensaje1: query.mensaje,
+                hijo: auto,
+            });
+        } else {
+            return res.redirect('/api/login');
+        }
+    }
+    @Post('/modificarHijo')
+    async postMP(@Res() res, @Body() auto: Auto, @Body('userid') userid: number, @Session() ses) {
+        auto.chasis = Number(auto.chasis);
+        auto.anio = Number(auto.anio);
+        auto.conductorId = Number(auto.conductorId);
+        auto.autoId = Number(auto.autoId);
+        let autoAValidar = new AutoUpdateDto();
+        autoAValidar.colorUno = auto.colorUno;
+        autoAValidar.colorDos = auto.colorDos;
+        try {
+            const respValidacionErrors = await validate(autoAValidar);
+            if (respValidacionErrors.length > 0) {
+                console.log(respValidacionErrors);
+                res.redirect('../api/modificarHijo/' + userid + '/' + auto.conductorId + '/' + auto.autoId + '?mensaje=Revisa que los campos no esten vacios y sean datos permitidos :)'); // hhjgj
+            } else {
+                await this.autoService.actualizarAuto(auto);
+                res.redirect('../api/gestionHijos/' + userid + '/' + auto.conductorId);
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({mensaje: 'Hubo un error', codigo: 500});
+        }
+
     }
 }
 

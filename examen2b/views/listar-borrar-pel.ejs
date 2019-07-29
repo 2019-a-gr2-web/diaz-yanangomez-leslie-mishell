@@ -136,15 +136,7 @@
         <td><%=hijo.nombreModelo%></td>
         <td><%=hijo.anio%></td>
         <td>
-            <form action="/../api/eliminarHijo" method="POST">
-                <label for="autoId"></label>
-                <input type="number" id="autoId" name="autoId" hidden value="<%=hijo.autoId%>">
-                <label for="conductorId"></label>
-                <input type="number" id="conductorId" name="conductorId" hidden value="<%=hijo.conductorIdConductorId%>">
-                <label for="userid"></label>
-                <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
-                <button class="btn btn-primary">Modificar</button>
-            </form>
+            <a href="/../api/modificarHijo/<%=userid%>/<%=conductorId%>/<%=hijo.autoId%>"><button class="btn btn-primary">Modificar</button></a>
             <form action="/../api/eliminarHijo" method="POST">
                 <label for="autoId"></label>
                 <input type="number" id="autoId" name="autoId" hidden value="<%=hijo.autoId%>">
@@ -158,7 +150,7 @@
                 <label for="autoId"></label>
                 <input type="number" id="autoId" name="autoId" hidden value="<%=hijo.autoId%>">
                 <label for="conductorId"></label>
-                <input type="number" id="conductorId" name="conductorId" hidden value="<%=hijo.conductorIdConductorId%>">
+                <input type="number" id="conductorId" name="conductorId" hidden value="<%=hijo.conductorId%>">
                 <label for="userid"></label>
                 <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
                 <button class="btn btn-secondary">Añadir al Carrito</button>
