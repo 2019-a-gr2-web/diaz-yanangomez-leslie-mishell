@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Gestionar Padres</title>
     <style>
         .barrasup {
             text-align: center;
@@ -59,40 +59,39 @@
     <div class="container" id="form">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Gestión de Actores</h1>
+                <h1>Gestión de Padres</h1>
             </div>
         </div>
     <div class="row">
         <div class="col-md-6">
-
-            <form action="/../api/buscarActor" method="post">
-                <div class="row justify-content-end">
-                    <div class="col-sm-2"><label for="nombreActor">Buscar: </label></div>
-                    <div class="col-sm-6"> <input style="height: 100%" class="texto" type="text" id="nombreActor" name="nombreActor" placeholder="Escriba el nombre del actor"></div>
-                    <div class="col-sm-2"><button class="btn btn-success"><i class="fa fa-search"></i></button></div>
-            </div>
+            <!--        <form action="/../api/buscarActor" method="post">
+                        <div class="row justify-content-end">-->
+<!--                    <div class="col-sm-2"><label for="nombreActor">Buscar: </label></div>-->
+<!--                    <div class="col-sm-6"> <input style="height: 100%" class="texto" type="text" id="nombreActor" name="nombreActor" placeholder="Escriba el nombre del actor"></div>-->
+<!--                    <div class="col-sm-2"><button class="btn btn-success"><i class="fa fa-search"></i></button></div>-->
+<!--            </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <!--                <div class="col-sm-6"><label for="userid"></label></div>-->
+                        <div class="col-sm-6"><label for="userid"></label></div>
                         <input type="number" id="userid" name="userid" value="<%=userid%>" hidden>
                     </div>
                 </div>
-            </form>
+            </form>-->
 
         </div>
         <div class="col-md-6">
-            <div class="row justify-content-end opc">
+            <!--<div class="row justify-content-end opc">
                 <div class="col-sm-4"><a href="/../api/nuevoActor/<%=userid%>"><button class="btn btn-primary">Nuevo Registro</button></a>
                 </div>
-            </div>
+            </div> -->
             <div class="row justify-content-end opc">
                 <div class="col-sm-4"> <a href="/../api/index/<%=userid%>"><button class="btn btn-secondary">Volver</button></a>
                 </div>
             </div>
         </div>
     </div>
-<% if (arregloActores1.length===0) { %>
-    <h3>No existen actores para mostrar</h3>
+<% if (arregloPadres1.length === 0) { %>
+    <h3>No existen padres para mostrar</h3>
 <% } else { %>
 <div class="table-responsive">
 <table>
@@ -100,31 +99,31 @@
         <th>Nombres</th>
         <th>Apellidos</th>
         <th>Fecha de Nacimiento</th>
-        <th>Numero de Peliculas</th>
-        <th>Retirado</th>
+        <th>Numero de Autos</th>
+        <th>Licencia Válida</th>
         <th>Acciones</th>
     </tr>
-    <% arregloActores1.forEach((actor)=> { %>
+    <% arregloPadres1.forEach((padre)=> { %>
     <tr>
-        <td><%=actor.nombres%></td>
-        <td><%=actor.apellidos%></td>
-        <td><%=actor.fechaNacimiento%></td>
-        <td><%=actor.numeroPeliculas%></td>
-        <% if (actor.retirado) {%>
+        <td><%=padre.nombres%></td>
+        <td><%=padre.apellidos%></td>
+        <td><%=padre.fechaNacimiento%></td>
+        <td><%=padre.numeroAutos%></td>
+        <% if (padre.licenciaValida) {%>
         <td>Si</td>
         <%} else {%>
         <td>No</td>
         <% } %>
         <td>
-            <form action="/../api/eliminarActor" method="POST">
-<!--                <label for="idActor"></label>-->
-                <input type="number" id="idActor" name="idActor" hidden value="<%=actor.idActor%>">
-<!--                <label for="userid"></label>-->
+            <!--<form action="/../api/eliminarActor" method="POST">
+               <label for="idActor"></label> //eli
+                <input type="number" id="idActor" name="idActor" hidden value="<%=padre.conductorId%>">
+              <label for="userid"></label> //eli
                 <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
                 <button class="btn btn-danger">Eliminar</button>
             </form>
-            <br>
-            <a href="/../api/gestionPeliculas/<%=userid%>/<%=actor.idActor%>"><button type="button" class="btn btn-primary ">Gestionar Peliculas</button></a>
+            <br> -->
+            <a href="/../api/gestionHijos/<%=userid%>/<%=padre.conductorId%>"><button type="button" class="btn btn-primary ">Gestionar Hijos</button></a>
         </td>
         <%})%>
     </tr>

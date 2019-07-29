@@ -3,6 +3,7 @@ import {ConductorEntity} from '../entities/conductor.entity';
 import {InjectRepository} from '@nestjs/typeorm';
 import {DeleteResult, Repository, UpdateResult} from 'typeorm';
 import {Conductor} from '../interfaces/conductor';
+import {TragosEntity} from "../../01-http/02-servidor-web-nodejs/api-web/src/trago/tragos.entity";
 
 @Injectable()
 export class ConductorService {
@@ -19,5 +20,8 @@ export class ConductorService {
     crearConductor(nuevoConductor: Conductor): Promise<ConductorEntity> {
         const objetoEntidad = this._conductorRepository.create(nuevoConductor);
         return this._conductorRepository.save(objetoEntidad);
+    }
+    getConductores(): Promise<ConductorEntity[]> {
+        return this._conductorRepository.find();
     }
 }

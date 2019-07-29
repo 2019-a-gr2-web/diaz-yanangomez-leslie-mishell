@@ -24,16 +24,22 @@ export class AutoService {
         const objetoEntidad = this._autoRepository.create(nuevoAuto);
         return this._autoRepository.save(objetoEntidad);
     }
-    eliminarAutoPorId(idt: number): Promise<DeleteResult> {
-        return this._autoRepository.delete({autoId: idt});
+    eliminarAutoPorId(autoid): Promise<DeleteResult> {
+        return this._autoRepository.delete({autoId: autoid});
     }
-
-    buscarAuto(parametrosBusqueda?): Promise<AutoEntity[]> {
-        return this._autoRepository.find(parametrosBusqueda);
+    getAutos(conductorid): Promise<AutoEntity[]> {
+        return this._autoRepository.find({conductorId: conductorid});
     }
-
-    buscarPorId(idt: number): Promise<AutoEntity[]> {
-        return this._autoRepository.find({autoId: idt});
+    buscarPorChasis(parametro: number): Promise<AutoEntity[]> {
+        return this._autoRepository.find({chasis: parametro});
+    }
+    buscarPorColor(parametro: string): Promise<AutoEntity[]> {
+        return this._autoRepository.find({
+            where: [
+                { colorUno: parametro},
+                { colorDos: parametro},
+            ],
+        });
     }
 
     actualizarAuto(auto: Auto): Promise<UpdateResult> {

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Gestionar Hijos</title>
     <style>
         .barrasup {
             text-align: center;
@@ -47,6 +47,18 @@
         .opc{
             padding-bottom: 10px;
         }
+        select.form-control {
+            width: 100%;
+            border: #428bca 1px solid;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background-position: right center;
+            background-repeat: no-repeat;
+            background-size: 1ex;
+            background-origin: content-box;
+            background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmVyc2lvbj0iMS4xIgogICBpZD0ic3ZnMiIKICAgdmlld0JveD0iMCAwIDM1Ljk3MDk4MyAyMy4wOTE1MTgiCiAgIGhlaWdodD0iNi41MTY5Mzk2bW0iCiAgIHdpZHRoPSIxMC4xNTE4MTFtbSI+CiAgPGRlZnMKICAgICBpZD0iZGVmczQiIC8+CiAgPG1ldGFkYXRhCiAgICAgaWQ9Im1ldGFkYXRhNyI+CiAgICA8cmRmOlJERj4KICAgICAgPGNjOldvcmsKICAgICAgICAgcmRmOmFib3V0PSIiPgogICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PgogICAgICAgIDxkYzp0eXBlCiAgICAgICAgICAgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIgLz4KICAgICAgICA8ZGM6dGl0bGU+PC9kYzp0aXRsZT4KICAgICAgPC9jYzpXb3JrPgogICAgPC9yZGY6UkRGPgogIDwvbWV0YWRhdGE+CiAgPGcKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjAyLjAxNDUxLC00MDcuMTIyMjUpIgogICAgIGlkPSJsYXllcjEiPgogICAgPHRleHQKICAgICAgIGlkPSJ0ZXh0MzMzNiIKICAgICAgIHk9IjYyOS41MDUwNyIKICAgICAgIHg9IjI5MS40Mjg1NiIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjQwcHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIj48dHNwYW4KICAgICAgICAgeT0iNjI5LjUwNTA3IgogICAgICAgICB4PSIyOTEuNDI4NTYiCiAgICAgICAgIGlkPSJ0c3BhbjMzMzgiPjwvdHNwYW4+PC90ZXh0PgogICAgPGcKICAgICAgIGlkPSJ0ZXh0MzM0MCIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTo0MHB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6Rm9udEF3ZXNvbWU7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpGb250QXdlc29tZTtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIj4KICAgICAgPHBhdGgKICAgICAgICAgaWQ9InBhdGgzMzQ1IgogICAgICAgICBzdHlsZT0iZmlsbDojMzMzMzMzO2ZpbGwtb3BhY2l0eToxIgogICAgICAgICBkPSJtIDIzNy41NjY5Niw0MTMuMjU1MDcgYyAwLjU1ODA0LC0wLjU1ODA0IDAuNTU4MDQsLTEuNDczMjIgMCwtMi4wMzEyNSBsIC0zLjcwNTM1LC0zLjY4MzA0IGMgLTAuNTU4MDQsLTAuNTU4MDQgLTEuNDUwOSwtMC41NTgwNCAtMi4wMDg5MywwIEwgMjIwLDQxOS4zOTM0NiAyMDguMTQ3MzIsNDA3LjU0MDc4IGMgLTAuNTU4MDMsLTAuNTU4MDQgLTEuNDUwODksLTAuNTU4MDQgLTIuMDA4OTMsMCBsIC0zLjcwNTM1LDMuNjgzMDQgYyAtMC41NTgwNCwwLjU1ODAzIC0wLjU1ODA0LDEuNDczMjEgMCwyLjAzMTI1IGwgMTYuNTYyNSwxNi41NDAxNyBjIDAuNTU4MDMsMC41NTgwNCAxLjQ1MDg5LDAuNTU4MDQgMi4wMDg5MiwwIGwgMTYuNTYyNSwtMTYuNTQwMTcgeiIgLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=");
+        }
     </style>
 </head>
 <body>
@@ -59,21 +71,28 @@
     <div class="container" id="form">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Gestión de Películas</h1>
+                <h1>Gestión de Hijos</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-            <form action="/../api/buscarPelicula" method="post">
+            <div class="col-md-8">
+            <form action="/../api/buscarHijo" method="post">
                 <div class="row justify-content-end">
-                    <div class="col-sm-2"><label for="nombrePelicula">Buscar: </label></div>
-                    <div class="col-sm-6"> <input style="height: 100%" class="texto" type="text" id="nombrePelicula" name="nombrePelicula" placeholder="Escriba el nombre de la pelicula"></div>
-                    <div class="col-sm-2"><button class="btn btn-success"><i class="fa fa-search"></i></button></div>
+                    <div class="col-sm-2"><label for="parametro">Buscar por: </label></div>
+                    <div class="col-sm-4">
+                        <select id="busqueda" name="busqueda" class="form-control">
+                            <option value="null" selected disabled>Seleccione una Opcion</option>
+                            <option value="chasis" onclick="habil()">Chasis</option>
+                            <option value="color" onclick="habil()">Color</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4"> <input style="height: 100%" class="texto" type="text" id="parametro" name="parametro" placeholder="Escriba su búsqueda" disabled></div>
+                    <div class="col-sm-2"><button class="btn btn-success" id="bbuscar" disabled><i class="fa fa-search"></i></button></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
 <!--                        <label for="idActor"></label>-->
-                        <input type="number" id="idActor" name="idActor" value="<%=idActor%>" hidden>
+                        <input type="number" id="conductorId" name="conductorId" value="<%=conductorId%>" hidden>
 <!--                        <label for="userid"></label>-->
                         <input type="number" id="userid" name="userid" value="<%=userid%>" hidden>
 
@@ -81,48 +100,68 @@
                 </div>
             </form>
 </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="row justify-content-end opc">
                     <div class="col-sm-4">
-                        <a href="/../api/nuevaPelicula/<%=userid%>/<%=idActor%>"><button class="btn btn-primary">Nuevo Registro</button></a>
+                        <a href="/../api/nuevoHijo/<%=userid%>/<%=conductorId%>"><button class="btn btn-primary">Nuevo Registro</button></a>
                     </div>
                 </div>
                 <div class="row justify-content-end opc">
                 <div class="col-sm-4">
-                        <a href="/../api/gestionActores/<%=userid%>"><button class="btn btn-secondary">Volver</button></a>
+                        <a href="/../api/gestionPadres/<%=userid%>"><button class="btn btn-secondary">Volver</button></a>
                     </div>
                 </div>
             </div>
         </div>
-<% if (arregloPeliculas1.length===0) { %>
-    <h3>No existen peliculas para mostrar</h3>
+<% if (arregloHijos1.length===0) { %>
+    <h3>No existen hijos para mostrar</h3>
 <% } else { %>
 <div class="table-responsive">
 <table>
     <tr>
-        <th>Nombre</th>
-        <th>Año de Lanzamiento</th>
-        <th>Rating</th>
-        <th>Actores Principales</th>
-        <th>Sinopsis</th>
+        <th>Chasis</th>
+        <th>Nombre de la Marca</th>
+        <th>Primer Color</th>
+        <th>Segundo Color</th>
+        <th>Nombre del Modelo</th>
+        <th>Año</th>
         <th>Acciones</th>
     </tr>
-    <% arregloPeliculas1.forEach((pelicula)=> { %>
+    <% arregloHijos1.forEach((hijo)=> { %>
     <tr>
-        <td><%=pelicula.nombre%></td>
-        <td><%=pelicula.anioLanzamiento%></td>
-        <td><%=pelicula.rating%></td>
-        <td><%=pelicula.actoresPrincipales%></td>
-        <td><%=pelicula.sinopsis%></td>
+        <td><%=hijo.chasis%></td>
+        <td><%=hijo.nombreMarca%></td>
+        <td><%=hijo.colorUno%></td>
+        <td><%=hijo.colorDos%></td>
+        <td><%=hijo.nombreModelo%></td>
+        <td><%=hijo.anio%></td>
         <td>
-            <form action="/../api/eliminarPelicula" method="POST">
-                <label for="idPelicula"></label>
-                <input type="number" id="idPelicula" name="idPelicula" hidden value="<%=pelicula.idPelicula%>">
-                <label for="idActor"></label>
-                <input type="number" id="idActor" name="idActor" hidden value="<%=pelicula.idActor%>">
+            <form action="/../api/eliminarHijo" method="POST">
+                <label for="autoId"></label>
+                <input type="number" id="autoId" name="autoId" hidden value="<%=hijo.autoId%>">
+                <label for="conductorId"></label>
+                <input type="number" id="conductorId" name="conductorId" hidden value="<%=hijo.conductorIdConductorId%>">
+                <label for="userid"></label>
+                <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
+                <button class="btn btn-primary">Modificar</button>
+            </form>
+            <form action="/../api/eliminarHijo" method="POST">
+                <label for="autoId"></label>
+                <input type="number" id="autoId" name="autoId" hidden value="<%=hijo.autoId%>">
+                <label for="conductorId"></label>
+                <input type="number" id="conductorId" name="conductorId" hidden value="<%=conductorId%>">
                 <label for="userid"></label>
                 <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
                 <button class="btn btn-danger">Eliminar</button>
+            </form>
+            <form action="/../api/eliminarHijo" method="POST">
+                <label for="autoId"></label>
+                <input type="number" id="autoId" name="autoId" hidden value="<%=hijo.autoId%>">
+                <label for="conductorId"></label>
+                <input type="number" id="conductorId" name="conductorId" hidden value="<%=hijo.conductorIdConductorId%>">
+                <label for="userid"></label>
+                <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
+                <button class="btn btn-secondary">Añadir al Carrito</button>
             </form>
         </td>
         <%})%>
@@ -133,4 +172,10 @@
 </div>
 </div>
 </body>
+<script>
+    function habil() {
+        document.getElementById('parametro').disabled = false;
+        document.getElementById('bbuscar').disabled = false;
+    }
+</script>
 </html>

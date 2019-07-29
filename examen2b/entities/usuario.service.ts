@@ -18,8 +18,14 @@ export class UsuarioService {
         };
         this.crearUsuario(usuario);
     }
+    verificarPassword(usernames: string): Promise<UsuarioEntity> {
+        return  this._usuarioRepository.findOne({ username: usernames});
+    }
     crearUsuario(nuevoUsuario: Usuario): Promise<UsuarioEntity> {
         const objetoEntidad = this._usuarioRepository.create(nuevoUsuario);
         return this._usuarioRepository.save(objetoEntidad);
+    }
+    buscarPorId(usuarioid: number): Promise<UsuarioEntity> {
+        return this._usuarioRepository.findOne({ usuarioId: usuarioid});
     }
 }
