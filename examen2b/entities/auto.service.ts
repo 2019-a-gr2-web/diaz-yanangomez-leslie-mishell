@@ -14,6 +14,7 @@ export class AutoService {
             colorDos: 'plateado',
             nombreModelo: 'EX599',
             anio: 2016,
+            precio: 2000.00,
             conductorId: 1,
         };
         this.crearAuto(auto);
@@ -28,6 +29,11 @@ export class AutoService {
         return this._autoRepository.delete({autoId: autoid});
     }
     getAutos(conductorid): Promise<AutoEntity[]> {
+        /*return this._autoRepository.find({
+            where: [
+                { conductorId: conductorid},
+            ],
+        });*/
         return this._autoRepository.find({conductorId: conductorid});
     }
     buscarPorChasis(parametro: number): Promise<AutoEntity[]> {
@@ -46,6 +52,6 @@ export class AutoService {
     }
 
     actualizarAuto(auto: Auto): Promise<UpdateResult> {
-        return this._autoRepository.update(auto.autoId, {colorUno: auto.colorUno, colorDos: auto.colorDos});
+        return this._autoRepository.update(auto.autoId, {colorUno: auto.colorUno, colorDos: auto.colorDos, precio: auto.precio});
     }
 }

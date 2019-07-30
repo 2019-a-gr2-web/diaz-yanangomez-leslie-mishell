@@ -1,5 +1,6 @@
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {UsuarioEntity} from './usuario.entity';
+import {DetalleEntity} from './detalle.entity';
 @Entity('bd_pedido')
 export class PedidoEntity {
     @PrimaryGeneratedColumn()
@@ -29,4 +30,6 @@ export class PedidoEntity {
     @ManyToOne(type => UsuarioEntity,
         usuario => usuario.pedidos)
         usuarioId: UsuarioEntity;
+    @OneToMany( type => DetalleEntity, detalle => detalle.numLinea)
+    detalle: DetalleEntity[];
 }

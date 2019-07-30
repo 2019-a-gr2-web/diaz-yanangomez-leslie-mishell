@@ -1,5 +1,6 @@
-import {Column, Entity, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany} from 'typeorm';
 import {ConductorEntity} from './conductor.entity';
+import {DetalleEntity} from "./detalle.entity";
 @Entity('bd_auto')
 export class AutoEntity {
     @PrimaryGeneratedColumn()
@@ -38,7 +39,17 @@ export class AutoEntity {
         name: 'anio',
     })
     anio: number;
+    @Column({
+        type: 'decimal',
+        precision: 10,
+        scale: 2,
+        name: 'precio',
+        default: 0.00,
+    })
+    precio: number;
     @ManyToOne(type => ConductorEntity,
         conductor => conductor.autos)
     conductorId: ConductorEntity;
+    @OneToMany( type => DetalleEntity, detalle => detalle.numLinea)
+    detalles: DetalleEntity[];
 }

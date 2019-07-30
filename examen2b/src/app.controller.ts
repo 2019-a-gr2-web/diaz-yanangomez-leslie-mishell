@@ -1,23 +1,33 @@
 import {Body, Controller, Get, Header, Param, Post, Query, Req, Res, Session} from '@nestjs/common';
 import {ConductorService} from '../entities/conductor.service';
-import {UsuarioService} from "../entities/usuario.service";
-import {AutoService} from "../entities/auto.service";
-import {PedidoService} from "../entities/pedido.service";
-import {Auto} from "../interfaces/auto";
-import {AutoCreateDto} from "../dto/auto.create.dto";
-import {validate} from "class-validator";
-import {AutoUpdateDto} from "../dto/auto.update.dto";
+import {UsuarioService} from '../entities/usuario.service';
+import {AutoService} from '../entities/auto.service';
+import {PedidoService} from '../entities/pedido.service';
+import {Auto} from '../interfaces/auto';
+import {AutoCreateDto} from '../dto/auto.create.dto';
+import {validate} from 'class-validator';
+import {AutoUpdateDto} from '../dto/auto.update.dto';
+import {CarritoGateway} from './carrito/carrito.gateway';
+import {DetalleService} from "../entities/detalle.service";
+import {Pedido} from "../interfaces/pedido";
+import {Detalle} from "../interfaces/detalle";
+import {PedidoEntity} from "../entities/pedido.entity";
 
 @Controller('/api')
 export class AppController {
-    // constructor(private readonly appService: AppService) {}
     constructor(private readonly conductorService: ConductorService, private readonly usuarioService: UsuarioService,
-                private readonly autoService: AutoService, private readonly pedidoService: PedidoService) {
+                private readonly autoService: AutoService, private readonly pedidoService: PedidoService,
+                private readonly carritoGateway: CarritoGateway, private readonly detalleService: DetalleService) {
     }
 
     @Get('/login')
     getLogin(@Res() res) {
+        // this.carritoGateway.server.emit('saludaron', 'Hola, creo que si funciona /o/');
         return res.render('login.ejs');
+    }
+    @Get('/carrito')
+    getCarrito(@Res() res) {
+        return res.redirect('http://localhost:3001/carrito');
     }
 
     @Post('/login')
@@ -27,8 +37,10 @@ export class AppController {
             if (username === user.username && password === user.password) {
                 ses.username = user.nombreApellido;
                 ses.userid = user.usuarioId;
+                ses.rolId = user.rolId;
                 console.log(ses.username);
                 console.log(ses.userid);
+                console.log(ses.rolId);
                 res.redirect('/api/index/' + user.usuarioId);
             } else {
                 res.status(400);
@@ -80,6 +92,7 @@ export class AppController {
     async getGP(@Res() res, @Param() par, @Req() req, @Session() ses, @Query('mensaje') mensaje1: string) {
         if (ses.username && (Number(ses.userid) === Number(par.userid))) {
             const arregloHijos = await this.autoService.getAutos(Number(par.conductorId));
+            // const pedidoActual = await this.pedidoService.pedidoActivoPorUsuario(Number(ses.userid));
             // console.log(arregloHijos);
             return res.render('listar-borrar-pel.ejs', {
                 arregloHijos1: arregloHijos,
@@ -92,7 +105,7 @@ export class AppController {
             return res.redirect('/api/login');
         }
     }
-
+//Cambiar Aqui
     @Post('/buscarHijo')
     async postBuscarP(@Req() req, @Session() ses, @Body('parametro') parametro: string, @Body('busqueda') busqueda: string,
                       @Body('conductorId') conductorid: number, @Body('userid') useridd: number, @Res() res) {
@@ -100,6 +113,16 @@ export class AppController {
             res.redirect('/../api/gestionHijos/' + useridd + '/' + conductorid);
         } else {
             if (busqueda === 'chasis') {
+                if (!Number(parametro)) {
+                    const para: number = -1;
+                    const bdBuscar = await this.autoService.buscarPorChasis(para);
+                    return res.render('listar-borrar-pel.ejs', {
+                        arregloHijos1: bdBuscar,
+                        conductorId: conductorid,
+                        username1: ses.username,
+                        userid: useridd
+                    });
+                } else {
                 const bdBuscar = await this.autoService.buscarPorChasis(Number(parametro));
                 return res.render('listar-borrar-pel.ejs', {
                     arregloHijos1: bdBuscar,
@@ -107,6 +130,7 @@ export class AppController {
                     username1: ses.username,
                     userid: useridd
                 });
+            }
             } else if (busqueda === 'color') {
                 const bdBuscar = await this.autoService.buscarPorColor(parametro);
                 return res.render('listar-borrar-pel.ejs', {
@@ -133,6 +157,7 @@ export class AppController {
         auto.chasis = Number(auto.chasis);
         auto.anio = Number(auto.anio);
         auto.conductorId = Number(auto.conductorId);
+        auto.precio = Number(auto.precio);
         let autoAValidar = new AutoCreateDto();
         autoAValidar.chasis = auto.chasis;
         autoAValidar.nombreMarca = auto.nombreMarca;
@@ -140,6 +165,7 @@ export class AppController {
         autoAValidar.colorDos = auto.colorDos;
         autoAValidar.nombreModelo = auto.nombreModelo;
         autoAValidar.anio = auto.anio;
+        autoAValidar.precio = auto.precio;
         autoAValidar.conductorId = auto.conductorId;
         try {
             const respValidacionErrors = await validate(autoAValidar);
@@ -168,6 +194,7 @@ export class AppController {
             return res.redirect('/api/login');
         }
     }
+
     @Get('/modificarHijo/:userid/:conductorId/:autoId') // EndPoint
     async getMP(@Res() res, @Param() par, @Req() req, @Session() ses, @Query() query) {
         if (ses.username && (Number(ses.userid) === Number(par.userid))) {
@@ -183,19 +210,22 @@ export class AppController {
             return res.redirect('/api/login');
         }
     }
+
     @Post('/modificarHijo')
-    async postMP(@Res() res, @Body() auto: Auto, @Body('userid') userid: number, @Session() ses) {
+    async postMP(@Res() res, @Body() auto: Auto, @Body('userid') userid: number) {
         auto.chasis = Number(auto.chasis);
         auto.anio = Number(auto.anio);
         auto.conductorId = Number(auto.conductorId);
         auto.autoId = Number(auto.autoId);
+        auto.precio = Number(auto.precio);
         let autoAValidar = new AutoUpdateDto();
         autoAValidar.colorUno = auto.colorUno;
         autoAValidar.colorDos = auto.colorDos;
+        autoAValidar.precio = auto.precio;
         try {
             const respValidacionErrors = await validate(autoAValidar);
             if (respValidacionErrors.length > 0) {
-                console.log(respValidacionErrors);
+                // console.log(respValidacionErrors);
                 res.redirect('../api/modificarHijo/' + userid + '/' + auto.conductorId + '/' + auto.autoId + '?mensaje=Revisa que los campos no esten vacios y sean datos permitidos :)'); // hhjgj
             } else {
                 await this.autoService.actualizarAuto(auto);
@@ -206,6 +236,48 @@ export class AppController {
             res.status(500).send({mensaje: 'Hubo un error', codigo: 500});
         }
 
+    }
+    @Post('/anadirCarrito')
+    async postAC(@Res() res, @Body('autoId') autoid: number, @Body('precio') precio: number,
+                 @Body('conductorId') conductorid: number, @Body('usuarioId') usuarioid: number) {
+        const ped = await this.pedidoService.pedidoActivoPorUsuario(usuarioid);
+        console.log(ped);
+        if (ped === undefined) {
+            const pedido: Pedido = {
+                estadoPedido: 'Activo',
+                totalSinImpuestos: precio,
+                totalConImpuestos: precio * 1.12,
+                usuarioId: usuarioid,
+            };
+            const ped1 = await this.pedidoService.crearPedido(pedido);
+            const det = await this.detalleService.buscarProductoEnDetalle(ped1.pedidoId, autoid);
+            if (det === undefined) {
+                const detalle: Detalle =  {
+                    cantidad: 1,
+                    pedidoId: ped1.pedidoId,
+                    autoId: autoid,
+                };
+                await this.detalleService.nuevoDetalle(detalle);
+            } else {
+                det.cantidad = det.cantidad + 1;
+                await this.detalleService.masProducto(det);
+            }
+        } else {
+            await this.pedidoService.updateTotal(ped, precio);
+            const det = await this.detalleService.buscarProductoEnDetalle(ped.pedidoId, autoid);
+            if (det === undefined) {
+                const detalle: Detalle = {
+                    cantidad: 1,
+                    pedidoId: ped.pedidoId,
+                    autoId: autoid,
+                };
+                await this.detalleService.nuevoDetalle(detalle);
+            } else {
+                det.cantidad = det.cantidad + 1;
+                await this.detalleService.masProducto(det);
+            }
+        }
+        return res.redirect('/../api/gestionHijos/' + usuarioid + '/' + conductorid);
     }
 }
 

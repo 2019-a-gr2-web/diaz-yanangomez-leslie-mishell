@@ -1,4 +1,4 @@
-import { IsEmpty, IsNotEmpty, IsNumber, IsString} from 'class-validator';
+import {IsEmpty, IsNotEmpty, IsNumber, IsOptional, IsString} from 'class-validator';
 export class AutoCreateDto {
     @IsEmpty()
     autoId: number;
@@ -25,5 +25,10 @@ export class AutoCreateDto {
     anio: number;
     @IsNotEmpty() // es un numero
     @IsNumber()
+    precio: number;
+    @IsNotEmpty() // es un numero
+    @IsNumber()
     conductorId: number;
+    @IsOptional()
+    estaCarrito: boolean;
 }

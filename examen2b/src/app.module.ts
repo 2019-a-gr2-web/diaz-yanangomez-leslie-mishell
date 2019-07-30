@@ -10,8 +10,11 @@ import {UsuarioModule} from '../entities/usuario.module';
 import {PedidoModule} from '../entities/pedido.module';
 import {ConductorModule} from '../entities/conductor.module';
 import {AutoModule} from '../entities/auto.module';
+import {CarritoModule} from './carrito/carrito.module';
+import {DetalleModule} from '../entities/detalle.module';
+import {DetalleEntity} from '../entities/detalle.entity';
 @Module({
-  imports: [UsuarioModule, PedidoModule, ConductorModule, AutoModule,
+  imports: [UsuarioModule, PedidoModule, ConductorModule, AutoModule, CarritoModule, DetalleModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -19,10 +22,10 @@ import {AutoModule} from '../entities/auto.module';
       username: 'root',
       password: 'root',
       database: 'examen2b',
-      entities: [AutoEntity, ConductorEntity, UsuarioEntity, PedidoEntity],
+      entities: [AutoEntity, ConductorEntity, UsuarioEntity, PedidoEntity, DetalleEntity],
       synchronize: true,
       insecureAuth: true,
-      dropSchema: false }),
+      dropSchema: true }),
   ],
   controllers: [AppController],
   providers: [AppService],

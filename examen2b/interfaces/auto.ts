@@ -6,5 +6,6 @@ export interface Auto {
     colorDos: string;
     nombreModelo: string;
     anio: number;
+    precio: number;
     conductorId: number;
 }

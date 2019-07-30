@@ -1,10 +1,8 @@
 import {Injectable} from '@nestjs/common';
 import {ConductorEntity} from '../entities/conductor.entity';
 import {InjectRepository} from '@nestjs/typeorm';
-import {DeleteResult, Repository, UpdateResult} from 'typeorm';
 import {Conductor} from '../interfaces/conductor';
-import {TragosEntity} from "../../01-http/02-servidor-web-nodejs/api-web/src/trago/tragos.entity";
-import {Auto} from "../interfaces/auto";
+import {Repository} from 'typeorm';
 
 @Injectable()
 export class ConductorService {
