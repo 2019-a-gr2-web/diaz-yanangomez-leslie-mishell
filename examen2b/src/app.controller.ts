@@ -12,6 +12,8 @@ import {DetalleService} from "../entities/detalle.service";
 import {Pedido} from "../interfaces/pedido";
 import {Detalle} from "../interfaces/detalle";
 import {PedidoEntity} from "../entities/pedido.entity";
+import {DetalleEntity} from "../entities/detalle.entity";
+import {DetalleUpdateDto} from "../dto/detalle.update.dto";
 
 @Controller('/api')
 export class AppController {
@@ -215,8 +217,16 @@ export class AppController {
         if (ses.username && (Number(ses.userid) === Number(par.userid))) {
             const usuario = await this.usuarioService.buscarPorId(par.userid);
             const pedido = await this.pedidoService.pedidoActivoPorUsuario(ses.userid);
-            const detalles = await this.detalleService.getDetallesPorPedido(pedido.pedidoId);
-            const autosInfo = await this.autoService.getAutosEnPedido(pedido.pedidoId);
+            let detalles: DetalleEntity[];
+            let autosInfo;
+            console.log(pedido);
+            if (pedido !== undefined) {
+                detalles = await this.detalleService.getDetallesPorPedido(pedido.pedidoId);
+                autosInfo = await this.autoService.getAutosEnPedido(pedido.pedidoId);
+            } else {
+                detalles = undefined;
+                autosInfo = undefined;
+            }
             return res.render('micarrito.ejs', {
                 usuario1: usuario,
                 pedido1: pedido,
@@ -226,6 +236,26 @@ export class AppController {
         } else {
             return res.redirect('/api/login');
         }
+    }
+    @Post('/eliminarDelCarrito')
+    async postEC(@Body('autoId') autoid: number, @Body('pedidoId') pedidoid: number, @Session() ses, @Res() res) {
+        await this.detalleService.eliminarDelCarrito(autoid, pedidoid);
+        res.redirect('/../api/carrito/' + ses.userid);
+    }
+    @Post('/cancelado')
+    async postC(@Res() res, @Session() ses, @Body('pedidoId') pedidoId: number) {
+        await this.pedidoService.cancelarPedido(pedidoId);
+        res.redirect('/../api/gestionPadres/' + ses.userid);
+    }
+    @Post('/comprado')
+    async postCom(@Res() res, @Session() ses, @Body('pedidoId') pedidoId: number) {
+        await this.pedidoService.comprarPedido(pedidoId);
+        res.redirect('/../api/gestionPadres/' + ses.userid);
+    }
+    @Post('/despachado')
+    async postD(@Res() res, @Session() ses, @Body('pedidoId') pedidoId: number) {
+        await this.pedidoService.despacharPedido(pedidoId);
+        res.redirect('http://localhost:3001/carrito');
     }
     @Post('/modificarHijo')
     async postMP(@Res() res, @Body() auto: Auto, @Body('userid') userid: number) {

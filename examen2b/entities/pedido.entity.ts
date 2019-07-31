@@ -10,7 +10,7 @@ export class PedidoEntity {
         length: 50,
         name: 'estadoPedido',
     })
-    estadoPedido: 'Activo'|'Por Despachar'|'Despachado';
+    estadoPedido: 'Activo'|'Por Despachar'|'Despachado'|'Cancelado';
     @Column({
         type: 'decimal',
         precision: 10,

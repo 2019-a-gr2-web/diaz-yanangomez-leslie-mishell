@@ -17,19 +17,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/examen2b/views/micarrito.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="155" column="14" lean-forward="true" selection-start-line="155" selection-start-column="14" selection-end-line="155" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examen2b/src/app.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="219" column="48" lean-forward="true" selection-start-line="219" selection-start-column="48" selection-end-line="219" selection-end-column="48" />
+            <state relative-caret-position="56">
+              <caret line="254" column="24" lean-forward="true" selection-start-line="254" selection-start-column="24" selection-end-line="254" selection-end-column="24" />
               <folding>
                 <element signature="e#0#100#0" expanded="true" />
               </folding>
@@ -38,22 +29,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examen2b/entities/pedido.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examen2b/entities/detalle.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="22" column="52" lean-forward="true" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+            <state relative-caret-position="96">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -62,10 +41,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examen2b/interfaces/detalle.ts">
+        <entry file="file://$PROJECT_DIR$/examen2b/entities/pedido.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+            <state relative-caret-position="164">
+              <caret line="32" column="81" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="81" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examen2b/entities/pedido.entity.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#85#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examen2b/views/micarrito.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="164">
+              <caret line="181" column="18" lean-forward="true" selection-start-line="181" selection-start-column="18" selection-end-line="181" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -100,7 +103,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts" />
         <option value="$PROJECT_DIR$/examen1b/src/main.ts" />
         <option value="$PROJECT_DIR$/examen2b/src/main.ts" />
         <option value="$PROJECT_DIR$/examen2b/entities/conductor.entity.js" />
@@ -129,7 +131,6 @@
         <option value="$PROJECT_DIR$/examen2b/views/componentes/menu.html" />
         <option value="$PROJECT_DIR$/examen2b/views/componentes/menusup.ejs" />
         <option value="$PROJECT_DIR$/examen2b/entities/detalle.module.ts" />
-        <option value="$PROJECT_DIR$/examen2b/entities/pedido.entity.ts" />
         <option value="$PROJECT_DIR$/examen2b/entities/conductor.service.ts" />
         <option value="$PROJECT_DIR$/examen2b/dto/auto.update.dto.ts" />
         <option value="$PROJECT_DIR$/examen2b/views/crear-pelicula.ejs" />
@@ -142,15 +143,17 @@
         <option value="$PROJECT_DIR$/examen2b/interfaces/carrito.ts" />
         <option value="$PROJECT_DIR$/examen2b/entities/auto.entity.ts" />
         <option value="$PROJECT_DIR$/examen2b/interfaces/auto.ts" />
-        <option value="$PROJECT_DIR$/examen2b/entities/pedido.service.ts" />
-        <option value="$PROJECT_DIR$/examen2b/entities/detalle.service.ts" />
-        <option value="$PROJECT_DIR$/examen2b/entities/auto.service.ts" />
         <option value="$PROJECT_DIR$/examen2b/src/app.module.ts" />
         <option value="$PROJECT_DIR$/examen2b/views/listar-borrar-act.ejs" />
         <option value="$PROJECT_DIR$/examen2b/views/gestionarp.ejs" />
-        <option value="$PROJECT_DIR$/examen2b/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/examen2b/views/listar-borrar-pel.ejs" />
+        <option value="$PROJECT_DIR$/examen2b/entities/auto.service.ts" />
+        <option value="$PROJECT_DIR$/examen2b/dto/detalle.update.dto.ts" />
+        <option value="$PROJECT_DIR$/examen2b/entities/detalle.service.ts" />
+        <option value="$PROJECT_DIR$/examen2b/entities/pedido.entity.ts" />
         <option value="$PROJECT_DIR$/examen2b/views/micarrito.ejs" />
+        <option value="$PROJECT_DIR$/examen2b/entities/pedido.service.ts" />
+        <option value="$PROJECT_DIR$/examen2b/src/app.controller.ts" />
       </list>
     </option>
   </component>
@@ -200,12 +203,6 @@
               <item name="diaz-yanangomez-leslie-mishell" type="462c0819:PsiDirectoryNode" />
               <item name="examen2b" type="462c0819:PsiDirectoryNode" />
               <item name="entities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diaz-yanangomez-leslie-mishell" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diaz-yanangomez-leslie-mishell" type="462c0819:PsiDirectoryNode" />
-              <item name="examen2b" type="462c0819:PsiDirectoryNode" />
-              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="diaz-yanangomez-leslie-mishell" type="b2602c69:ProjectViewProjectNode" />
@@ -360,12 +357,12 @@
       <workItem from="1564412472078" duration="9943000" />
       <workItem from="1564438794314" duration="5061000" />
       <workItem from="1564456420292" duration="10938000" />
-      <workItem from="1564516660394" duration="18576000" />
+      <workItem from="1564516660394" duration="30574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="392683000" />
+    <option name="totallyTimeSpent" value="404681000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -378,7 +375,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="47" width="1272" height="587" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.3540146" visible="true" weight="0.40275526" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -391,8 +387,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49868765" weight="0.32779098" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32794458" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49758455" visible="true" weight="0.2890443" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32634032" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49758455" visible="true" weight="0.3916084" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5024155" side_tool="true" weight="0.71903324" />
       <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49868765" weight="0.30254042" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -424,7 +420,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/examen2b/sessions/qTOHkN72of7uOYYGlBwFd-klQ-jJZ0Yv.json" />
     <entry file="file://$PROJECT_DIR$/examen2b/sessions/8QhMwXE5fOtoj_nDZIIbxxJ1m9U91jDK.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -634,13 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examen2b/dto/auto.update.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examen2b/views/modificar-pelicula.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -685,23 +673,6 @@
     <entry file="file://$PROJECT_DIR$/examen2b/interfaces/carrito.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/examen2b/entities/pedido.entity.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examen2b/interfaces/detalle.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examen2b/interfaces/auto.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -713,16 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examen2b/entities/detalle.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="22" column="52" lean-forward="true" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -763,16 +724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examen2b/entities/auto.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="59" column="7" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examen2b/entities/auto.entity.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
@@ -794,37 +745,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examen2b/entities/pedido.service.ts">
+    <entry file="file://$PROJECT_DIR$/examen2b/views/listar-borrar-pel.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="131" column="4" selection-start-line="131" selection-start-column="4" selection-end-line="131" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examen2b/dto/auto.update.dto.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examen2b/dto/detalle.update.dto.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examen2b/entities/auto.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <caret line="59" column="23" lean-forward="true" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examen2b/views/listar-borrar-pel.ejs">
+    <entry file="file://$PROJECT_DIR$/examen2b/interfaces/detalle.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
-          <caret line="69" column="14" lean-forward="true" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examen2b/src/app.controller.ts">
+    <entry file="file://$PROJECT_DIR$/examen2b/entities/pedido.entity.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="219" column="48" lean-forward="true" selection-start-line="219" selection-start-column="48" selection-end-line="219" selection-end-column="48" />
+        <state relative-caret-position="48">
+          <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding>
-            <element signature="e#0#100#0" expanded="true" />
+            <element signature="e#0#85#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examen2b/entities/detalle.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examen2b/views/micarrito.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="155" column="14" lean-forward="true" selection-start-line="155" selection-start-column="14" selection-end-line="155" selection-end-column="14" />
+        <state relative-caret-position="164">
+          <caret line="181" column="18" lean-forward="true" selection-start-line="181" selection-start-column="18" selection-end-line="181" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examen2b/entities/pedido.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="32" column="81" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examen2b/src/app.controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="254" column="24" lean-forward="true" selection-start-line="254" selection-start-column="24" selection-end-line="254" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#100#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

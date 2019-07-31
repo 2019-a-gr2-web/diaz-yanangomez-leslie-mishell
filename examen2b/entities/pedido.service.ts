@@ -23,8 +23,14 @@ export class PedidoService {
     pedidoActivoPorUsuario(usuarioid): Promise<PedidoEntity> {
         return this._pedidoRepository.findOne({usuarioId: usuarioid, estadoPedido: 'Activo'});
     }
-    actEstado(pedido: Pedido): Promise<UpdateResult> {
-        return this._pedidoRepository.update(pedido.pedidoId,{estadoPedido: pedido.estadoPedido});
+    cancelarPedido(pedidoid): Promise<UpdateResult> {
+        return this._pedidoRepository.update(pedidoid, {estadoPedido: 'Cancelado'});
+    }
+    comprarPedido(pedidoid): Promise<UpdateResult> {
+        return this._pedidoRepository.update(pedidoid, {estadoPedido: 'Por Despachar'});
+    }
+    despacharPedido(pedidoid): Promise<UpdateResult> {
+        return this._pedidoRepository.update(pedidoid, {estadoPedido: 'Despachado'});
     }
     updateTotal(pedido: PedidoEntity, total: number): Promise<UpdateResult> {
     return this._pedidoRepository.update(pedido.pedidoId,

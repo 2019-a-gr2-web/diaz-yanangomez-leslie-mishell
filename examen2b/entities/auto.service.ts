@@ -52,7 +52,7 @@ export class AutoService {
             ],
         });
     }
-    getAutosEnPedido(idpedido): Promise<AutoEntity[]>  {
+    getAutosEnPedido(idpedido): Promise<any[]>  {
         return this._autoRepository.createQueryBuilder('auto')
             .innerJoinAndSelect(DetalleEntity, 'detalle', 'auto.autoId = detalle.autoIdAutoId')
             .innerJoinAndSelect(PedidoEntity, 'pedido', 'detalle.pedidoIdPedidoId = pedido.pedidoId')
