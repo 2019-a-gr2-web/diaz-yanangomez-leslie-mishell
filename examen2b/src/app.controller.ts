@@ -25,11 +25,11 @@ export class AppController {
         // this.carritoGateway.server.emit('saludaron', 'Hola, creo que si funciona /o/');
         return res.render('login.ejs');
     }
-    @Get('/carrito')
+    /*@Get('/carrito')
     getCarrito(@Res() res) {
         return res.redirect('http://localhost:3001/carrito');
     }
-
+*/
     @Post('/login')
     async postLogin(@Body('username') username: string, @Body('password') password: string, @Res() res, @Session() ses) {
         const user = await this.usuarioService.verificarPassword(username);
@@ -210,7 +210,23 @@ export class AppController {
             return res.redirect('/api/login');
         }
     }
-
+    @Get('/carrito/:userid') // EndPoint
+    async getCarrito(@Res() res, @Param() par, @Req() req, @Session() ses) {
+        if (ses.username && (Number(ses.userid) === Number(par.userid))) {
+            const usuario = await this.usuarioService.buscarPorId(par.userid);
+            const pedido = await this.pedidoService.pedidoActivoPorUsuario(ses.userid);
+            const detalles = await this.detalleService.getDetallesPorPedido(pedido.pedidoId);
+            const autosInfo = await this.autoService.getAutosEnPedido(pedido.pedidoId);
+            return res.render('micarrito.ejs', {
+                usuario1: usuario,
+                pedido1: pedido,
+                autosInfo1: autosInfo,
+                detalles1: detalles,
+            });
+        } else {
+            return res.redirect('/api/login');
+        }
+    }
     @Post('/modificarHijo')
     async postMP(@Res() res, @Body() auto: Auto, @Body('userid') userid: number) {
         auto.chasis = Number(auto.chasis);

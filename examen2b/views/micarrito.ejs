@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Gestionar Compras</title>
     <style>
         .barrasup {
@@ -14,11 +15,13 @@
             line-height: 50px;
             height: 50px;
         }
-        .texto{
+
+        .texto {
             border: #428bca 1px solid;
             border-radius: 5px;
             width: 100%;
         }
+
         #form {
             border: #428bca 1px solid;
             border-radius: 5px;
@@ -26,27 +29,34 @@
             padding-bottom: 20px;
             margin: 20px 20px 20px 20px;
         }
+
         button {
             width: 100%;
         }
+
         h1 {
             text-align: center;
             padding-bottom: 20px;
         }
+
         #barrainf {
             margin-top: 10px;
         }
-        tr,td,th {
+
+        tr, td, th {
             border: #428bca 1px solid;
             padding: 10px 5px;
             text-align: center;
         }
-        table{
+
+        table {
             width: 100%;
         }
-        .opc{
+
+        .opc {
             padding-bottom: 10px;
         }
+
         select.form-control {
             width: 100%;
             border: #428bca 1px solid;
@@ -63,114 +73,103 @@
 </head>
 <body>
 <div class="container">
+<!--    Inicio barra sup-->
+
     <div class="row justify-content-end">
-        <div class="col-md-2 barrasup"><p><%=username1%></p></div>
-        <div class="col-md-2 barrasup"><a href="#"><button class="btn btn-success">Mis Pedidos</button></a></div>
-        <div class="col-md-2 barrasup"><a href="/../api/salir/<%=userid%>"><button class="btn btn-primary">Salir</button></a>
+        <div class="col-md-2 barrasup"><p><%= usuario1.nombreApellido %></p></div>
+        <div class="col-md-2 barrasup"><a href="#">
+                <button class="btn btn-success">Todos Mis Pedidos</button>
+            </a></div>
+        <div class="col-md-2 barrasup"><a href="/../api/salir/<%= usuario1.usuarioId %>">
+                <button class="btn btn-primary">Salir</button>
+            </a>
         </div>
     </div>
+<!--    //Fin barra sup-->
     <div class="container" id="form">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Gestión de Compras</h1>
+                <h1>Mi carrito</h1>
             </div>
         </div>
-        <!--<div class="row">
-            <div class="col-md-8">
-            <form action="/../api/buscarHijo" method="post">
-                    <div class="row justify-content-end">
-                    <div class="col-sm-2"><label for="parametro">Buscar por: </label></div>
-                    <div class="col-sm-4">
-                        <select id="busqueda" name="busqueda" class="form-control">
-                            <option value="null" selected disabled>Seleccione una Opcion</option>
-                            <option value="chasis" onclick="habil()">Chasis</option>
-                            <option value="color" onclick="habil()">Color</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4"> <input style="height: 100%" class="texto" type="text" id="parametro" name="parametro" placeholder="Escriba su búsqueda" disabled></div>
-                    <div class="col-sm-2"><button class="btn btn-success" id="bbuscar" disabled><i class="fa fa-search"></i></button></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label for="idActor"></label>
-                        <input type="number" id="conductorId" name="conductorId" value="<% //=conductorId%>" hidden>
-                        <label for="userid"></label>
-                        <input type="number" id="userid" name="userid" value="<% //=userid%>" hidden>
-
-                    </div>
-                </div>
-            </form>
-</div> -->
-            <div class="col-md-4">
-                <!--<div class="row justify-content-end opc">
-                    <div class="col-sm-4">
-                        <a href="/../api/nuevoHijo/<%=userid%>/<% //=conductorId%>"><button class="btn btn-primary">Nuevo Registro</button></a>
-                    </div>
-                </div> -->
-                <div class="row justify-content-end opc">
-                <div class="col-sm-4">
-                        <a href="/../api/gestionHijos/<%=userid%>/<%=conductorId%>"><button class="btn btn-secondary">Volver</button></a>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Datos de Envio</h4>
             </div>
         </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>Datos de Envio</h3>
         </div>
+        <h3>No existen items para mostrar</h3>
+        <div class="table-responsive">
+            <table>
+                <tr>
+                    <th>Chasis</th>
+                    <th>Nombre de la Marca</th>
+                    <th>Primer Color</th>
+                    <th>Segundo Color</th>
+                    <th>Nombre del Modelo</th>
+                    <th>Año</th>
+                    <th>Acciones</th>
+                </tr>
+                <tr>
+                    <td>
+                        <% // =hijo.chasis %>
+                    </td>
+                    <td>
+                        <% // =hijo.nombreMarca %>
+                    </td>
+                    <td>
+                        <% // =hijo.colorUno %>
+                    </td>
+                    <td>
+                        <% // =hijo.colorDos %>
+                    </td>
+                    <td>
+                        <% // =hijo.nombreModelo %>
+                    </td>
+                    <td>
+                        <% // =hijo.anio %>
+                    </td>
+                    <td>
+                        <form action="#" method="POST">
+                            <label for="autoId"></label>
+                            <input type="number" id="autoId" name="autoId" hidden value="<% //=hijo.autoId %>">
+                            <label for="conductorId"></label>
+                            <input type="number" id="conductorId" name="conductorId" hidden
+                                   value="<% //=conductorId %>">
+                            <label for="userid"></label>
+                            <input type="number" id="userid" name="userid" hidden value="<% // =userid %>">
+                            <button class="btn btn-danger">Eliminar</button>
+                        </form>
+                        <form action="/../api/eliminarHijo" method="POST">
+                            <label for="autoId"></label>
+                            <input type="number" id="autoId" name="autoId" hidden value="<% //=hijo.autoId %>">
+                            <label for="conductorId"></label>
+                            <input type="number" id="conductorId" name="conductorId" hidden
+                                   value="<%=0%>">
+                            <label for="userid"></label>
+                            <input type="number" id="userid" name="userid" hidden value="<% //=userid %>">
+                            <button class="btn btn-secondary">Añadir al Carrito</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--    Comienza Panel Botones-->
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="/../api/gestionPadres/<%= usuario1.usuarioId %>">
+                    <button class="btn btn-secondary">Volver</button>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-danger">Cancelar Pedido</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-success">Comprar</button>
+            </div>
+        </div>
+<!--        Fin Bloque Botones-->
     </div>
-    <div class="row">
-        
-    </div>
-<% if (arregloItems.length===0) { %>
-    <h3>No existen items para mostrar</h3>
-<% } else { %>
-<div class="table-responsive">
-<table>
-    <tr>
-        <th>Chasis</th>
-        <th>Nombre de la Marca</th>
-        <th>Primer Color</th>
-        <th>Segundo Color</th>
-        <th>Nombre del Modelo</th>
-        <th>Año</th>
-        <th>Acciones</th>
-    </tr>
-    <% arregloHijos1.forEach((hijo)=> { %>
-    <tr>
-        <td><%=hijo.chasis%></td>
-        <td><%=hijo.nombreMarca%></td>
-        <td><%=hijo.colorUno%></td>
-        <td><%=hijo.colorDos%></td>
-        <td><%=hijo.nombreModelo%></td>
-        <td><%=hijo.anio%></td>
-        <td>
-            <a href="/../api/modificarHijo/<%=userid%>/<%=conductorId%>/<%=hijo.autoId%>"><button class="btn btn-primary">Modificar</button></a>
-            <form action="/../api/eliminarHijo" method="POST">
-                <label for="autoId"></label>
-                <input type="number" id="autoId" name="autoId" hidden value="<%=hijo.autoId%>">
-                <label for="conductorId"></label>
-                <input type="number" id="conductorId" name="conductorId" hidden value="<%=conductorId%>">
-                <label for="userid"></label>
-                <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
-                <button class="btn btn-danger">Eliminar</button>
-            </form>
-            <form action="/../api/eliminarHijo" method="POST">
-                <label for="autoId"></label>
-                <input type="number" id="autoId" name="autoId" hidden value="<%=hijo.autoId%>">
-                <label for="conductorId"></label>
-                <input type="number" id="conductorId" name="conductorId" hidden value="<%=hijo.conductorId%>">
-                <label for="userid"></label>
-                <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
-                <button class="btn btn-secondary">Añadir al Carrito</button>
-            </form>
-        </td>
-        <%})%>
-    </tr>
-</table>
-</div>
-<%}%>
-</div>
 </div>
 </body>
 <script>

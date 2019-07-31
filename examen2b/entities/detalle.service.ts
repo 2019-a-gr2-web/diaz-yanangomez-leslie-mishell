@@ -19,6 +19,9 @@ export class DetalleService {
     eliminarDelCarrito(detalleId): Promise<DeleteResult> {
         return this._detalleRepository.delete({numLinea: detalleId});
     }
+    getDetallesPorPedido(pedidoid): Promise<DetalleEntity[]> {
+        return this._detalleRepository.find({pedidoId: pedidoid});
+    }
     buscarProductoEnDetalle(pedidoid, autoid): Promise<DetalleEntity> {
         return this._detalleRepository.findOne({pedidoId: pedidoid, autoId: autoid});
     }

@@ -3,6 +3,8 @@ import {InjectRepository} from '@nestjs/typeorm';
 import {DeleteResult, Repository, UpdateResult} from 'typeorm';
 import {AutoEntity} from '../entities/auto.entity';
 import {Auto} from '../interfaces/auto';
+import {PedidoEntity} from "./pedido.entity";
+import {DetalleEntity} from "./detalle.entity";
 
 @Injectable()
 export class AutoService {
@@ -49,6 +51,13 @@ export class AutoService {
                 { colorDos: parametro},
             ],
         });
+    }
+    getAutosEnPedido(idpedido): Promise<AutoEntity[]>  {
+        return this._autoRepository.createQueryBuilder('auto')
+            .innerJoinAndSelect(DetalleEntity, 'detalle', 'auto.autoId = detalle.autoIdAutoId')
+            .innerJoinAndSelect(PedidoEntity, 'pedido', 'detalle.pedidoIdPedidoId = pedido.pedidoId')
+            .where('detalle.pedidoIdPedidoId = :pedidoid AND pedido.estadoPedido = :estado', { pedidoid: idpedido, estado: 'Activo'})
+            .getMany();
     }
 
     actualizarAuto(auto: Auto): Promise<UpdateResult> {

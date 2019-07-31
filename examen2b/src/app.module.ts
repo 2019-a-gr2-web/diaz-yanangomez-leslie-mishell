@@ -25,7 +25,7 @@ import {DetalleEntity} from '../entities/detalle.entity';
       entities: [AutoEntity, ConductorEntity, UsuarioEntity, PedidoEntity, DetalleEntity],
       synchronize: true,
       insecureAuth: true,
-      dropSchema: true }),
+      dropSchema: false }),
   ],
   controllers: [AppController],
   providers: [AppService],

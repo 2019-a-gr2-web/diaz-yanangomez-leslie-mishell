@@ -27,7 +27,7 @@ export class PedidoService {
         return this._pedidoRepository.update(pedido.pedidoId,{estadoPedido: pedido.estadoPedido});
     }
     updateTotal(pedido: PedidoEntity, total: number): Promise<UpdateResult> {
-        return this._pedidoRepository.update(pedido.pedidoId,
+    return this._pedidoRepository.update(pedido.pedidoId,
             { totalSinImpuestos: Number(pedido.totalSinImpuestos) + Number(total),
                 totalConImpuestos: Number(pedido.totalConImpuestos) + Number(total) * 1.12});
     }
