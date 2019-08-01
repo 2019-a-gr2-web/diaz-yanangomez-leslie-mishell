@@ -11,9 +11,8 @@ import {CarritoGateway} from './carrito/carrito.gateway';
 import {DetalleService} from "../entities/detalle.service";
 import {Pedido} from "../interfaces/pedido";
 import {Detalle} from "../interfaces/detalle";
-import {PedidoEntity} from "../entities/pedido.entity";
 import {DetalleEntity} from "../entities/detalle.entity";
-import {DetalleUpdateDto} from "../dto/detalle.update.dto";
+
 
 @Controller('/api')
 export class AppController {
@@ -23,30 +22,24 @@ export class AppController {
     }
 
     @Get('/login')
-    getLogin(@Res() res) {
-        // this.carritoGateway.server.emit('saludaron', 'Hola, creo que si funciona /o/');
-        return res.render('login.ejs');
+    getLogin(@Res() res, @Query() q) {
+        return res.render('login.ejs', {mensaje: q.m});
     }
-    /*@Get('/carrito')
-    getCarrito(@Res() res) {
-        return res.redirect('http://localhost:3001/carrito');
-    }
-*/
     @Post('/login')
-    async postLogin(@Body('username') username: string, @Body('password') password: string, @Res() res, @Session() ses) {
-        const user = await this.usuarioService.verificarPassword(username);
+    async postLogin(@Body('rolId') rolid: number, @Body('username') username: string, @Body('password') password: string, @Res() res, @Session() ses) {
+        const user = await this.usuarioService.verificarPassword(username, rolid);
         if (user !== undefined) {
             if (username === user.username && password === user.password) {
                 ses.username = user.nombreApellido;
                 ses.userid = user.usuarioId;
                 ses.rolId = user.rolId;
-                console.log(ses.username);
-                console.log(ses.userid);
-                console.log(ses.rolId);
-                res.redirect('/api/index/' + user.usuarioId);
+                if (Number(ses.rolId) === 2) {
+                    res.redirect('/api/pedidos/' + ses.userid);
+                } else {
+                    res.redirect('/api/index/' + user.usuarioId);
+                }
             } else {
-                res.status(400);
-                res.send({mensaje: 'Error Login', error: 400});
+                res.redirect('/api/login?m=Error');
             }
         } else {
             res.status(400);
@@ -69,7 +62,11 @@ export class AppController {
         console.log(session.username + par.userid);
         if (session.username && (Number(session.userid) === Number(par.userid))) {
             const usuario = await this.usuarioService.buscarPorId(par.userid);
-            return res.render('gestionarp.ejs', {username1: usuario.nombreApellido, userid: par.userid});
+            return res.render('gestionarp.ejs', {
+                username1: usuario.nombreApellido,
+                userid: par.userid,
+                rolid: session.rolId
+            });
         } else {
             return res.redirect('/api/login');
         }
@@ -83,7 +80,8 @@ export class AppController {
             return res.render('listar-borrar-act.ejs', {
                 arregloPadres1: arregloPadres,
                 username1: ses.username,
-                userid: par.userid
+                userid: par.userid,
+                rolid: ses.rolId
             });
         } else {
             return res.redirect('/api/login');
@@ -101,12 +99,14 @@ export class AppController {
                 conductorId: par.conductorId,
                 username1: ses.username,
                 userid: par.userid,
+                rolid: ses.rolId,
                 mensaje: mensaje1,
             });
         } else {
             return res.redirect('/api/login');
         }
     }
+
 //Cambiar Aqui
     @Post('/buscarHijo')
     async postBuscarP(@Req() req, @Session() ses, @Body('parametro') parametro: string, @Body('busqueda') busqueda: string,
@@ -122,24 +122,27 @@ export class AppController {
                         arregloHijos1: bdBuscar,
                         conductorId: conductorid,
                         username1: ses.username,
-                        userid: useridd
+                        userid: useridd,
+                        rolid: ses.rolId,
                     });
                 } else {
-                const bdBuscar = await this.autoService.buscarPorChasis(Number(parametro));
-                return res.render('listar-borrar-pel.ejs', {
-                    arregloHijos1: bdBuscar,
-                    conductorId: conductorid,
-                    username1: ses.username,
-                    userid: useridd
-                });
-            }
+                    const bdBuscar = await this.autoService.buscarPorChasis(Number(parametro));
+                    return res.render('listar-borrar-pel.ejs', {
+                        arregloHijos1: bdBuscar,
+                        conductorId: conductorid,
+                        username1: ses.username,
+                        userid: useridd,
+                        rolid: ses.rolId
+                    });
+                }
             } else if (busqueda === 'color') {
                 const bdBuscar = await this.autoService.buscarPorColor(parametro);
                 return res.render('listar-borrar-pel.ejs', {
                     arregloHijos1: bdBuscar,
                     conductorId: conductorid,
                     username1: ses.username,
-                    userid: useridd
+                    userid: useridd,
+                    rolid: ses.rolId
                 });
             } else {
                 res.redirect('/../api/gestionHijos/' + useridd + '/' + conductorid);
@@ -190,7 +193,7 @@ export class AppController {
         if (ses.username && (Number(ses.userid) === Number(par.userid))) {
             return res.render('crear-pelicula.ejs', {
                 conductorId: par.conductorId,
-                username1: ses.username, userid: par.userid, mensaje1: query.mensaje,
+                username1: ses.username, userid: par.userid, mensaje1: query.mensaje, rolid: ses.rolId,
             });
         } else {
             return res.redirect('/api/login');
@@ -207,56 +210,79 @@ export class AppController {
                 userid: par.userid,
                 mensaje1: query.mensaje,
                 hijo: auto,
+                rolid: ses.rolId
             });
         } else {
             return res.redirect('/api/login');
         }
     }
+
     @Get('/carrito/:userid') // EndPoint
     async getCarrito(@Res() res, @Param() par, @Req() req, @Session() ses) {
         if (ses.username && (Number(ses.userid) === Number(par.userid))) {
             const usuario = await this.usuarioService.buscarPorId(par.userid);
             const pedido = await this.pedidoService.pedidoActivoPorUsuario(ses.userid);
-            let detalles: DetalleEntity[];
+            // let detalles: DetalleEntity[];
             let autosInfo;
             console.log(pedido);
             if (pedido !== undefined) {
-                detalles = await this.detalleService.getDetallesPorPedido(pedido.pedidoId);
+                // detalles = await this.detalleService.getDetallesPorPedido(pedido.pedidoId);
                 autosInfo = await this.autoService.getAutosEnPedido(pedido.pedidoId);
+                console.log(autosInfo);
             } else {
-                detalles = undefined;
+                // detalles = undefined;
                 autosInfo = undefined;
             }
+            // console.log(detalles);
             return res.render('micarrito.ejs', {
                 usuario1: usuario,
                 pedido1: pedido,
                 autosInfo1: autosInfo,
-                detalles1: detalles,
+                // detalles1: detalles,
+                rolid: ses.rolId
             });
         } else {
             return res.redirect('/api/login');
         }
     }
+
     @Post('/eliminarDelCarrito')
     async postEC(@Body('autoId') autoid: number, @Body('pedidoId') pedidoid: number, @Session() ses, @Res() res) {
         await this.detalleService.eliminarDelCarrito(autoid, pedidoid);
         res.redirect('/../api/carrito/' + ses.userid);
     }
+
     @Post('/cancelado')
     async postC(@Res() res, @Session() ses, @Body('pedidoId') pedidoId: number) {
         await this.pedidoService.cancelarPedido(pedidoId);
         res.redirect('/../api/gestionPadres/' + ses.userid);
     }
+
     @Post('/comprado')
     async postCom(@Res() res, @Session() ses, @Body('pedidoId') pedidoId: number) {
         await this.pedidoService.comprarPedido(pedidoId);
         res.redirect('/../api/gestionPadres/' + ses.userid);
     }
-    @Post('/despachado')
+    @Get('/pedidos/:userid')
+    async getPedidos(@Res() res, @Session() ses, @Param() par) {
+        if (ses.username && (Number(ses.userid) === Number(par.userid))) {
+            if ( ses.rolId === 1) {
+                const pedido = await this.pedidoService.pedidosPorUsuario(ses.userid);
+                return res.render('pedidos.ejs', {pedidos1: pedido, userid: ses.userid, rolid: ses.rolId});
+            } else {
+                const pedidos = await this.pedidoService.getPedidos();
+                return res.render('pedidos.ejs', {pedidos1: pedidos, userid: ses.userid, rolid: ses.rolId});
+            }
+        } else {
+            return res.redirect('/api/login');
+        }
+    }
+    @Post('/despachar')
     async postD(@Res() res, @Session() ses, @Body('pedidoId') pedidoId: number) {
         await this.pedidoService.despacharPedido(pedidoId);
-        res.redirect('http://localhost:3001/carrito');
+        res.redirect('/../api/pedidos/' + ses.userid);
     }
+
     @Post('/modificarHijo')
     async postMP(@Res() res, @Body() auto: Auto, @Body('userid') userid: number) {
         auto.chasis = Number(auto.chasis);
@@ -283,6 +309,18 @@ export class AppController {
         }
 
     }
+    @Post('/actPD')
+    async postACTPD(@Res() res, @Body('autoid') autoid: number, @Body('precio') precio: number,
+                    @Body('cantidad') cantidad: number, @Body('pedidoId') pedidoId: number, @Session() ses) {
+        const ped = await this.pedidoService.pedidoActivoPorUsuario(ses.userid);
+        const det = await this.detalleService.buscarProductoEnDetalle(ped.pedidoId, autoid);
+        det.cantidad = cantidad;
+        await this.detalleService.masProducto(det);
+        await this.pedidoService.updateTotal(ped, (precio * cantidad));
+        await this.detalleService.masProducto(det);
+        return res.redirect('/../api/gestionHijos/' + 1 + '/' + 1);
+    }
+
     @Post('/anadirCarrito')
     async postAC(@Res() res, @Body('autoId') autoid: number, @Body('precio') precio: number,
                  @Body('conductorId') conductorid: number, @Body('usuarioId') usuarioid: number) {
@@ -298,7 +336,7 @@ export class AppController {
             const ped1 = await this.pedidoService.crearPedido(pedido);
             const det = await this.detalleService.buscarProductoEnDetalle(ped1.pedidoId, autoid);
             if (det === undefined) {
-                const detalle: Detalle =  {
+                const detalle: Detalle = {
                     cantidad: 1,
                     pedidoId: ped1.pedidoId,
                     autoId: autoid,

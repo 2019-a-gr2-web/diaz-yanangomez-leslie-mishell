@@ -14,6 +14,6 @@ export class DetalleEntity {
         pedido => pedido.detalle)
     pedidoId: PedidoEntity;
     @ManyToOne(type => AutoEntity,
-        auto => auto.detalles)
+        auto => auto.detalles, { onDelete: 'CASCADE'})
     autoId: AutoEntity;
 }

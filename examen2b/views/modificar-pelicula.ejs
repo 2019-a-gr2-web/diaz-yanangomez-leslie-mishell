@@ -43,6 +43,7 @@
     </style>
 </head>
 <body onload="corre();">
+<%if (Number(rolid) === 0) {%>
 <div class="container">
     <div class="row justify-content-end">
         <div class="col-md-2 barrasup"><p><%= username1 %></p></div>
@@ -146,6 +147,9 @@
         </form>
     </div>
 </div>
+<% } else { %>
+    <%- include('componentes/nopermitido') %>
+<% } %>
 </body>
 <script>
     function corre(){

@@ -1,15 +1,15 @@
 import {SubscribeMessage, WebSocketGateway, WebSocketServer} from '@nestjs/websockets';
 import {Client} from 'socket.io';
-
-@WebSocketGateway(3001, { namespace: '/carrito' })
+@WebSocketGateway(3001, { namespace: '/websockets' })
 export class CarritoGateway {
-@WebSocketServer() server;
-@SubscribeMessage('carrito')
-smCarrito(cliente: Client | any, data: any) {
-    cliente.broadcast.emit('saludaron', data);
-    return 'Hola ' + data;
-}
-constructor() {
+    @WebSocketServer() server;
+    constructor() {
         console.log(this.server);
     }
+    @SubscribeMessage('despachar')
+    despachar(cliente: Client | any, data: any) {
+        cliente.broadcast.emit('despachado', data);
+        return data.nombre;
+    }
+
 }

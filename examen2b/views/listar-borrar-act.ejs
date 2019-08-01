@@ -50,9 +50,13 @@
     </style>
 </head>
 <body>
+<%if (Number(rolid) !== 2) {%>
 <div class="container">
     <div class="row justify-content-end">
         <div class="col-md-2 barrasup"><p><%=username1%></p></div>
+        <% if (Number(rolid) === 1) {%>
+        <div class="col-md-2 barrasup"><a href="/../api/carrito/<%=userid%>"><button class="btn btn-success">Mi Carrito</button></a></div>
+        <% } %>
         <div class="col-md-2 barrasup"><a href="/../api/salir/<%=userid%>"><button class="btn btn-primary">Salir</button></a>
         </div>
     </div>
@@ -63,27 +67,8 @@
             </div>
         </div>
     <div class="row">
+        <div class="col-md-6"></div>
         <div class="col-md-6">
-            <!--        <form action="/../api/buscarActor" method="post">
-                        <div class="row justify-content-end">-->
-<!--                    <div class="col-sm-2"><label for="nombreActor">Buscar: </label></div>-->
-<!--                    <div class="col-sm-6"> <input style="height: 100%" class="texto" type="text" id="nombreActor" name="nombreActor" placeholder="Escriba el nombre del actor"></div>-->
-<!--                    <div class="col-sm-2"><button class="btn btn-success"><i class="fa fa-search"></i></button></div>-->
-<!--            </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="col-sm-6"><label for="userid"></label></div>
-                        <input type="number" id="userid" name="userid" value="<%=userid%>" hidden>
-                    </div>
-                </div>
-            </form>-->
-
-        </div>
-        <div class="col-md-6">
-            <!--<div class="row justify-content-end opc">
-                <div class="col-sm-4"><a href="/../api/nuevoActor/<%=userid%>"><button class="btn btn-primary">Nuevo Registro</button></a>
-                </div>
-            </div> -->
             <div class="row justify-content-end opc">
                 <div class="col-sm-4"> <a href="/../api/index/<%=userid%>"><button class="btn btn-secondary">Volver</button></a>
                 </div>
@@ -115,14 +100,6 @@
         <td>No</td>
         <% } %>
         <td>
-            <!--<form action="/../api/eliminarActor" method="POST">
-               <label for="idActor"></label> //eli
-                <input type="number" id="idActor" name="idActor" hidden value="<%=padre.conductorId%>">
-              <label for="userid"></label> //eli
-                <input type="number" id="userid" name="userid" hidden value="<%=userid%>">
-                <button class="btn btn-danger">Eliminar</button>
-            </form>
-            <br> -->
             <a href="/../api/gestionHijos/<%=userid%>/<%=padre.conductorId%>"><button type="button" class="btn btn-primary ">Gestionar Hijos</button></a>
         </td>
         <%})%>
@@ -132,5 +109,8 @@
 <%}%>
 </div>
 </div>
+<% } else {%>
+    <%- include('componentes/nopermitido') %>
+<% } %>
 </body>
 </html>

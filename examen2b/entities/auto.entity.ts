@@ -48,7 +48,7 @@ export class AutoEntity {
     })
     precio: number;
     @ManyToOne(type => ConductorEntity,
-        conductor => conductor.autos)
+        conductor => conductor.autos, { onDelete: 'CASCADE'})
     conductorId: ConductorEntity;
     @OneToMany( type => DetalleEntity, detalle => detalle.numLinea)
     detalles: DetalleEntity[];

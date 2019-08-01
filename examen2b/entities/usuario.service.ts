@@ -7,7 +7,7 @@ import {Usuario} from '../interfaces/usuario';
 @Injectable()
 export class UsuarioService {
     constructor(@InjectRepository(UsuarioEntity) private readonly _usuarioRepository: Repository<UsuarioEntity>) {
-        const usuario: Usuario = {
+        /*const usuario: Usuario = {
             cedula: '1111111111',
             nombreApellido: 'Usuario Uno',
             direccion: 'Direccion Uno',
@@ -16,10 +16,12 @@ export class UsuarioService {
             password: 'passwordUno',
             rolId: 0,
         };
-        this.crearUsuario(usuario);
+
+
+        this.crearUsuario(usuario); */
     }
-    verificarPassword(usernames: string): Promise<UsuarioEntity> {
-        return  this._usuarioRepository.findOne({ username: usernames});
+    verificarPassword(usernames: string, rolid: number): Promise<UsuarioEntity> {
+        return  this._usuarioRepository.findOne({ username: usernames, rolId: rolid});
     }
     crearUsuario(nuevoUsuario: Usuario): Promise<UsuarioEntity> {
         const objetoEntidad = this._usuarioRepository.create(nuevoUsuario);

@@ -77,12 +77,13 @@
     </style>
 </head>
 <body>
+<%if (Number(rolid) === 1) {%>
 <div class="container">
 <!--    Inicio barra sup-->
 
     <div class="row justify-content-end">
         <div class="col-md-2 barrasup"><p><%= usuario1.nombreApellido %></p></div>
-        <div class="col-md-2 barrasup"><a href="#">
+        <div class="col-md-2 barrasup"><a href="/../api/pedidos/<%=usuario1.usuarioId%>">
                 <button class="btn btn-success">Todos Mis Pedidos</button>
             </a></div>
         <div class="col-md-2 barrasup"><a href="/../api/salir/<%= usuario1.usuarioId %>">
@@ -125,6 +126,7 @@
         <% if(autosInfo1 === undefined) {%>
         <h3>No existen items para mostrar</h3>
         <% } else { %>
+        <% let total = 0.00;%>
         <br>
         <div class="table-responsive">
             <table>
@@ -136,15 +138,22 @@
                 </tr>
                 <% autosInfo1.forEach((auto)=> { %>
                 <tr>
-                    <td>
-                        <p>Chasis: <%=auto.chasis%></p>
-                        <p>Marca: <%=auto.nombreMarca%></p>
-                        <p>Colores: <%=auto.colorUno%> y <%=auto.colorDos%></p>
-                        <p>Modelo: <%=auto.nombreModelo%></p>
-                        <p>Año: <%=auto.anio%></p>
+                    <td style="text-align: justify">
+                        <p><strong>Chasis: </strong> <%=auto.chasis%></p>
+                        <p><strong>Marca: </strong> <%=auto.nombreMarca%></p>
+                        <p><strong>Colores: </strong> <%=auto.colorUno%> y <%=auto.colorDos%></p>
+                        <p><strong>Modelo: </strong> <%=auto.nombreModelo%></p>
+                        <p><strong>Año: </strong><%=auto.anio%></p>
+
                     </td>
                     <td>
-                        <input type="number" id="cantidad" name="cantidad" min="1" step="1" value="1" required>
+                        <form action="/../api/actPD" method="post">
+                            <input type="number" id="cantidad"  name="cantidad" min="1" step="1" value="1" required>
+                            <input type="number" id="autoid" name="autoid" value="<%=auto.autoId%>" hidden>
+                            <input type="number" id="pedidoId" name="pedidoId" value="<%pedido1.pedidoId%>" hidden>
+                            <input type="number" id="precio" name="precio" value="<%auto.precio%>" hidden>
+                            <button class="btn btn-primary">Guardar</button>
+                        </form>
                     </td>
                     <td>
                         <%=auto.precio%>
@@ -176,7 +185,6 @@
             <div class="col-sm-6">
                 <form action="/../api/comprado" method="post">
                     <button class="btn btn-success">Comprar</button>
-                    <label for="pedidoId"></label>
                     <input type="number" id="pedidoId" name="pedidoId" hidden value="<%=pedido1.pedidoId%>">
                 </form>
             </div>
@@ -196,11 +204,17 @@
 
     </div>
 </div>
+<% } else { %>
+    <%- include('componentes/nopermitido') %>
+<% } %>
 </body>
 <script>
     function habil() {
         document.getElementById('parametro').disabled = false;
         document.getElementById('bbuscar').disabled = false;
+    }
+    function sumar() {
+        document.getElementById('actualizar').submit();
     }
 </script>
 </html>

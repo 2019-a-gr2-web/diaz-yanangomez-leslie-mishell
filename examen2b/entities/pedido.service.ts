@@ -37,4 +37,12 @@ export class PedidoService {
             { totalSinImpuestos: Number(pedido.totalSinImpuestos) + Number(total),
                 totalConImpuestos: Number(pedido.totalConImpuestos) + Number(total) * 1.12});
     }
+    getPedidos(): Promise<PedidoEntity[]> {
+        return this._pedidoRepository.find(
+                                {estadoPedido: 'Por Despachar'});
+    }
+    pedidosPorUsuario(userid: number): Promise<PedidoEntity[]> {
+        // @ts-ignore
+        return this._pedidoRepository.find({userId: userid});
+    }
 }

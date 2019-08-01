@@ -9,7 +9,7 @@ import {DetalleEntity} from "./detalle.entity";
 @Injectable()
 export class AutoService {
     constructor(@InjectRepository(AutoEntity) private readonly _autoRepository: Repository<AutoEntity>) {
-        const auto: Auto = {
+        /*const auto: Auto = {
             chasis: 30,
             nombreMarca: 'Hyundai',
             colorUno: 'gris',
@@ -19,7 +19,7 @@ export class AutoService {
             precio: 2000.00,
             conductorId: 1,
         };
-        this.crearAuto(auto);
+        this.crearAuto(auto); */
 
     }
     crearAuto(nuevoAuto: Auto): Promise<AutoEntity> {
