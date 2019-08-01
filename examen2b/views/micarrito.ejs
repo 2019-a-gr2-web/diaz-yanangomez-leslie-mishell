@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Gestionar Compras</title>
+    <style>
+        .barrasup {
+            text-align: center;
+            line-height: 50px;
+            height: 50px;
+        }
+
+        .texto {
+            border: #428bca 1px solid;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        #form {
+            border: #428bca 1px solid;
+            border-radius: 5px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 20px 20px 20px 20px;
+        }
+
+        button {
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        #barrainf {
+            margin-top: 10px;
+        }
+
+        tr, td, th {
+            border: #428bca 1px solid;
+            padding: 10px 5px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .opc {
+            padding-bottom: 10px;
+        }
+
+        select.form-control {
+            width: 100%;
+            border: #428bca 1px solid;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background-position: right center;
+            background-repeat: no-repeat;
+            background-size: 1ex;
+            background-origin: content-box;
+            background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmVyc2lvbj0iMS4xIgogICBpZD0ic3ZnMiIKICAgdmlld0JveD0iMCAwIDM1Ljk3MDk4MyAyMy4wOTE1MTgiCiAgIGhlaWdodD0iNi41MTY5Mzk2bW0iCiAgIHdpZHRoPSIxMC4xNTE4MTFtbSI+CiAgPGRlZnMKICAgICBpZD0iZGVmczQiIC8+CiAgPG1ldGFkYXRhCiAgICAgaWQ9Im1ldGFkYXRhNyI+CiAgICA8cmRmOlJERj4KICAgICAgPGNjOldvcmsKICAgICAgICAgcmRmOmFib3V0PSIiPgogICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PgogICAgICAgIDxkYzp0eXBlCiAgICAgICAgICAgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIgLz4KICAgICAgICA8ZGM6dGl0bGU+PC9kYzp0aXRsZT4KICAgICAgPC9jYzpXb3JrPgogICAgPC9yZGY6UkRGPgogIDwvbWV0YWRhdGE+CiAgPGcKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjAyLjAxNDUxLC00MDcuMTIyMjUpIgogICAgIGlkPSJsYXllcjEiPgogICAgPHRleHQKICAgICAgIGlkPSJ0ZXh0MzMzNiIKICAgICAgIHk9IjYyOS41MDUwNyIKICAgICAgIHg9IjI5MS40Mjg1NiIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjQwcHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIj48dHNwYW4KICAgICAgICAgeT0iNjI5LjUwNTA3IgogICAgICAgICB4PSIyOTEuNDI4NTYiCiAgICAgICAgIGlkPSJ0c3BhbjMzMzgiPjwvdHNwYW4+PC90ZXh0PgogICAgPGcKICAgICAgIGlkPSJ0ZXh0MzM0MCIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTo0MHB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6Rm9udEF3ZXNvbWU7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpGb250QXdlc29tZTtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIj4KICAgICAgPHBhdGgKICAgICAgICAgaWQ9InBhdGgzMzQ1IgogICAgICAgICBzdHlsZT0iZmlsbDojMzMzMzMzO2ZpbGwtb3BhY2l0eToxIgogICAgICAgICBkPSJtIDIzNy41NjY5Niw0MTMuMjU1MDcgYyAwLjU1ODA0LC0wLjU1ODA0IDAuNTU4MDQsLTEuNDczMjIgMCwtMi4wMzEyNSBsIC0zLjcwNTM1LC0zLjY4MzA0IGMgLTAuNTU4MDQsLTAuNTU4MDQgLTEuNDUwOSwtMC41NTgwNCAtMi4wMDg5MywwIEwgMjIwLDQxOS4zOTM0NiAyMDguMTQ3MzIsNDA3LjU0MDc4IGMgLTAuNTU4MDMsLTAuNTU4MDQgLTEuNDUwODksLTAuNTU4MDQgLTIuMDA4OTMsMCBsIC0zLjcwNTM1LDMuNjgzMDQgYyAtMC41NTgwNCwwLjU1ODAzIC0wLjU1ODA0LDEuNDczMjEgMCwyLjAzMTI1IGwgMTYuNTYyNSwxNi41NDAxNyBjIDAuNTU4MDMsMC41NTgwNCAxLjQ1MDg5LDAuNTU4MDQgMi4wMDg5MiwwIGwgMTYuNTYyNSwtMTYuNTQwMTcgeiIgLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=");
+        }
+        .datos{
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<%if (Number(rolid) === 1) {%>
+<div class="container">
+<!--    Inicio barra sup-->
+
+    <div class="row justify-content-end">
+        <div class="col-md-2 barrasup"><p><%= usuario1.nombreApellido %></p></div>
+        <div class="col-md-2 barrasup"><a href="/../api/pedidos/<%=usuario1.usuarioId%>">
+                <button class="btn btn-success">Todos Mis Pedidos</button>
+            </a></div>
+        <div class="col-md-2 barrasup"><a href="/../api/salir/<%= usuario1.usuarioId %>">
+                <button class="btn btn-primary">Salir</button>
+            </a>
+        </div>
+    </div>
+<!--    //Fin barra sup-->
+    <div class="container" id="form">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Mi carrito</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Datos de Envio</h4>
+            </div>
+        </div>
+            <div class="table-responsive">
+                <table class="datos">
+                    <tr>
+                        <th>Cedula</th>
+                        <td><%=usuario1.cedula%></td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td><%=usuario1.nombreApellido%></td>
+                    </tr>
+                    <tr>
+                        <th>Dirección</th>
+                        <td><%=usuario1.direccion%></td>
+                    </tr>
+                    <tr>
+                        <th>Telefono Celular</th>
+                        <td><%=usuario1.celular%></td>
+                    </tr>
+                </table>
+        </div>
+        <% if(autosInfo1 === undefined) {%>
+        <h3>No existen items para mostrar</h3>
+        <% } else { %>
+        <% let total = 0.00;%>
+        <br>
+        <div class="table-responsive">
+            <table>
+                <tr>
+                    <th>Información</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+                <% autosInfo1.forEach((auto)=> { %>
+                <tr>
+                    <td style="text-align: justify">
+                        <p><strong>Chasis: </strong> <%=auto.chasis%></p>
+                        <p><strong>Marca: </strong> <%=auto.nombreMarca%></p>
+                        <p><strong>Colores: </strong> <%=auto.colorUno%> y <%=auto.colorDos%></p>
+                        <p><strong>Modelo: </strong> <%=auto.nombreModelo%></p>
+                        <p><strong>Año: </strong><%=auto.anio%></p>
+
+                    </td>
+                    <td>
+                        <form action="/../api/actPD" method="post">
+                            <input type="number" id="cantidad"  name="cantidad" min="1" step="1" value="1" required>
+                            <input type="number" id="autoid" name="autoid" value="<%=auto.autoId%>" hidden>
+                            <input type="number" id="pedidoId" name="pedidoId" value="<%pedido1.pedidoId%>" hidden>
+                            <input type="number" id="precio" name="precio" value="<%auto.precio%>" hidden>
+                            <button class="btn btn-primary">Guardar</button>
+                        </form>
+                    </td>
+                    <td>
+                        <%=auto.precio%>
+                    </td>
+                    <td>
+                        <form action="/../api/eliminarDelCarrito" method="POST">
+                            <label for="autoId"></label>
+                            <input type="number" id="autoId" name="autoId" hidden value="<%=auto.autoId%>">
+                            <label for="pedidoId"></label>
+                            <input type="number" id="pedidoId" name="pedidoId" hidden value="<%=pedido1.pedidoId%>">
+                            <button class="btn btn-danger">Eliminar del Carrito</button>
+                        </form>
+                    </td>
+                </tr>
+                <% });%>
+            </table>
+        </div>
+
+            <br>
+        <!--    Comienza Panel Botones-->
+        <div class="row">
+            <div class="col-sm-6">
+                <form action="/../api/cancelado" method="post">
+                    <button class="btn btn-danger">Cancelar Pedido</button>
+                    <label for="pedidoId"></label>
+                    <input type="number" id="pedidoId" name="pedidoId" hidden value="<%=pedido1.pedidoId%>">
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <form action="/../api/comprado" method="post">
+                    <button class="btn btn-success">Comprar</button>
+                    <input type="number" id="pedidoId" name="pedidoId" hidden value="<%=pedido1.pedidoId%>">
+                </form>
+            </div>
+        </div>
+        <% }%>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <a href="/../api/gestionPadres/<%= usuario1.usuarioId %>">
+                        <button class="btn btn-secondary">Volver</button>
+                    </a>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+<!--        Fin Bloque Botones-->
+
+
+    </div>
+</div>
+<% } else { %>
+    <%- include('componentes/nopermitido') %>
+<% } %>
+</body>
+<script>
+    function habil() {
+        document.getElementById('parametro').disabled = false;
+        document.getElementById('bbuscar').disabled = false;
+    }
+    function sumar() {
+        document.getElementById('actualizar').submit();
+    }
+</script>
+</html>

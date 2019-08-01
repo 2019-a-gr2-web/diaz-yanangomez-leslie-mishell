@@ -4,26 +4,18 @@ import * as cookieParser from 'cookie-parser';
 import {NestExpressApplication} from '@nestjs/platform-express';
 import {join} from 'path';
 import * as express from 'express';
-import * as session from 'express-session'; // Typescript
-// import * as FileStore from 'session-file-store';
+import * as session from 'express-session';
 const FileStore = require('session-file-store')(session); // Nodejs
-import * as path from 'path';
-import * as favicon from 'serve-favicon';
-import * as FileStore from 'session-file-store';
-
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule) as NestExpressApplication; // casteo
+  const app = await NestFactory.create(AppModule) as NestExpressApplication;
   app.use(cookieParser('Boyfriend in Wonderland'));
-  // @ts-ignore
   app.setViewEngine('ejs');
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.use(express.static('publico'));
-  // app.use(favicon(path.join(__dirname, '..', 'publico', 'imagenes', 'trago.ico')));
-  // app.set('views engine', 'ejs');
   app.use(
       session({
         name: 'server-session-id',
-        secret: 'Boyfriend-in-Wonderland',
+        secret: 'I-Forget-My-Secret',
         resave: false,
         saveUninitialized: true,
         cookie: {

@@ -5,41 +5,50 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Juego WebSockets</title>
-
 </head>
+<style>
+    .ganaste {
+        color: darkgreen;
+        border: solid 1px darkgreen;
+        border-radius: 5px;
+        background-color: darkseagreen;
+    }
+    .perdiste {
+        color: #c3251d;
+        border: solid 1px #c3251d;
+        border-radius: 5px;
+        background-color: lightcoral;
+    }
+    .titulo{
+        color: cornflowerblue;
+        text-align: center;
+    }
+</style>
 <body>
 <div class="row">
     <div class="col-sm-12">
-        <h1 id="titulo">Asocia palabras</h1>
+        <h1 id="titulo" class="titulo">Asocia palabras</h1>
 </div>
 </div>
-<!--<p class="par" onmouseenter="clicParrafo()">Segundo</p>-->
 <div id="jugadores"></div>
 <div id="contenedor-chat"></div>
 <div id="respuesta">
+    <div>
+        <div class="row">
+        <div class="col-sm-3">
+            <p id="t">Letra en Juego</p>
+        </div>
+        <div class="col-sm-3">
+            <p id="letra"><strong>A</strong></p>
+        </div>
+        </div>
+    </div>
     <p id="espera" hidden><strong>Esperando respuesta de otro jugador ...</strong></p>
     <label for="chat-texto" id="labelt">Ingresa la palabra: </label>
     <input type="text" id="chat-texto">
     <button id="boton" onclick="chattxt()">Enviar</button>
 </div>
-
-
-<!--Script-->
 <script>
-    /*const titulo = document.getElementById('titulo');
-    titulo.style.backgroundColor = 'white';
-    titulo.onclick = () => {
-        console.log('Diste clic al titulo');
-    };*/
-
-    function validarPalabra(letra, palabra) {
-        const letraval = palabra.slice(0,1);
-        if (letraval === letra){
-            return 'La palabra debe comenzar con ' + palabra.slice(-1);
-        }else {
-            return 'Perdiste :(';
-        }
-    }
     function chattxt() {
         const boton = document.getElementById('boton');
         const input = document.getElementById('chat-texto');
@@ -50,80 +59,87 @@
         label.hidden = true;
         parrafor.hidden = false;
         const valor = document.getElementById('chat-texto');
-        const texto = valor.value;
-        //console.log(texto);
-        valor.value = ""; //Limpiar Campo
-        const texto1 = validarPalabra(letraactual,texto);
-        console.log(texto1);
-        const idContenedor = 'contenedor-chat';
-        const etiquetaHTMLChat = 'p';
-        const parrafo = document.createElement(etiquetaHTMLChat);
-        const letra = texto.slice(-1); /// En la ventana del jugador
-        const contenidoHTML = `
-        <div class="alert alert-primary text-right" role="alert">
-            Letra en juego:  <strong>${letra}</strong>
-        </div>`;
-        parrafo.innerHTML = contenidoHTML;
-        anadirEtiqueta(idContenedor,parrafo);
-        peticionHolaMundo(letra);
-    };
+        const pletra = valor.value.slice(0, 1);
+        if (pletra === document.getElementById('letra').innerText){
+            const letra = valor.value.slice(-1);
+            document.getElementById('letra').innerHTML = `<strong> ${letra.toUpperCase()} <strong>`;
+            peticionHolaMundo(letra,true);
+        } else {
+            boton.hidden = true;
+            input.hidden = true;
+            label.hidden = true;
+            parrafor.hidden = true;
+            document.getElementById('t').hidden = true;
+            document.getElementById('letra').hidden = true;
+            const parrafo = document.createElement('p');
+            const HTMLParrafo = `
+            <div class="perdiste">
+                <strong>¡Perdiste!</strong>
+            </div>`;
+            parrafo.innerHTML = HTMLParrafo;
+            anadirEtiqueta('contenedor-chat',parrafo);
+            peticionHolaMundo('A',false);
+        }
 
+    };
     function anadirEtiqueta(idEtiqueta, elementoHTML) {
         const etiqueta = document.getElementById(idEtiqueta);
         etiqueta.appendChild(elementoHTML);
     }
-
-   /* function clicParrafo() {
-        alert('Why do you click this paragraph?');
-   } */
 </script>
 <script src="socket.io.js"> </script>
-<!--Busca dentro de la carpeta-->
 <script>
-    //Conexion de IP y puerto del ws
     const url = 'http://localhost:3001/websockets';
     const socket = io(url);
     let letraactual = '';
     console.log('Ya mismito nos conectamos :D');
     socket.on(
-        'connect', // Nombre del evento
-        () => { //Funcion que va arealizar con dicho evento
+        'connect',
+        () => {
             console.log('Estamos conectados !!');
         }
     );
     socket.on(
-        'disconnect', // Nombre del evento
-        () => { //Funcion que va arealizar con dicho evento
+        'disconnect',
+        () => {
             console.log(':( Se desconectó');
         }
     );
-    function peticionHolaMundo(texto) {
+    function peticionHolaMundo(texto, estado) {
         socket.emit('holaMundo',
-            { nombre: texto},
+            { nombre: texto, estado: estado},
             (respuesta) => {
-                console.log(respuesta); // Respuesta para el cliente
+                console.log(respuesta);
         }
-        ); // segundo parametro datos, si es que si quisiera
+        );
     }
     socket.on('saludaron', (data) => {
-        console.log('Nos saludaron', data);
-        letraactual = data.nombre;
-        const boton = document.getElementById('boton');
-        const input = document.getElementById('chat-texto');
-        const label = document.getElementById('labelt');
-        const parrafor = document.getElementById('espera');
-        boton.hidden = false;
-        input.hidden = false;
-        label.hidden = false;
-        parrafor.hidden = true;
-        const parrafo = document.createElement('p');
-        const letra = data.nombre;
-        const HTMLParrafo = `
-        <div class="alert alert-secondary" role="alert">
-              La palabra debe comenzar con <strong>${letra}</strong>
-        </div>`;
-        parrafo.innerHTML = HTMLParrafo;
-        anadirEtiqueta('contenedor-chat',parrafo);
+        if (data.estado) {
+            letraactual = data.nombre;
+            const boton = document.getElementById('boton');
+            const input = document.getElementById('chat-texto');
+            const label = document.getElementById('labelt');
+            const parrafor = document.getElementById('espera');
+            document.getElementById('letra').innerHTML = `<strong> ${letraactual.toUpperCase()} <strong>`;
+            boton.hidden = false;
+            input.hidden = false;
+            label.hidden = false;
+            parrafor.hidden = true;
+        }else {
+            document.getElementById('boton').hidden = true;
+            document.getElementById('chat-texto').hidden = true;
+            document.getElementById('labelt').hidden = true;
+            document.getElementById('espera').hidden = true;
+            document.getElementById('t').hidden = true;
+            document.getElementById('letra').hidden = true;
+            const parrafo = document.createElement('p');
+            const HTMLParrafo = `
+            <div class="ganaste">
+                <strong>¡Ganaste!</strong>
+            </div>`;
+            parrafo.innerHTML = HTMLParrafo;
+            anadirEtiqueta('contenedor-chat',parrafo);
+        }
     })
 </script>
 </body>

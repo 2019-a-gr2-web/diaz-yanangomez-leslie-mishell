@@ -6,13 +6,13 @@ export class ChatGateway {
 @WebSocketServer() server;
 @SubscribeMessage('holaMundo')
 async smHolaMundo(cliente: Client | any, data: any) {
-    console.log(data);
-    console.log('Nos hacen la peticion');
-    console.log(this.server);
+    //console.log(data);
+    //console.log('Nos hacen la peticion');
+    //console.log(this.server);
     cliente.broadcast.emit('saludaron', data); // Emitir respuestas a clientes
     return 'Hola ' + data.nombre;
 }
 constructor() {
-        console.log(this.server);
+        // console.log(this.server);
     }
 }
